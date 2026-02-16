@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exchange Data Viewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg-1: #f5f2e8;
+      --bg-2: #e6f0ff;
+      --ink: #1b1b1f;
+      --muted: #5a5f6a;
+      --accent: #0d6b5c;
+      --accent-2: #f08a5d;
+      --card: #ffffff;
+      --stroke: #d6d9de;
+      --shadow: 0 16px 40px rgba(12, 16, 25, 0.12);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(1200px 600px at 10% -10%, var(--bg-2), transparent),
+                  linear-gradient(180deg, var(--bg-1), #fdfcf9);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px 80px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-family: "Fraunces", serif;
+      font-size: 36px;
+      margin: 0 0 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin: 0;
+      max-width: 720px;
+    }
+
+    .badge {
+      background: var(--card);
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      margin-bottom: 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+    }
+
+    input, select {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--stroke);
+      background: #fff;
+      font-size: 14px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn.secondary {
+      background: #ffffff;
+      color: var(--ink);
+      border: 1px solid var(--stroke);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+
+    th, td {
+      border: 1px solid var(--stroke);
+      padding: 10px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f6f7fb;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    .status {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .scroll {
+      max-height: 420px;
+      overflow: auto;
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+    }
+
+    .view-toggle {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .view-toggle button {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid var(--stroke);
+      background: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .view-toggle button.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .summary-section {
+      display: none;
+    }
+
+    .summary-section.active {
+      display: block;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .metric-card {
+      background: #fff;
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(12, 16, 25, 0.06);
+    }
+
+    .metric-card h3 {
+      margin: 0 0 16px;
+      font-size: 16px;
+      color: var(--ink);
+      border-bottom: 2px solid var(--stroke);
+      padding-bottom: 8px;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .metric-row:last-child {
+      border-bottom: none;
+    }
+
+    .metric-label {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .metric-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent);
+      text-align: right;
+    }
+
+    .metric-unit {
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: 4px;
+    }
+
+    .period-header {
+      background: var(--bg-2);
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .period-header h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    @media (max-width: 900px) {
+      header { grid-template-columns: 1fr; }
+      h1 { font-size: 28px; }
+      .grid { grid-template-columns: 1fr; }
+      th, td { font-size: 13px; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+
+    .chart-container {
+      position: relative;
+      height: 380px;
+      margin: 24px 0;
+      background: #fff;
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .summary-table th, .summary-table td {
+      border: 1px solid var(--stroke);
+      padding: 12px;
+      text-align: right;
+    }
+
+    .summary-table th:first-child, .summary-table td:first-child {
+      text-align: left;
+    }
+
+    .summary-table th {
+      background: #f6f7fb;
+      font-weight: 600;
+    }
+
+    .segment-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 32px;
+      margin-bottom: 16px;
+      color: var(--ink);
+      border-bottom: 2px solid var(--stroke);
+      padding-bottom: 8px;
+    }
+
+    .segment-title:first-of-type {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Exchange Data Viewer</h1>
+        <p class="subtitle">Read-only table generated from the NSE and BSE Excel files. Filter by exchange, date range, and weekly/monthly/yearly aggregation.</p>
+      </div>
+    </header>
+
+    <section class="panel">
+      <div class="grid">
+        <div class="field" style="grid-column: span 3;">
+          <label>Aggregation</label>
+          <select id="agg">
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="yearly">Yearly</option>
+          </select>
+        </div>
+        <div class="field" style="grid-column: span 3;">
+          <label>From Date</label>
+          <input id="fromDate" type="date" />
+        </div>
+        <div class="field" style="grid-column: span 3;">
+          <label>To Date</label>
+          <input id="toDate" type="date" />
+        </div>
+        <div class="field" style="grid-column: span 3;">
+          <label>Exchange</label>
+          <select id="exchange">
+            <option value="all">NSE + BSE</option>
+            <option value="NSE">NSE</option>
+            <option value="BSE">BSE</option>
+          </select>
+        </div>
+        <div class="field" style="grid-column: span 3;">
+          <label>Segment</label>
+          <select id="segment">
+            <option value="both">Cash + F&O</option>
+            <option value="cash">Cash</option>
+            <option value="fno">F&O</option>
+          </select>
+        </div>
+      </div>
+      <div class="actions" style="margin-top: 16px;">
+        <button class="btn secondary" id="last4w">Last 4 weeks</button>
+        <button class="btn secondary" id="ytd">Year to date</button>
+        <button class="btn secondary" id="lastfy">Last FY</button>
+        <span class="status" id="status">Ready</span>
+      </div>
+      <p class="note">Metrics are shown in Rs bn where applicable. Volumes are raw from source files. Trading days reflect available data in the selected segment.</p>
+    </section>
+
+    <section class="panel">
+      <div class="view-toggle">
+        <button class="active" id="viewSummary">Summary</button>
+        <button id="viewTable">Detailed Table</button>
+      </div>
+
+      <!-- Summary View -->
+      <div class="summary-section active" id="summaryView">
+        <div id="summaryTableContainer"></div>
+
+        <!-- Chart Segment Selection -->
+        <div style="margin: 24px 0;">
+          <label style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted);">Chart Segment</label>
+          <select id="chartSegment" style="padding: 10px 12px; border-radius: 10px; border: 1px solid var(--stroke); background: #fff; font-size: 14px; width: 250px;">
+            <option value="cash">Cash</option>
+            <option value="futures">Futures</option>
+            <option value="options">Options</option>
+            <option value="futures-options" selected>Futures + Options</option>
+          </select>
+        </div>
+
+        <!-- Trend Charts -->
+        <div class="charts-grid">
+          <div class="chart-container">
+            <canvas id="nseChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="bseChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table View -->
+      <div class="summary-section" id="tableView">
+        <div class="scroll">
+          <table id="dataTable">
+            <thead>
+              <tr>
+                <th>Period</th>
+                <th>Exchange</th>
+                <th>Trading Days</th>
+                <th>Cash Turnover (Rs bn)</th>
+                <th>Cash Volume</th>
+                <th>Futures Turnover (Rs bn)</th>
+                <th>Index Options Notional (Rs bn)</th>
+                <th>Equity Options Notional (Rs bn)</th>
+                <th>Total Contracts</th>
+                <th>Avg Daily Turnover (Rs bn)</th>
+                <th>Avg Contracts/Day</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const tableBody = document.getElementById("tableBody");
+    const statusEl = document.getElementById("status");
+    const viewSummaryBtn = document.getElementById("viewSummary");
+    const viewTableBtn = document.getElementById("viewTable");
+    const summaryView = document.getElementById("summaryView");
+    const tableView = document.getElementById("tableView");
+
+    function toggleView(view) {
+      if (view === "summary") {
+        summaryView.classList.add("active");
+        tableView.classList.remove("active");
+        viewSummaryBtn.classList.add("active");
+        viewTableBtn.classList.remove("active");
+      } else {
+        tableView.classList.add("active");
+        summaryView.classList.remove("active");
+        viewTableBtn.classList.add("active");
+        viewSummaryBtn.classList.remove("active");
+      }
+    }
+
+    viewSummaryBtn.addEventListener("click", () => toggleView("summary"));
+    viewTableBtn.addEventListener("click", () => toggleView("table"));
+
+    function setRange(fromDate, toDate) {
+      document.getElementById("fromDate").valueAsDate = fromDate;
+      document.getElementById("toDate").valueAsDate = toDate;
+    }
+
+    function presetLast4Weeks() {
+      const today = new Date();
+      const from = new Date(today);
+      from.setDate(from.getDate() - 28);
+      setRange(from, today);
+    }
+
+    function presetYtd() {
+      const today = new Date();
+      const from = new Date(today.getFullYear(), 0, 1);
+      setRange(from, today);
+    }
+
+    function presetLastFy() {
+      const today = new Date();
+      const year = today.getMonth() >= 3 ? today.getFullYear() - 1 : today.getFullYear() - 2;
+      const from = new Date(year, 3, 1);
+      const to = new Date(year + 1, 2, 31);
+      setRange(from, to);
+    }
+
+    function formatNumber(value) {
+      if (value === null || value === undefined) return "-";
+      const num = Number(value);
+      if (Number.isNaN(num)) return "-";
+      return num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function formatInt(value) {
+      if (value === null || value === undefined) return "-";
+      const num = Number(value);
+      if (Number.isNaN(num)) return "-";
+      return Math.round(num).toLocaleString();
+    }
+
+    let nseChartInstance = null;
+    let bseChartInstance = null;
+    let cachedQuarterlyData = null;
+
+    function renderSummaryCards(rows) {
+      const container = document.getElementById("summaryTableContainer");
+      container.innerHTML = "";
+      if (!rows.length) {
+        const div = document.createElement("div");
+        div.textContent = "No data found for the selected range.";
+        container.appendChild(div);
+        return;
+      }
+
+      // Separate by segment type
+      const byIndexFutures = {}, byIndexOptions = {}, byStockFutures = {}, byStockOptions = {};
+      
+      rows.forEach((row) => {
+        const key = row.exchange;
+        
+        // Index Futures
+        if ((row.index_futures_volume || 0) > 0) {
+          if (!byIndexFutures[key]) byIndexFutures[key] = { trading_days: row.trading_days, total_turnover: 0, total_contracts: 0 };
+          byIndexFutures[key].total_turnover += row.futures_turnover_bn || 0;
+          byIndexFutures[key].total_contracts += row.index_futures_volume || 0;
+        }
+        
+        // Index Options
+        if ((row.index_options_notional_bn || 0) > 0) {
+          if (!byIndexOptions[key]) byIndexOptions[key] = { trading_days: row.trading_days, total_turnover: 0, total_contracts: 0 };
+          byIndexOptions[key].total_turnover += row.index_options_notional_bn || 0;
+        }
+        
+        // Stock Futures
+        if ((row.equity_futures_volume || 0) > 0) {
+          if (!byStockFutures[key]) byStockFutures[key] = { trading_days: row.trading_days, total_turnover: 0, total_contracts: 0 };
+          byStockFutures[key].total_turnover += row.futures_turnover_bn || 0;
+          byStockFutures[key].total_contracts += row.equity_futures_volume || 0;
+        }
+        
+        // Stock Options
+        if ((row.equity_options_notional_bn || 0) > 0) {
+          if (!byStockOptions[key]) byStockOptions[key] = { trading_days: row.trading_days, total_turnover: 0, total_contracts: 0 };
+          byStockOptions[key].total_turnover += row.equity_options_notional_bn || 0;
+          byStockOptions[key].total_contracts += row.equity_options_volume || 0;
+        }
+      });
+
+      // Render Index Futures table
+      if (Object.keys(byIndexFutures).length > 0) {
+        const title = document.createElement("div");
+        title.className = "segment-title";
+        title.textContent = "Index Futures";
+        container.appendChild(title);
+        const table = renderDerivativesTable(byIndexFutures);
+        container.appendChild(table);
+      }
+
+      // Render Index Options table
+      if (Object.keys(byIndexOptions).length > 0) {
+        const title = document.createElement("div");
+        title.className = "segment-title";
+        title.textContent = "Index Options";
+        container.appendChild(title);
+        const table = renderDerivativesTable(byIndexOptions);
+        container.appendChild(table);
+      }
+
+      // Render Stock Futures table
+      if (Object.keys(byStockFutures).length > 0) {
+        const title = document.createElement("div");
+        title.className = "segment-title";
+        title.textContent = "Stock Futures";
+        container.appendChild(title);
+        const table = renderDerivativesTable(byStockFutures);
+        container.appendChild(table);
+      }
+
+      // Render Stock Options table
+      if (Object.keys(byStockOptions).length > 0) {
+        const title = document.createElement("div");
+        title.className = "segment-title";
+        title.textContent = "Stock Options";
+        container.appendChild(title);
+        const table = renderDerivativesTable(byStockOptions);
+        container.appendChild(table);
+      }
+
+      // Fetch quarterly data for charts
+      fetchQuarterlyData();
+    }
+
+    function renderDerivativesTable(byExchange) {
+      const table = document.createElement("table");
+      table.className = "summary-table";
+      
+      let totalTO = 0;
+      Object.values(byExchange).forEach(d => totalTO += d.total_turnover);
+
+      const nseTO = byExchange["NSE"]?.total_turnover || 0;
+      const bseTO = byExchange["BSE"]?.total_turnover || 0;
+      const nseContracts = byExchange["NSE"]?.total_contracts || 0;
+      const bseContracts = byExchange["BSE"]?.total_contracts || 0;
+
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>NSE</th>
+            <th>BSE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Total Turnover (Rs bn)</td>
+            <td>${formatNumber(nseTO)}</td>
+            <td>${formatNumber(bseTO)}</td>
+          </tr>
+          <tr>
+            <td>Market Share %</td>
+            <td>${formatNumber(totalTO > 0 ? (nseTO / totalTO) * 100 : 0)}%</td>
+            <td>${formatNumber(totalTO > 0 ? (bseTO / totalTO) * 100 : 0)}%</td>
+          </tr>
+          <tr>
+            <td>Avg Daily Turnover (Rs bn)</td>
+            <td>${formatNumber((byExchange["NSE"]?.trading_days || 0) > 0 ? nseTO / (byExchange["NSE"]?.trading_days || 1) : 0)}</td>
+            <td>${formatNumber((byExchange["BSE"]?.trading_days || 0) > 0 ? bseTO / (byExchange["BSE"]?.trading_days || 1) : 0)}</td>
+          </tr>
+          ${nseContracts > 0 || bseContracts > 0 ? `
+          <tr>
+            <td>Total Contracts</td>
+            <td>${formatInt(nseContracts)}</td>
+            <td>${formatInt(bseContracts)}</td>
+          </tr>
+          ` : ''}
+        </tbody>
+      `;
+      return table;
+    }
+
+    async function fetchQuarterlyData() {
+      const exchange = document.getElementById("exchange").value;
+      const segment = document.getElementById("segment").value;
+      
+      // Fetch ALL quarterly data (no date filters) to get last 8 quarters
+      const params = new URLSearchParams({ agg: "quarterly", exchange, segment });
+      const url = `/api/summary?${params.toString()}`;
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) return;
+        const data = await response.json();
+        if (data.rows && data.rows.length > 0) {
+          cachedQuarterlyData = data.rows;
+          renderCharts(data.rows);
+        }
+      } catch (e) {
+        console.error("Failed to fetch quarterly data:", e);
+      }
+    }
+
+    function renderCharts(rows) {
+      // Separate data by exchange
+      const nseData = rows.filter(r => r.exchange === "NSE");
+      const bseData = rows.filter(r => r.exchange === "BSE");
+
+      // Sort by period and take last 8 quarters (most recent)
+      nseData.sort((a, b) => new Date(a.period_sort) - new Date(b.period_sort));
+      bseData.sort((a, b) => new Date(a.period_sort) - new Date(b.period_sort));
+
+      const nseLastEight = nseData.slice(-8);
+      const bseLastEight = bseData.slice(-8);
+
+      renderNSEChart(nseLastEight);
+      renderBSEChart(bseLastEight);
+    }
+
+    function renderNSEChart(data) {
+      const ctx = document.getElementById("nseChart");
+      if (!ctx) return;
+
+      function getQuarterLabel(period) {
+        // Parse period like "01/01/2016 to 29/03/2016"
+        if (period && period.includes("to")) {
+          const parts = period.split(" to ");
+          const start = parts[0];
+          const [d, m, y] = start.split("/");
+          const month = parseInt(m);
+          const year = parseInt(y);
+          let q, fy;
+          if (month < 4) {
+            fy = year;
+            q = 4;
+          } else if (month < 7) {
+            fy = year + 1;
+            q = 1;
+          } else if (month < 10) {
+            fy = year + 1;
+            q = 2;
+          } else {
+            fy = year + 1;
+            q = 3;
+          }
+          return `Q${q} FY${fy % 100}`;
+        }
+        return period;
+      }
+
+      const labels = data.map(d => getQuarterLabel(d.period));
+      
+      // Get chart segment selection from dropdown
+      const chartSegment = document.getElementById("chartSegment").value;
+      
+      const avgDailyTurnover = data.map(d => {
+        let total = 0;
+        const days = parseFloat(d.trading_days) || 1;
+        
+        if (chartSegment === "cash") {
+          total = parseFloat(d.cash_turnover_bn) || 0;
+        } else if (chartSegment === "futures") {
+          total = parseFloat(d.futures_turnover_bn) || 0;
+        } else if (chartSegment === "options") {
+          total = (parseFloat(d.index_options_notional_bn) || 0) + (parseFloat(d.equity_options_notional_bn) || 0);
+        } else {
+          // futures-options
+          total = (parseFloat(d.futures_turnover_bn) || 0) + (parseFloat(d.index_options_notional_bn) || 0) + (parseFloat(d.equity_options_notional_bn) || 0);
+        }
+        
+        return total / days;
+      });
+
+      if (nseChartInstance) nseChartInstance.destroy();
+
+      nseChartInstance = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels,
+          datasets: [{
+            label: "Avg Daily Turnover (Rs bn)",
+            data: avgDailyTurnover,
+            borderColor: "#0d6b5c",
+            backgroundColor: "rgba(13, 107, 92, 0.05)",
+            borderWidth: 3,
+            tension: 0.3,
+            fill: true,
+            pointRadius: 6,
+            pointBackgroundColor: "#0d6b5c",
+            pointBorderColor: "#fff",
+            pointBorderWidth: 2,
+            pointHoverRadius: 8,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: true, position: "top", labels: { font: { size: 12, weight: "bold" }, usePointStyle: true } },
+            title: { display: true, text: "NSE - Avg Daily Turnover (Last 8 Quarters)", font: { size: 14, weight: "bold" } }
+          },
+          scales: {
+            y: { 
+              beginAtZero: true,
+              grid: { color: "rgba(0,0,0,0.08)", lineWidth: 1 },
+              ticks: { font: { size: 12, weight: "600" } }
+            },
+            x: { 
+              grid: { display: true, color: "rgba(0,0,0,0.05)" },
+              ticks: { font: { size: 12, weight: "600" } }
+            }
+          }
+        }
+      });
+    }
+
+    function renderBSEChart(data) {
+      const ctx = document.getElementById("bseChart");
+      if (!ctx) return;
+
+      function getQuarterLabel(period) {
+        if (period && period.includes("to")) {
+          const parts = period.split(" to ");
+          const start = parts[0];
+          const [d, m, y] = start.split("/");
+          const month = parseInt(m);
+          const year = parseInt(y);
+          let q, fy;
+          if (month < 4) {
+            fy = year;
+            q = 4;
+          } else if (month < 7) {
+            fy = year + 1;
+            q = 1;
+          } else if (month < 10) {
+            fy = year + 1;
+            q = 2;
+          } else {
+            fy = year + 1;
+            q = 3;
+          }
+          return `Q${q} FY${fy % 100}`;
+        }
+        return period;
+      }
+
+      const labels = data.map(d => getQuarterLabel(d.period));
+      
+      // Get chart segment selection from dropdown
+      const chartSegment = document.getElementById("chartSegment").value;
+      
+      const avgDailyTurnover = data.map(d => {
+        let total = 0;
+        const days = parseFloat(d.trading_days) || 1;
+        
+        if (chartSegment === "cash") {
+          total = parseFloat(d.cash_turnover_bn) || 0;
+        } else if (chartSegment === "futures") {
+          total = parseFloat(d.futures_turnover_bn) || 0;
+        } else if (chartSegment === "options") {
+          total = (parseFloat(d.index_options_notional_bn) || 0) + (parseFloat(d.equity_options_notional_bn) || 0);
+        } else {
+          // futures-options
+          total = (parseFloat(d.futures_turnover_bn) || 0) + (parseFloat(d.index_options_notional_bn) || 0) + (parseFloat(d.equity_options_notional_bn) || 0);
+        }
+        
+        return total / days;
+      });
+
+      if (bseChartInstance) bseChartInstance.destroy();
+
+      bseChartInstance = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels,
+          datasets: [{
+            label: "Avg Daily Turnover (Rs bn)",
+            data: avgDailyTurnover,
+            borderColor: "#f08a5d",
+            backgroundColor: "rgba(240, 138, 93, 0.05)",
+            borderWidth: 3,
+            tension: 0.3,
+            fill: true,
+            pointRadius: 6,
+            pointBackgroundColor: "#f08a5d",
+            pointBorderColor: "#fff",
+            pointBorderWidth: 2,
+            pointHoverRadius: 8,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: true, position: "top", labels: { font: { size: 12, weight: "bold" }, usePointStyle: true } },
+            title: { display: true, text: "BSE - Avg Daily Turnover (Last 8 Quarters)", font: { size: 14, weight: "bold" } }
+          },
+          scales: {
+            y: { 
+              beginAtZero: true,
+              grid: { color: "rgba(0,0,0,0.08)", lineWidth: 1 },
+              ticks: { font: { size: 12, weight: "600" } }
+            },
+            x: { 
+              grid: { display: true, color: "rgba(0,0,0,0.05)" },
+              ticks: { font: { size: 12, weight: "600" } }
+            }
+          }
+        }
+      });
+    }
+
+    async function fetchData() {
+      const agg = document.getElementById("agg").value;
+      const fromDate = document.getElementById("fromDate").value;
+      const toDate = document.getElementById("toDate").value;
+      const exchange = document.getElementById("exchange").value;
+      const segment = document.getElementById("segment").value;
+
+      const params = new URLSearchParams({ agg, from: fromDate, to: toDate, exchange, segment });
+      const url = `/api/summary?${params.toString()}`;
+
+      statusEl.textContent = "Loading...";
+      const response = await fetch(url);
+      if (!response.ok) {
+        statusEl.textContent = "Failed to load data";
+        return;
+      }
+      const data = await response.json();
+      renderSummaryCards(data.rows || []);
+      renderTable(data.rows || []);
+      statusEl.textContent = `Periods: ${data.rows ? data.rows.length : 0}`;
+    }
+
+    function renderTable(rows) {
+      tableBody.innerHTML = "";
+      if (!rows.length) {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td colspan="11">No data found for the selected range.</td>`;
+        tableBody.appendChild(row);
+        return;
+      }
+      rows.forEach((item) => {
+        const row = document.createElement("tr");
+        const totalTO = (item.cash_turnover_bn || 0) + (item.futures_turnover_bn || 0);
+        row.innerHTML = `
+          <td>${item.period}</td>
+          <td>${item.exchange}</td>
+          <td>${formatInt(item.trading_days)}</td>
+          <td>${formatNumber(item.cash_turnover_bn)}</td>
+          <td>${formatNumber(item.cash_volume)}</td>
+          <td>${formatNumber(item.futures_turnover_bn)}</td>
+          <td>${formatNumber(item.index_options_notional_bn)}</td>
+          <td>${formatNumber(item.equity_options_notional_bn)}</td>
+          <td>${formatNumber(item.total_contracts)}</td>
+          <td>${formatNumber(item.avg_cash_turnover_bn)}</td>
+          <td>${formatNumber(item.avg_contracts)}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Debounce helper for auto-refresh
+    let fetchTimeout;
+    function debouncedFetch() {
+      clearTimeout(fetchTimeout);
+      statusEl.textContent = "Refreshing...";
+      fetchTimeout = setTimeout(() => {
+        fetchData();
+      }, 500);
+    }
+
+    // Auto-refresh on filter change
+    document.getElementById("fromDate").addEventListener("change", debouncedFetch);
+    document.getElementById("toDate").addEventListener("change", debouncedFetch);
+    document.getElementById("exchange").addEventListener("change", debouncedFetch);
+    document.getElementById("segment").addEventListener("change", debouncedFetch);
+    document.getElementById("agg").addEventListener("change", debouncedFetch);
+    
+    document.getElementById("last4w").addEventListener("click", () => {
+      presetLast4Weeks();
+      fetchData();
+    });
+    document.getElementById("ytd").addEventListener("click", () => {
+      presetYtd();
+      fetchData();
+    });
+    document.getElementById("lastfy").addEventListener("click", () => {
+      presetLastFy();
+      fetchData();
+    });
+    document.getElementById("segmentSummary").addEventListener("change", () => {
+      document.getElementById("segment").value = document.getElementById("segmentSummary").value;
+      fetchData();
+    });
+
+    // Add listener for chart segment dropdown
+    document.getElementById("chartSegment").addEventListener("change", () => {
+      if (cachedQuarterlyData && cachedQuarterlyData.length > 0) {
+        renderCharts(cachedQuarterlyData);
+      }
+    });
+
+    presetLast4Weeks();
+    fetchData();
+  </script>
+</body>
+</html>

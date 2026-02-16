@@ -1,0 +1,1255 @@
+2026-02-12 10:52:02,176 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-12 10:52:02,176 | INFO     | ======================================================================
+2026-02-12 10:52:02,177 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-12 10:52:02,177 | INFO     | Time: 2026-02-12 10:52:02
+2026-02-12 10:52:02,177 | INFO     | ======================================================================
+2026-02-12 10:52:02,194 | INFO     | Starting: NSE F&O Daily Data
+2026-02-12 10:52:24,919 | INFO     |   ======================================================================
+2026-02-12 10:52:24,920 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-02-12 10:52:24,920 | INFO     |   Default: Current month (Feb-2026)
+2026-02-12 10:52:24,921 | INFO     |   Output: D:\Rouhin\Exchanges Data
+2026-02-12 10:52:24,921 | INFO     |   ======================================================================
+2026-02-12 10:52:24,921 | INFO     |   
+2026-02-12 10:52:24,922 | INFO     |   Opening NSE F&O page...
+2026-02-12 10:52:24,922 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-02-12 10:52:24,922 | INFO     |   
+2026-02-12 10:52:24,922 | INFO     |   Feb-2026...
+2026-02-12 10:52:24,925 | ERROR    |   Traceback (most recent call last):
+2026-02-12 10:52:24,925 | ERROR    |     File "D:\Rouhin\Exchanges Data\NSE\FnO\nse_fno_download.py", line 599, in <module>
+2026-02-12 10:52:24,926 | ERROR    |       main()
+2026-02-12 10:52:24,926 | ERROR    |       ~~~~^^
+2026-02-12 10:52:24,926 | ERROR    |     File "D:\Rouhin\Exchanges Data\NSE\FnO\nse_fno_download.py", line 582, in main
+2026-02-12 10:52:24,926 | ERROR    |       print(f"\u2713 {count} days")
+2026-02-12 10:52:24,926 | ERROR    |       ~~~~~^^^^^^^^^^^^^^^^^^^
+2026-02-12 10:52:24,927 | ERROR    |     File "C:\Users\0201085\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+2026-02-12 10:52:24,927 | ERROR    |       return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+2026-02-12 10:52:24,927 | ERROR    |              ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-12 10:52:24,927 | ERROR    |   UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 0: character maps to <undefined>
+2026-02-12 10:52:24,927 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-12 10:53:03,438 | INFO     |   Processing 2020-04...
+2026-02-12 10:53:03,438 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-04)
+2026-02-12 10:53:03,439 | INFO     |   Processing 2020-05...
+2026-02-12 10:53:03,439 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-05)
+2026-02-12 10:53:03,439 | INFO     |   Processing 2020-06...
+2026-02-12 10:53:03,439 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-06)
+2026-02-12 10:53:03,439 | INFO     |   Processing 2020-07...
+2026-02-12 10:53:03,439 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-07)
+2026-02-12 10:53:03,439 | INFO     |   Processing 2020-08...
+2026-02-12 10:53:03,440 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-08)
+2026-02-12 10:53:03,440 | INFO     |   Processing 2020-09...
+2026-02-12 10:53:03,440 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-09)
+2026-02-12 10:53:03,440 | INFO     |   Processing 2020-10...
+2026-02-12 10:53:03,440 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-10)
+2026-02-12 10:53:03,440 | INFO     |   Processing 2020-11...
+2026-02-12 10:53:03,440 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-11)
+2026-02-12 10:53:03,441 | INFO     |   Processing 2020-12...
+2026-02-12 10:53:03,441 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-12)
+2026-02-12 10:53:03,441 | INFO     |   Processing 2021-01...
+2026-02-12 10:53:03,441 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2021-01)
+2026-02-12 10:53:03,441 | INFO     |   Processing 2021-02...
+2026-02-12 10:53:03,441 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2021-02)
+2026-02-12 10:53:03,442 | INFO     |   Processing 2021-03...
+2026-02-12 10:53:03,442 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2021-03)
+2026-02-12 10:53:03,442 | INFO     |   Processing 2021-04...
+2026-02-12 10:53:03,442 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-04)
+2026-02-12 10:53:03,442 | INFO     |   Processing 2021-05...
+2026-02-12 10:53:03,442 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-05)
+2026-02-12 10:53:03,442 | INFO     |   Processing 2021-06...
+2026-02-12 10:53:03,442 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-06)
+2026-02-12 10:53:03,443 | INFO     |   Processing 2021-07...
+2026-02-12 10:53:03,443 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-07)
+2026-02-12 10:53:03,443 | INFO     |   Processing 2021-08...
+2026-02-12 10:53:03,443 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-08)
+2026-02-12 10:53:03,443 | INFO     |   Processing 2021-09...
+2026-02-12 10:53:03,443 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-09)
+2026-02-12 10:53:03,443 | INFO     |   Processing 2021-10...
+2026-02-12 10:53:03,443 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-10)
+2026-02-12 10:53:03,444 | INFO     |   Processing 2021-11...
+2026-02-12 10:53:03,444 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-11)
+2026-02-12 10:53:03,444 | INFO     |   Processing 2021-12...
+2026-02-12 10:53:03,444 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-12)
+2026-02-12 10:53:03,444 | INFO     |   Processing 2022-01...
+2026-02-12 10:53:03,445 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2022-01)
+2026-02-12 10:53:03,445 | INFO     |   Processing 2022-02...
+2026-02-12 10:53:03,445 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2022-02)
+2026-02-12 10:53:03,445 | INFO     |   Processing 2022-03...
+2026-02-12 10:53:03,445 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2022-03)
+2026-02-12 10:53:03,445 | INFO     |   Processing 2022-04...
+2026-02-12 10:53:03,446 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-04)
+2026-02-12 10:53:03,446 | INFO     |   Processing 2022-05...
+2026-02-12 10:53:03,446 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-05)
+2026-02-12 10:53:03,446 | INFO     |   Processing 2022-06...
+2026-02-12 10:53:03,446 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-06)
+2026-02-12 10:53:03,447 | INFO     |   Processing 2022-07...
+2026-02-12 10:53:03,447 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-07)
+2026-02-12 10:53:03,447 | INFO     |   Processing 2022-08...
+2026-02-12 10:53:03,447 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-08)
+2026-02-12 10:53:03,447 | INFO     |   Processing 2022-09...
+2026-02-12 10:53:03,447 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-09)
+2026-02-12 10:53:03,447 | INFO     |   Processing 2022-10...
+2026-02-12 10:53:03,448 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-10)
+2026-02-12 10:53:03,448 | INFO     |   Processing 2022-11...
+2026-02-12 10:53:03,448 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-11)
+2026-02-12 10:53:03,448 | INFO     |   Processing 2022-12...
+2026-02-12 10:53:03,448 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-12)
+2026-02-12 10:53:03,448 | INFO     |   Processing 2023-01...
+2026-02-12 10:53:03,449 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2023-01)
+2026-02-12 10:53:03,449 | INFO     |   Processing 2023-02...
+2026-02-12 10:53:03,449 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2023-02)
+2026-02-12 10:53:03,449 | INFO     |   Processing 2023-03...
+2026-02-12 10:53:03,449 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2023-03)
+2026-02-12 10:53:03,449 | INFO     |   Processing 2023-04...
+2026-02-12 10:53:03,450 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-04)
+2026-02-12 10:53:03,450 | INFO     |   Processing 2023-05...
+2026-02-12 10:53:03,450 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-05)
+2026-02-12 10:53:03,450 | INFO     |   Processing 2023-06...
+2026-02-12 10:53:03,450 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-06)
+2026-02-12 10:53:03,450 | INFO     |   Processing 2023-07...
+2026-02-12 10:53:03,451 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-07)
+2026-02-12 10:53:03,451 | INFO     |   Processing 2023-08...
+2026-02-12 10:53:03,451 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-08)
+2026-02-12 10:53:03,451 | INFO     |   Processing 2023-09...
+2026-02-12 10:53:03,451 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-09)
+2026-02-12 10:53:03,451 | INFO     |   Processing 2023-10...
+2026-02-12 10:53:03,452 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-10)
+2026-02-12 10:53:03,452 | INFO     |   Processing 2023-11...
+2026-02-12 10:53:03,452 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-11)
+2026-02-12 10:53:03,452 | INFO     |   Processing 2023-12...
+2026-02-12 10:53:03,453 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-12)
+2026-02-12 10:53:03,453 | INFO     |   Processing 2024-01...
+2026-02-12 10:53:03,453 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2024-01)
+2026-02-12 10:53:03,453 | INFO     |   Processing 2024-02...
+2026-02-12 10:53:03,453 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2024-02)
+2026-02-12 10:53:03,453 | INFO     |   Processing 2024-03...
+2026-02-12 10:53:03,454 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2024-03)
+2026-02-12 10:53:03,454 | INFO     |   Processing 2024-04...
+2026-02-12 10:53:03,454 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-04)
+2026-02-12 10:53:03,454 | INFO     |   Processing 2024-05...
+2026-02-12 10:53:03,454 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-05)
+2026-02-12 10:53:03,455 | INFO     |   Processing 2024-06...
+2026-02-12 10:53:03,455 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-06)
+2026-02-12 10:53:03,455 | INFO     |   Processing 2024-07...
+2026-02-12 10:53:03,455 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-07)
+2026-02-12 10:53:03,455 | INFO     |   Processing 2024-08...
+2026-02-12 10:53:03,455 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-08)
+2026-02-12 10:53:03,456 | INFO     |   Processing 2024-09...
+2026-02-12 10:53:03,456 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-09)
+2026-02-12 10:53:03,456 | INFO     |   Processing 2024-10...
+2026-02-12 10:53:03,456 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-10)
+2026-02-12 10:53:03,456 | INFO     |   Processing 2024-11...
+2026-02-12 10:53:03,456 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-11)
+2026-02-12 10:53:03,456 | INFO     |   Processing 2024-12...
+2026-02-12 10:53:03,457 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-12)
+2026-02-12 10:53:03,457 | INFO     |   Processing 2025-01...
+2026-02-12 10:53:03,457 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2025-01)
+2026-02-12 10:53:03,457 | INFO     |   Processing 2025-02...
+2026-02-12 10:53:03,457 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2025-02)
+2026-02-12 10:53:03,457 | INFO     |   Processing 2025-03...
+2026-02-12 10:53:03,457 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2025-03)
+2026-02-12 10:53:03,458 | INFO     |   Processing 2025-04...
+2026-02-12 10:53:03,458 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-04)
+2026-02-12 10:53:03,458 | INFO     |   Processing 2025-05...
+2026-02-12 10:53:03,458 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-05)
+2026-02-12 10:53:03,458 | INFO     |   Processing 2025-06...
+2026-02-12 10:53:03,458 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-06)
+2026-02-12 10:53:03,458 | INFO     |   Processing 2025-07...
+2026-02-12 10:53:03,458 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-07)
+2026-02-12 10:53:03,459 | INFO     |   Processing 2025-08...
+2026-02-12 10:53:03,459 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-08)
+2026-02-12 10:53:03,459 | INFO     |   Processing 2025-09...
+2026-02-12 10:53:03,459 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-09)
+2026-02-12 10:53:03,459 | INFO     |   Processing 2025-10...
+2026-02-12 10:53:03,459 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-10)
+2026-02-12 10:53:03,459 | INFO     |   Processing 2025-11...
+2026-02-12 10:53:03,460 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-11)
+2026-02-12 10:53:03,460 | INFO     |   Processing 2025-12...
+2026-02-12 10:53:03,460 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-12)
+2026-02-12 10:53:03,460 | INFO     |   Processing 2026-01...
+2026-02-12 10:53:03,460 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 10:53:03,460 | INFO     |   Processing 2026-02...
+2026-02-12 10:53:03,460 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 10:53:03,462 | INFO     | 
+(NSE-only mode: Skipping BSE downloads)
+2026-02-12 10:53:03,462 | INFO     | 
+======================================================================
+2026-02-12 10:53:03,463 | INFO     | SUMMARY
+2026-02-12 10:53:03,463 | INFO     | ======================================================================
+2026-02-12 10:53:03,466 | INFO     | 
+Total: 1/2 successful
+2026-02-12 10:53:03,467 | INFO     | Duration: 61 seconds
+2026-02-12 10:53:03,467 | INFO     | ======================================================================
+
+2026-02-12 10:55:28,647 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-12 10:55:28,647 | INFO     | ======================================================================
+2026-02-12 10:55:28,647 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-12 10:55:28,648 | INFO     | Time: 2026-02-12 10:55:28
+2026-02-12 10:55:28,648 | INFO     | ======================================================================
+2026-02-12 10:55:28,648 | INFO     | 
+>> Starting NSE downloads...
+2026-02-12 10:55:28,648 | INFO     | Starting: NSE F&O Daily Data
+2026-02-12 10:55:50,096 | INFO     |   ======================================================================
+2026-02-12 10:55:50,096 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-02-12 10:55:50,096 | INFO     |   Default: Current month (Feb-2026)
+2026-02-12 10:55:50,096 | INFO     |   Output: D:\Rouhin\Exchanges Data
+2026-02-12 10:55:50,096 | INFO     |   ======================================================================
+2026-02-12 10:55:50,096 | INFO     |   
+2026-02-12 10:55:50,097 | INFO     |   Opening NSE F&O page...
+2026-02-12 10:55:50,097 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-02-12 10:55:50,097 | INFO     |   
+2026-02-12 10:55:50,098 | INFO     |   Feb-2026...
+2026-02-12 10:55:50,107 | ERROR    |   Traceback (most recent call last):
+2026-02-12 10:55:50,107 | ERROR    |     File "D:\Rouhin\Exchanges Data\NSE\FnO\nse_fno_download.py", line 599, in <module>
+2026-02-12 10:55:50,107 | ERROR    |       main()
+2026-02-12 10:55:50,108 | ERROR    |       ~~~~^^
+2026-02-12 10:55:50,108 | ERROR    |     File "D:\Rouhin\Exchanges Data\NSE\FnO\nse_fno_download.py", line 582, in main
+2026-02-12 10:55:50,108 | ERROR    |       print(f"\u2713 {count} days")
+2026-02-12 10:55:50,108 | ERROR    |       ~~~~~^^^^^^^^^^^^^^^^^^^
+2026-02-12 10:55:50,108 | ERROR    |     File "C:\Users\0201085\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+2026-02-12 10:55:50,108 | ERROR    |       return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+2026-02-12 10:55:50,108 | ERROR    |              ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-12 10:55:50,109 | ERROR    |   UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 0: character maps to <undefined>
+2026-02-12 10:55:50,109 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-12 10:56:37,184 | INFO     |   Processing 2020-04...
+2026-02-12 10:56:37,185 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-04)
+2026-02-12 10:56:37,185 | INFO     |   Processing 2020-05...
+2026-02-12 10:56:37,185 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-05)
+2026-02-12 10:56:37,185 | INFO     |   Processing 2020-06...
+2026-02-12 10:56:37,186 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-06)
+2026-02-12 10:56:37,186 | INFO     |   Processing 2020-07...
+2026-02-12 10:56:37,186 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-07)
+2026-02-12 10:56:37,186 | INFO     |   Processing 2020-08...
+2026-02-12 10:56:37,186 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-08)
+2026-02-12 10:56:37,187 | INFO     |   Processing 2020-09...
+2026-02-12 10:56:37,187 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-09)
+2026-02-12 10:56:37,187 | INFO     |   Processing 2020-10...
+2026-02-12 10:56:37,187 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-10)
+2026-02-12 10:56:37,187 | INFO     |   Processing 2020-11...
+2026-02-12 10:56:37,187 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-11)
+2026-02-12 10:56:37,188 | INFO     |   Processing 2020-12...
+2026-02-12 10:56:37,188 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-12)
+2026-02-12 10:56:37,188 | INFO     |   Processing 2021-01...
+2026-02-12 10:56:37,188 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2021-01)
+2026-02-12 10:56:37,188 | INFO     |   Processing 2021-02...
+2026-02-12 10:56:37,188 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2021-02)
+2026-02-12 10:56:37,188 | INFO     |   Processing 2021-03...
+2026-02-12 10:56:37,188 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2021-03)
+2026-02-12 10:56:37,188 | INFO     |   Processing 2021-04...
+2026-02-12 10:56:37,189 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-04)
+2026-02-12 10:56:37,189 | INFO     |   Processing 2021-05...
+2026-02-12 10:56:37,189 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-05)
+2026-02-12 10:56:37,189 | INFO     |   Processing 2021-06...
+2026-02-12 10:56:37,189 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-06)
+2026-02-12 10:56:37,189 | INFO     |   Processing 2021-07...
+2026-02-12 10:56:37,189 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-07)
+2026-02-12 10:56:37,189 | INFO     |   Processing 2021-08...
+2026-02-12 10:56:37,189 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-08)
+2026-02-12 10:56:37,190 | INFO     |   Processing 2021-09...
+2026-02-12 10:56:37,190 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-09)
+2026-02-12 10:56:37,190 | INFO     |   Processing 2021-10...
+2026-02-12 10:56:37,190 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-10)
+2026-02-12 10:56:37,190 | INFO     |   Processing 2021-11...
+2026-02-12 10:56:37,190 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-11)
+2026-02-12 10:56:37,190 | INFO     |   Processing 2021-12...
+2026-02-12 10:56:37,190 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-12)
+2026-02-12 10:56:37,190 | INFO     |   Processing 2022-01...
+2026-02-12 10:56:37,191 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2022-01)
+2026-02-12 10:56:37,191 | INFO     |   Processing 2022-02...
+2026-02-12 10:56:37,191 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2022-02)
+2026-02-12 10:56:37,191 | INFO     |   Processing 2022-03...
+2026-02-12 10:56:37,191 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2022-03)
+2026-02-12 10:56:37,191 | INFO     |   Processing 2022-04...
+2026-02-12 10:56:37,191 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-04)
+2026-02-12 10:56:37,192 | INFO     |   Processing 2022-05...
+2026-02-12 10:56:37,192 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-05)
+2026-02-12 10:56:37,192 | INFO     |   Processing 2022-06...
+2026-02-12 10:56:37,192 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-06)
+2026-02-12 10:56:37,192 | INFO     |   Processing 2022-07...
+2026-02-12 10:56:37,192 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-07)
+2026-02-12 10:56:37,192 | INFO     |   Processing 2022-08...
+2026-02-12 10:56:37,193 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-08)
+2026-02-12 10:56:37,193 | INFO     |   Processing 2022-09...
+2026-02-12 10:56:37,193 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-09)
+2026-02-12 10:56:37,193 | INFO     |   Processing 2022-10...
+2026-02-12 10:56:37,193 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-10)
+2026-02-12 10:56:37,193 | INFO     |   Processing 2022-11...
+2026-02-12 10:56:37,193 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-11)
+2026-02-12 10:56:37,193 | INFO     |   Processing 2022-12...
+2026-02-12 10:56:37,194 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-12)
+2026-02-12 10:56:37,194 | INFO     |   Processing 2023-01...
+2026-02-12 10:56:37,194 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2023-01)
+2026-02-12 10:56:37,194 | INFO     |   Processing 2023-02...
+2026-02-12 10:56:37,194 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2023-02)
+2026-02-12 10:56:37,194 | INFO     |   Processing 2023-03...
+2026-02-12 10:56:37,194 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2023-03)
+2026-02-12 10:56:37,194 | INFO     |   Processing 2023-04...
+2026-02-12 10:56:37,194 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-04)
+2026-02-12 10:56:37,194 | INFO     |   Processing 2023-05...
+2026-02-12 10:56:37,194 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-05)
+2026-02-12 10:56:37,195 | INFO     |   Processing 2023-06...
+2026-02-12 10:56:37,195 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-06)
+2026-02-12 10:56:37,195 | INFO     |   Processing 2023-07...
+2026-02-12 10:56:37,195 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-07)
+2026-02-12 10:56:37,195 | INFO     |   Processing 2023-08...
+2026-02-12 10:56:37,195 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-08)
+2026-02-12 10:56:37,195 | INFO     |   Processing 2023-09...
+2026-02-12 10:56:37,195 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-09)
+2026-02-12 10:56:37,195 | INFO     |   Processing 2023-10...
+2026-02-12 10:56:37,196 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-10)
+2026-02-12 10:56:37,196 | INFO     |   Processing 2023-11...
+2026-02-12 10:56:37,196 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-11)
+2026-02-12 10:56:37,196 | INFO     |   Processing 2023-12...
+2026-02-12 10:56:37,196 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-12)
+2026-02-12 10:56:37,196 | INFO     |   Processing 2024-01...
+2026-02-12 10:56:37,196 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2024-01)
+2026-02-12 10:56:37,196 | INFO     |   Processing 2024-02...
+2026-02-12 10:56:37,196 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2024-02)
+2026-02-12 10:56:37,196 | INFO     |   Processing 2024-03...
+2026-02-12 10:56:37,197 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2024-03)
+2026-02-12 10:56:37,197 | INFO     |   Processing 2024-04...
+2026-02-12 10:56:37,197 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-04)
+2026-02-12 10:56:37,197 | INFO     |   Processing 2024-05...
+2026-02-12 10:56:37,197 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-05)
+2026-02-12 10:56:37,197 | INFO     |   Processing 2024-06...
+2026-02-12 10:56:37,197 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-06)
+2026-02-12 10:56:37,197 | INFO     |   Processing 2024-07...
+2026-02-12 10:56:37,197 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-07)
+2026-02-12 10:56:37,198 | INFO     |   Processing 2024-08...
+2026-02-12 10:56:37,198 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-08)
+2026-02-12 10:56:37,198 | INFO     |   Processing 2024-09...
+2026-02-12 10:56:37,198 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-09)
+2026-02-12 10:56:37,198 | INFO     |   Processing 2024-10...
+2026-02-12 10:56:37,198 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-10)
+2026-02-12 10:56:37,198 | INFO     |   Processing 2024-11...
+2026-02-12 10:56:37,198 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-11)
+2026-02-12 10:56:37,198 | INFO     |   Processing 2024-12...
+2026-02-12 10:56:37,198 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-12)
+2026-02-12 10:56:37,198 | INFO     |   Processing 2025-01...
+2026-02-12 10:56:37,199 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2025-01)
+2026-02-12 10:56:37,199 | INFO     |   Processing 2025-02...
+2026-02-12 10:56:37,199 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2025-02)
+2026-02-12 10:56:37,199 | INFO     |   Processing 2025-03...
+2026-02-12 10:56:37,199 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2025-03)
+2026-02-12 10:56:37,199 | INFO     |   Processing 2025-04...
+2026-02-12 10:56:37,199 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-04)
+2026-02-12 10:56:37,199 | INFO     |   Processing 2025-05...
+2026-02-12 10:56:37,199 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-05)
+2026-02-12 10:56:37,199 | INFO     |   Processing 2025-06...
+2026-02-12 10:56:37,200 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-06)
+2026-02-12 10:56:37,200 | INFO     |   Processing 2025-07...
+2026-02-12 10:56:37,200 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-07)
+2026-02-12 10:56:37,200 | INFO     |   Processing 2025-08...
+2026-02-12 10:56:37,200 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-08)
+2026-02-12 10:56:37,201 | INFO     |   Processing 2025-09...
+2026-02-12 10:56:37,201 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-09)
+2026-02-12 10:56:37,201 | INFO     |   Processing 2025-10...
+2026-02-12 10:56:37,201 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-10)
+2026-02-12 10:56:37,201 | INFO     |   Processing 2025-11...
+2026-02-12 10:56:37,201 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-11)
+2026-02-12 10:56:37,202 | INFO     |   Processing 2025-12...
+2026-02-12 10:56:37,202 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-12)
+2026-02-12 10:56:37,202 | INFO     |   Processing 2026-01...
+2026-02-12 10:56:37,202 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 10:56:37,202 | INFO     |   Processing 2026-02...
+2026-02-12 10:56:37,202 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 10:56:37,205 | INFO     | 
+(NSE-only mode: Skipping BSE downloads)
+2026-02-12 10:56:37,205 | INFO     | 
+======================================================================
+2026-02-12 10:56:37,205 | INFO     | SUMMARY
+2026-02-12 10:56:37,205 | INFO     | ======================================================================
+2026-02-12 10:56:37,206 | INFO     |   NSE F&O: [FAILED]
+2026-02-12 10:56:37,206 | INFO     |   NSE CM: [OK]
+2026-02-12 10:56:37,206 | INFO     | 
+Total: 1/2 successful
+2026-02-12 10:56:37,206 | INFO     | Duration: 68 seconds
+2026-02-12 10:56:37,206 | INFO     | ======================================================================
+
+2026-02-12 10:58:09,620 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-12 10:58:09,621 | INFO     | ======================================================================
+2026-02-12 10:58:09,621 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-12 10:58:09,621 | INFO     | Time: 2026-02-12 10:58:09
+2026-02-12 10:58:09,621 | INFO     | ======================================================================
+2026-02-12 10:58:09,621 | INFO     | 
+>> Starting NSE downloads...
+2026-02-12 10:58:09,621 | INFO     | Starting: NSE F&O Daily Data
+2026-02-12 10:58:32,857 | INFO     |   ======================================================================
+2026-02-12 10:58:32,857 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-02-12 10:58:32,857 | INFO     |   Default: Current month (Feb-2026)
+2026-02-12 10:58:32,857 | INFO     |   Output: D:\Rouhin\Exchanges Data
+2026-02-12 10:58:32,857 | INFO     |   ======================================================================
+2026-02-12 10:58:32,857 | INFO     |   
+2026-02-12 10:58:32,858 | INFO     |   Opening NSE F&O page...
+2026-02-12 10:58:32,858 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-02-12 10:58:32,858 | INFO     |   
+2026-02-12 10:58:32,858 | INFO     |   Feb-2026... [OK] 9 days
+2026-02-12 10:58:32,858 | INFO     |   
+2026-02-12 10:58:32,858 | INFO     |   ======================================================================
+2026-02-12 10:58:32,858 | INFO     |   [OK] Download Complete! Total days downloaded: 9
+2026-02-12 10:58:32,859 | INFO     |   ======================================================================
+2026-02-12 10:58:32,859 | INFO     | [OK] Completed: NSE F&O Daily Data
+2026-02-12 10:58:32,859 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-12 10:59:24,795 | INFO     |   Processing 2020-04...
+2026-02-12 10:59:24,795 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-04)
+2026-02-12 10:59:24,796 | INFO     |   Processing 2020-05...
+2026-02-12 10:59:24,796 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-05)
+2026-02-12 10:59:24,796 | INFO     |   Processing 2020-06...
+2026-02-12 10:59:24,796 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-06)
+2026-02-12 10:59:24,796 | INFO     |   Processing 2020-07...
+2026-02-12 10:59:24,796 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-07)
+2026-02-12 10:59:24,797 | INFO     |   Processing 2020-08...
+2026-02-12 10:59:24,797 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-08)
+2026-02-12 10:59:24,797 | INFO     |   Processing 2020-09...
+2026-02-12 10:59:24,797 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-09)
+2026-02-12 10:59:24,797 | INFO     |   Processing 2020-10...
+2026-02-12 10:59:24,797 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-10)
+2026-02-12 10:59:24,797 | INFO     |   Processing 2020-11...
+2026-02-12 10:59:24,797 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-11)
+2026-02-12 10:59:24,797 | INFO     |   Processing 2020-12...
+2026-02-12 10:59:24,798 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-12)
+2026-02-12 10:59:24,798 | INFO     |   Processing 2021-01...
+2026-02-12 10:59:24,798 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2021-01)
+2026-02-12 10:59:24,798 | INFO     |   Processing 2021-02...
+2026-02-12 10:59:24,798 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2021-02)
+2026-02-12 10:59:24,798 | INFO     |   Processing 2021-03...
+2026-02-12 10:59:24,798 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2021-03)
+2026-02-12 10:59:24,798 | INFO     |   Processing 2021-04...
+2026-02-12 10:59:24,798 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-04)
+2026-02-12 10:59:24,799 | INFO     |   Processing 2021-05...
+2026-02-12 10:59:24,799 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-05)
+2026-02-12 10:59:24,799 | INFO     |   Processing 2021-06...
+2026-02-12 10:59:24,799 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-06)
+2026-02-12 10:59:24,799 | INFO     |   Processing 2021-07...
+2026-02-12 10:59:24,799 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-07)
+2026-02-12 10:59:24,799 | INFO     |   Processing 2021-08...
+2026-02-12 10:59:24,800 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-08)
+2026-02-12 10:59:24,800 | INFO     |   Processing 2021-09...
+2026-02-12 10:59:24,800 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-09)
+2026-02-12 10:59:24,800 | INFO     |   Processing 2021-10...
+2026-02-12 10:59:24,800 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-10)
+2026-02-12 10:59:24,800 | INFO     |   Processing 2021-11...
+2026-02-12 10:59:24,800 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-11)
+2026-02-12 10:59:24,801 | INFO     |   Processing 2021-12...
+2026-02-12 10:59:24,801 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-12)
+2026-02-12 10:59:24,801 | INFO     |   Processing 2022-01...
+2026-02-12 10:59:24,801 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2022-01)
+2026-02-12 10:59:24,801 | INFO     |   Processing 2022-02...
+2026-02-12 10:59:24,802 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2022-02)
+2026-02-12 10:59:24,802 | INFO     |   Processing 2022-03...
+2026-02-12 10:59:24,802 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2022-03)
+2026-02-12 10:59:24,802 | INFO     |   Processing 2022-04...
+2026-02-12 10:59:24,802 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-04)
+2026-02-12 10:59:24,803 | INFO     |   Processing 2022-05...
+2026-02-12 10:59:24,803 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-05)
+2026-02-12 10:59:24,803 | INFO     |   Processing 2022-06...
+2026-02-12 10:59:24,803 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-06)
+2026-02-12 10:59:24,803 | INFO     |   Processing 2022-07...
+2026-02-12 10:59:24,803 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-07)
+2026-02-12 10:59:24,803 | INFO     |   Processing 2022-08...
+2026-02-12 10:59:24,804 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-08)
+2026-02-12 10:59:24,804 | INFO     |   Processing 2022-09...
+2026-02-12 10:59:24,804 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-09)
+2026-02-12 10:59:24,804 | INFO     |   Processing 2022-10...
+2026-02-12 10:59:24,804 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-10)
+2026-02-12 10:59:24,804 | INFO     |   Processing 2022-11...
+2026-02-12 10:59:24,804 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-11)
+2026-02-12 10:59:24,805 | INFO     |   Processing 2022-12...
+2026-02-12 10:59:24,805 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-12)
+2026-02-12 10:59:24,805 | INFO     |   Processing 2023-01...
+2026-02-12 10:59:24,805 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2023-01)
+2026-02-12 10:59:24,806 | INFO     |   Processing 2023-02...
+2026-02-12 10:59:24,806 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2023-02)
+2026-02-12 10:59:24,806 | INFO     |   Processing 2023-03...
+2026-02-12 10:59:24,806 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2023-03)
+2026-02-12 10:59:24,806 | INFO     |   Processing 2023-04...
+2026-02-12 10:59:24,806 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-04)
+2026-02-12 10:59:24,806 | INFO     |   Processing 2023-05...
+2026-02-12 10:59:24,807 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-05)
+2026-02-12 10:59:24,807 | INFO     |   Processing 2023-06...
+2026-02-12 10:59:24,807 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-06)
+2026-02-12 10:59:24,807 | INFO     |   Processing 2023-07...
+2026-02-12 10:59:24,807 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-07)
+2026-02-12 10:59:24,807 | INFO     |   Processing 2023-08...
+2026-02-12 10:59:24,807 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-08)
+2026-02-12 10:59:24,807 | INFO     |   Processing 2023-09...
+2026-02-12 10:59:24,807 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-09)
+2026-02-12 10:59:24,808 | INFO     |   Processing 2023-10...
+2026-02-12 10:59:24,808 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-10)
+2026-02-12 10:59:24,808 | INFO     |   Processing 2023-11...
+2026-02-12 10:59:24,808 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-11)
+2026-02-12 10:59:24,808 | INFO     |   Processing 2023-12...
+2026-02-12 10:59:24,808 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-12)
+2026-02-12 10:59:24,808 | INFO     |   Processing 2024-01...
+2026-02-12 10:59:24,808 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2024-01)
+2026-02-12 10:59:24,808 | INFO     |   Processing 2024-02...
+2026-02-12 10:59:24,809 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2024-02)
+2026-02-12 10:59:24,809 | INFO     |   Processing 2024-03...
+2026-02-12 10:59:24,809 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2024-03)
+2026-02-12 10:59:24,809 | INFO     |   Processing 2024-04...
+2026-02-12 10:59:24,809 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-04)
+2026-02-12 10:59:24,809 | INFO     |   Processing 2024-05...
+2026-02-12 10:59:24,809 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-05)
+2026-02-12 10:59:24,809 | INFO     |   Processing 2024-06...
+2026-02-12 10:59:24,809 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-06)
+2026-02-12 10:59:24,810 | INFO     |   Processing 2024-07...
+2026-02-12 10:59:24,810 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-07)
+2026-02-12 10:59:24,810 | INFO     |   Processing 2024-08...
+2026-02-12 10:59:24,810 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-08)
+2026-02-12 10:59:24,810 | INFO     |   Processing 2024-09...
+2026-02-12 10:59:24,810 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-09)
+2026-02-12 10:59:24,810 | INFO     |   Processing 2024-10...
+2026-02-12 10:59:24,810 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-10)
+2026-02-12 10:59:24,810 | INFO     |   Processing 2024-11...
+2026-02-12 10:59:24,811 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-11)
+2026-02-12 10:59:24,811 | INFO     |   Processing 2024-12...
+2026-02-12 10:59:24,811 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-12)
+2026-02-12 10:59:24,811 | INFO     |   Processing 2025-01...
+2026-02-12 10:59:24,811 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2025-01)
+2026-02-12 10:59:24,811 | INFO     |   Processing 2025-02...
+2026-02-12 10:59:24,811 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2025-02)
+2026-02-12 10:59:24,812 | INFO     |   Processing 2025-03...
+2026-02-12 10:59:24,812 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2025-03)
+2026-02-12 10:59:24,812 | INFO     |   Processing 2025-04...
+2026-02-12 10:59:24,812 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-04)
+2026-02-12 10:59:24,813 | INFO     |   Processing 2025-05...
+2026-02-12 10:59:24,813 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-05)
+2026-02-12 10:59:24,813 | INFO     |   Processing 2025-06...
+2026-02-12 10:59:24,813 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-06)
+2026-02-12 10:59:24,813 | INFO     |   Processing 2025-07...
+2026-02-12 10:59:24,813 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-07)
+2026-02-12 10:59:24,813 | INFO     |   Processing 2025-08...
+2026-02-12 10:59:24,813 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-08)
+2026-02-12 10:59:24,814 | INFO     |   Processing 2025-09...
+2026-02-12 10:59:24,814 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-09)
+2026-02-12 10:59:24,814 | INFO     |   Processing 2025-10...
+2026-02-12 10:59:24,814 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-10)
+2026-02-12 10:59:24,814 | INFO     |   Processing 2025-11...
+2026-02-12 10:59:24,814 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-11)
+2026-02-12 10:59:24,814 | INFO     |   Processing 2025-12...
+2026-02-12 10:59:24,815 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-12)
+2026-02-12 10:59:24,815 | INFO     |   Processing 2026-01...
+2026-02-12 10:59:24,815 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 10:59:24,815 | INFO     |   Processing 2026-02...
+2026-02-12 10:59:24,815 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 10:59:24,815 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-02-12 10:59:24,816 | INFO     | 
+(NSE-only mode: Skipping BSE downloads)
+2026-02-12 10:59:24,816 | INFO     | 
+======================================================================
+2026-02-12 10:59:24,816 | INFO     | SUMMARY
+2026-02-12 10:59:24,816 | INFO     | ======================================================================
+2026-02-12 10:59:24,816 | INFO     |   NSE F&O: [OK]
+2026-02-12 10:59:24,816 | INFO     |   NSE CM: [OK]
+2026-02-12 10:59:24,816 | INFO     | 
+Total: 2/2 successful
+2026-02-12 10:59:24,817 | INFO     | Duration: 75 seconds
+2026-02-12 10:59:24,817 | INFO     | ======================================================================
+
+2026-02-12 10:59:47,106 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-12 10:59:47,106 | INFO     | ======================================================================
+2026-02-12 10:59:47,106 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-12 10:59:47,107 | INFO     | Time: 2026-02-12 10:59:47
+2026-02-12 10:59:47,107 | INFO     | ======================================================================
+2026-02-12 10:59:47,107 | INFO     | 
+>> Starting NSE downloads...
+2026-02-12 10:59:47,107 | INFO     | Starting: NSE F&O Daily Data
+2026-02-12 11:00:09,922 | INFO     |   ======================================================================
+2026-02-12 11:00:09,922 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-02-12 11:00:09,922 | INFO     |   Default: Current month (Feb-2026)
+2026-02-12 11:00:09,922 | INFO     |   Output: D:\Rouhin\Exchanges Data
+2026-02-12 11:00:09,922 | INFO     |   ======================================================================
+2026-02-12 11:00:09,923 | INFO     |   
+2026-02-12 11:00:09,923 | INFO     |   Opening NSE F&O page...
+2026-02-12 11:00:09,923 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-02-12 11:00:09,923 | INFO     |   
+2026-02-12 11:00:09,923 | INFO     |   Feb-2026... [OK] 9 days
+2026-02-12 11:00:09,923 | INFO     |   
+2026-02-12 11:00:09,923 | INFO     |   ======================================================================
+2026-02-12 11:00:09,923 | INFO     |   [OK] Download Complete! Total days downloaded: 9
+2026-02-12 11:00:09,924 | INFO     |   ======================================================================
+2026-02-12 11:00:09,924 | INFO     | [OK] Completed: NSE F&O Daily Data
+2026-02-12 11:00:09,924 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-12 11:00:54,847 | INFO     |   Processing 2020-04...
+2026-02-12 11:00:54,847 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-04)
+2026-02-12 11:00:54,847 | INFO     |   Processing 2020-05...
+2026-02-12 11:00:54,848 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-05)
+2026-02-12 11:00:54,848 | INFO     |   Processing 2020-06...
+2026-02-12 11:00:54,848 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-06)
+2026-02-12 11:00:54,848 | INFO     |   Processing 2020-07...
+2026-02-12 11:00:54,849 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-07)
+2026-02-12 11:00:54,849 | INFO     |   Processing 2020-08...
+2026-02-12 11:00:54,849 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-08)
+2026-02-12 11:00:54,849 | INFO     |   Processing 2020-09...
+2026-02-12 11:00:54,849 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-09)
+2026-02-12 11:00:54,849 | INFO     |   Processing 2020-10...
+2026-02-12 11:00:54,850 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-10)
+2026-02-12 11:00:54,850 | INFO     |   Processing 2020-11...
+2026-02-12 11:00:54,850 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-11)
+2026-02-12 11:00:54,850 | INFO     |   Processing 2020-12...
+2026-02-12 11:00:54,850 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2020-12)
+2026-02-12 11:00:54,850 | INFO     |   Processing 2021-01...
+2026-02-12 11:00:54,850 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2021-01)
+2026-02-12 11:00:54,851 | INFO     |   Processing 2021-02...
+2026-02-12 11:00:54,851 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2021-02)
+2026-02-12 11:00:54,851 | INFO     |   Processing 2021-03...
+2026-02-12 11:00:54,851 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2020_2021.xlsx (2021-03)
+2026-02-12 11:00:54,851 | INFO     |   Processing 2021-04...
+2026-02-12 11:00:54,851 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-04)
+2026-02-12 11:00:54,852 | INFO     |   Processing 2021-05...
+2026-02-12 11:00:54,852 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-05)
+2026-02-12 11:00:54,852 | INFO     |   Processing 2021-06...
+2026-02-12 11:00:54,852 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-06)
+2026-02-12 11:00:54,852 | INFO     |   Processing 2021-07...
+2026-02-12 11:00:54,853 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-07)
+2026-02-12 11:00:54,853 | INFO     |   Processing 2021-08...
+2026-02-12 11:00:54,853 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-08)
+2026-02-12 11:00:54,853 | INFO     |   Processing 2021-09...
+2026-02-12 11:00:54,853 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-09)
+2026-02-12 11:00:54,854 | INFO     |   Processing 2021-10...
+2026-02-12 11:00:54,854 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-10)
+2026-02-12 11:00:54,854 | INFO     |   Processing 2021-11...
+2026-02-12 11:00:54,854 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-11)
+2026-02-12 11:00:54,854 | INFO     |   Processing 2021-12...
+2026-02-12 11:00:54,854 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2021-12)
+2026-02-12 11:00:54,855 | INFO     |   Processing 2022-01...
+2026-02-12 11:00:54,855 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2022-01)
+2026-02-12 11:00:54,855 | INFO     |   Processing 2022-02...
+2026-02-12 11:00:54,855 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2022-02)
+2026-02-12 11:00:54,855 | INFO     |   Processing 2022-03...
+2026-02-12 11:00:54,855 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2021_2022.xlsx (2022-03)
+2026-02-12 11:00:54,856 | INFO     |   Processing 2022-04...
+2026-02-12 11:00:54,856 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-04)
+2026-02-12 11:00:54,856 | INFO     |   Processing 2022-05...
+2026-02-12 11:00:54,856 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-05)
+2026-02-12 11:00:54,856 | INFO     |   Processing 2022-06...
+2026-02-12 11:00:54,856 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-06)
+2026-02-12 11:00:54,856 | INFO     |   Processing 2022-07...
+2026-02-12 11:00:54,856 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-07)
+2026-02-12 11:00:54,857 | INFO     |   Processing 2022-08...
+2026-02-12 11:00:54,857 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-08)
+2026-02-12 11:00:54,857 | INFO     |   Processing 2022-09...
+2026-02-12 11:00:54,857 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-09)
+2026-02-12 11:00:54,857 | INFO     |   Processing 2022-10...
+2026-02-12 11:00:54,857 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-10)
+2026-02-12 11:00:54,858 | INFO     |   Processing 2022-11...
+2026-02-12 11:00:54,858 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-11)
+2026-02-12 11:00:54,858 | INFO     |   Processing 2022-12...
+2026-02-12 11:00:54,858 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2022-12)
+2026-02-12 11:00:54,858 | INFO     |   Processing 2023-01...
+2026-02-12 11:00:54,858 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2023-01)
+2026-02-12 11:00:54,858 | INFO     |   Processing 2023-02...
+2026-02-12 11:00:54,858 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2023-02)
+2026-02-12 11:00:54,858 | INFO     |   Processing 2023-03...
+2026-02-12 11:00:54,859 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2022_2023.xlsx (2023-03)
+2026-02-12 11:00:54,859 | INFO     |   Processing 2023-04...
+2026-02-12 11:00:54,859 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-04)
+2026-02-12 11:00:54,859 | INFO     |   Processing 2023-05...
+2026-02-12 11:00:54,859 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-05)
+2026-02-12 11:00:54,860 | INFO     |   Processing 2023-06...
+2026-02-12 11:00:54,860 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-06)
+2026-02-12 11:00:54,860 | INFO     |   Processing 2023-07...
+2026-02-12 11:00:54,860 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-07)
+2026-02-12 11:00:54,860 | INFO     |   Processing 2023-08...
+2026-02-12 11:00:54,861 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-08)
+2026-02-12 11:00:54,861 | INFO     |   Processing 2023-09...
+2026-02-12 11:00:54,861 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-09)
+2026-02-12 11:00:54,861 | INFO     |   Processing 2023-10...
+2026-02-12 11:00:54,861 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-10)
+2026-02-12 11:00:54,862 | INFO     |   Processing 2023-11...
+2026-02-12 11:00:54,862 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-11)
+2026-02-12 11:00:54,862 | INFO     |   Processing 2023-12...
+2026-02-12 11:00:54,862 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2023-12)
+2026-02-12 11:00:54,862 | INFO     |   Processing 2024-01...
+2026-02-12 11:00:54,862 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2024-01)
+2026-02-12 11:00:54,863 | INFO     |   Processing 2024-02...
+2026-02-12 11:00:54,863 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2024-02)
+2026-02-12 11:00:54,863 | INFO     |   Processing 2024-03...
+2026-02-12 11:00:54,863 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2023_2024.xlsx (2024-03)
+2026-02-12 11:00:54,863 | INFO     |   Processing 2024-04...
+2026-02-12 11:00:54,863 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-04)
+2026-02-12 11:00:54,864 | INFO     |   Processing 2024-05...
+2026-02-12 11:00:54,864 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-05)
+2026-02-12 11:00:54,864 | INFO     |   Processing 2024-06...
+2026-02-12 11:00:54,864 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-06)
+2026-02-12 11:00:54,864 | INFO     |   Processing 2024-07...
+2026-02-12 11:00:54,865 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-07)
+2026-02-12 11:00:54,865 | INFO     |   Processing 2024-08...
+2026-02-12 11:00:54,865 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-08)
+2026-02-12 11:00:54,865 | INFO     |   Processing 2024-09...
+2026-02-12 11:00:54,865 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-09)
+2026-02-12 11:00:54,865 | INFO     |   Processing 2024-10...
+2026-02-12 11:00:54,866 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-10)
+2026-02-12 11:00:54,866 | INFO     |   Processing 2024-11...
+2026-02-12 11:00:54,866 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-11)
+2026-02-12 11:00:54,866 | INFO     |   Processing 2024-12...
+2026-02-12 11:00:54,866 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2024-12)
+2026-02-12 11:00:54,866 | INFO     |   Processing 2025-01...
+2026-02-12 11:00:54,867 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2025-01)
+2026-02-12 11:00:54,867 | INFO     |   Processing 2025-02...
+2026-02-12 11:00:54,867 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2025-02)
+2026-02-12 11:00:54,867 | INFO     |   Processing 2025-03...
+2026-02-12 11:00:54,867 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2024_2025.xlsx (2025-03)
+2026-02-12 11:00:54,867 | INFO     |   Processing 2025-04...
+2026-02-12 11:00:54,868 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-04)
+2026-02-12 11:00:54,868 | INFO     |   Processing 2025-05...
+2026-02-12 11:00:54,868 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-05)
+2026-02-12 11:00:54,868 | INFO     |   Processing 2025-06...
+2026-02-12 11:00:54,868 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-06)
+2026-02-12 11:00:54,868 | INFO     |   Processing 2025-07...
+2026-02-12 11:00:54,868 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-07)
+2026-02-12 11:00:54,869 | INFO     |   Processing 2025-08...
+2026-02-12 11:00:54,869 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-08)
+2026-02-12 11:00:54,869 | INFO     |   Processing 2025-09...
+2026-02-12 11:00:54,869 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-09)
+2026-02-12 11:00:54,869 | INFO     |   Processing 2025-10...
+2026-02-12 11:00:54,869 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-10)
+2026-02-12 11:00:54,869 | INFO     |   Processing 2025-11...
+2026-02-12 11:00:54,869 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-11)
+2026-02-12 11:00:54,869 | INFO     |   Processing 2025-12...
+2026-02-12 11:00:54,870 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2025-12)
+2026-02-12 11:00:54,870 | INFO     |   Processing 2026-01...
+2026-02-12 11:00:54,870 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 11:00:54,870 | INFO     |   Processing 2026-02...
+2026-02-12 11:00:54,870 | INFO     |   Saved: D:\Rouhin\Exchanges Data\nse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 11:00:54,870 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-02-12 11:00:54,870 | INFO     | 
+>> Starting BSE downloads...
+2026-02-12 11:00:54,870 | INFO     | Starting: BSE F&O Data (T-2 & T-1)
+2026-02-12 11:02:38,410 | INFO     |   ======================================================================
+2026-02-12 11:02:38,410 | INFO     |   BSE F&O Daily Data Downloader
+2026-02-12 11:02:38,410 | INFO     |   Date Range: 10/02/2026 to 11/02/2026
+2026-02-12 11:02:38,411 | INFO     |   ======================================================================
+2026-02-12 11:02:38,411 | INFO     |   
+2026-02-12 11:02:38,411 | INFO     |   
+2026-02-12 11:02:38,411 | INFO     |   » Downloading Index Futures:
+2026-02-12 11:02:38,412 | INFO     |     [OK] Selected: Index Derivative
+2026-02-12 11:02:38,412 | INFO     |     [OK] Selected: Futures (IF)
+2026-02-12 11:02:38,412 | INFO     |     [OK] Entered from date: 10/02/2026
+2026-02-12 11:02:38,412 | INFO     |     [OK] Entered to date: 11/02/2026
+2026-02-12 11:02:38,413 | INFO     |     [OK] Clicked Go button - waiting for data...
+2026-02-12 11:02:38,413 | INFO     |     [OK] Found 2 records
+2026-02-12 11:02:38,413 | INFO     |       Sheet 2026-02 already exists, updating...
+2026-02-12 11:02:38,413 | INFO     |       [OK] Added/Updated sheet 2026-02 in bse_index_futures_FY2025_2026.xlsx
+2026-02-12 11:02:38,414 | INFO     |   
+2026-02-12 11:02:38,414 | INFO     |   » Downloading Index Options:
+2026-02-12 11:02:38,414 | INFO     |     [OK] Selected: Index Derivative
+2026-02-12 11:02:38,414 | INFO     |     [OK] Selected: Options (IO)
+2026-02-12 11:02:38,415 | INFO     |     [OK] Entered from date: 10/02/2026
+2026-02-12 11:02:38,415 | INFO     |     [OK] Entered to date: 11/02/2026
+2026-02-12 11:02:38,415 | INFO     |     [OK] Clicked Go button - waiting for data...
+2026-02-12 11:02:38,415 | INFO     |     [OK] Found 2 records
+2026-02-12 11:02:38,415 | INFO     |       Sheet 2026-02 already exists, updating...
+2026-02-12 11:02:38,416 | INFO     |       [OK] Added/Updated sheet 2026-02 in bse_index_options_FY2025_2026.xlsx
+2026-02-12 11:02:38,416 | INFO     |   
+2026-02-12 11:02:38,416 | INFO     |   » Downloading Equity Futures:
+2026-02-12 11:02:38,416 | INFO     |     [OK] Selected: Equity Derivative
+2026-02-12 11:02:38,416 | INFO     |     [OK] Selected: Futures (SF)
+2026-02-12 11:02:38,416 | INFO     |     [OK] Entered from date: 10/02/2026
+2026-02-12 11:02:38,416 | INFO     |     [OK] Entered to date: 11/02/2026
+2026-02-12 11:02:38,416 | INFO     |     [OK] Clicked Go button - waiting for data...
+2026-02-12 11:02:38,417 | INFO     |     [OK] Found 2 records
+2026-02-12 11:02:38,417 | INFO     |       Sheet 2026-02 already exists, updating...
+2026-02-12 11:02:38,417 | INFO     |       [OK] Added/Updated sheet 2026-02 in bse_equity_futures_FY2025_2026.xlsx
+2026-02-12 11:02:38,417 | INFO     |   
+2026-02-12 11:02:38,417 | INFO     |   » Downloading Equity Options:
+2026-02-12 11:02:38,417 | INFO     |     [OK] Selected: Equity Derivative
+2026-02-12 11:02:38,418 | INFO     |     [OK] Selected: Options (SO)
+2026-02-12 11:02:38,418 | INFO     |     [OK] Entered from date: 10/02/2026
+2026-02-12 11:02:38,418 | INFO     |     [OK] Entered to date: 11/02/2026
+2026-02-12 11:02:38,418 | INFO     |     [OK] Clicked Go button - waiting for data...
+2026-02-12 11:02:38,418 | INFO     |     [OK] Found 2 records
+2026-02-12 11:02:38,418 | INFO     |       Sheet 2026-02 already exists, updating...
+2026-02-12 11:02:38,419 | INFO     |       [OK] Added/Updated sheet 2026-02 in bse_equity_options_FY2025_2026.xlsx
+2026-02-12 11:02:38,419 | INFO     |   
+2026-02-12 11:02:38,419 | INFO     |   ======================================================================
+2026-02-12 11:02:38,419 | INFO     |   BATCH 1 SUMMARY:
+2026-02-12 11:02:38,419 | INFO     |   ======================================================================
+2026-02-12 11:02:38,419 | INFO     |     Index Futures: [OK] SUCCESS
+2026-02-12 11:02:38,419 | INFO     |     Index Options: [OK] SUCCESS
+2026-02-12 11:02:38,420 | INFO     |     Equity Futures: [OK] SUCCESS
+2026-02-12 11:02:38,420 | INFO     |     Equity Options: [OK] SUCCESS
+2026-02-12 11:02:38,420 | INFO     |   ======================================================================
+2026-02-12 11:02:38,420 | INFO     | [OK] Completed: BSE F&O Data (T-2 & T-1)
+2026-02-12 11:02:38,420 | INFO     | Starting: BSE Historical Equity Data
+2026-02-12 11:11:53,402 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-12 11:11:53,403 | INFO     | ======================================================================
+2026-02-12 11:11:53,403 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-12 11:11:53,403 | INFO     | Time: 2026-02-12 11:11:53
+2026-02-12 11:11:53,403 | INFO     | ======================================================================
+2026-02-12 11:11:53,403 | INFO     | 
+>> Starting NSE downloads...
+2026-02-12 11:11:53,403 | INFO     | Starting: NSE F&O Daily Data
+2026-02-12 11:12:27,737 | INFO     |   ======================================================================
+2026-02-12 11:12:27,737 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-02-12 11:12:27,737 | INFO     |   Months: Jan-2026 to Feb-2026
+2026-02-12 11:12:27,738 | INFO     |   Output: D:\Rouhin\Exchanges Data\NSE\FnO
+2026-02-12 11:12:27,738 | INFO     |   ======================================================================
+2026-02-12 11:12:27,738 | INFO     |   
+2026-02-12 11:12:27,738 | INFO     |   Opening NSE F&O page...
+2026-02-12 11:12:27,738 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-02-12 11:12:27,738 | INFO     |   
+2026-02-12 11:12:27,739 | INFO     |   Jan-2026... [OK] 20 days
+2026-02-12 11:12:27,739 | INFO     |   Feb-2026... [OK] 9 days
+2026-02-12 11:12:27,739 | INFO     |   
+2026-02-12 11:12:27,739 | INFO     |   ======================================================================
+2026-02-12 11:12:27,739 | INFO     |   [OK] Download Complete! Total days downloaded: 29
+2026-02-12 11:12:27,739 | INFO     |   ======================================================================
+2026-02-12 11:12:27,739 | INFO     | [OK] Completed: NSE F&O Daily Data
+2026-02-12 11:12:27,740 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-12 11:12:31,111 | INFO     |   Processing 2026-01...
+2026-02-12 11:12:31,111 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\nse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 11:12:31,111 | INFO     |   Processing 2026-02...
+2026-02-12 11:12:31,112 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\nse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 11:12:31,112 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-02-12 11:12:31,112 | INFO     | 
+(NSE-only mode: Skipping BSE downloads)
+2026-02-12 11:12:31,112 | INFO     | 
+======================================================================
+2026-02-12 11:12:31,112 | INFO     | SUMMARY
+2026-02-12 11:12:31,113 | INFO     | ======================================================================
+2026-02-12 11:12:31,113 | INFO     |   NSE F&O: [OK]
+2026-02-12 11:12:31,113 | INFO     |   NSE CM: [OK]
+2026-02-12 11:12:31,113 | INFO     | 
+Total: 2/2 successful
+2026-02-12 11:12:31,113 | INFO     | Duration: 37 seconds
+2026-02-12 11:12:31,113 | INFO     | ======================================================================
+
+2026-02-12 11:12:50,461 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-12 11:12:50,461 | INFO     | ======================================================================
+2026-02-12 11:12:50,461 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-12 11:12:50,461 | INFO     | Time: 2026-02-12 11:12:50
+2026-02-12 11:12:50,461 | INFO     | ======================================================================
+2026-02-12 11:12:50,461 | INFO     | 
+>> Starting NSE downloads...
+2026-02-12 11:12:50,462 | INFO     | Starting: NSE F&O Daily Data
+2026-02-12 11:13:24,995 | INFO     |   ======================================================================
+2026-02-12 11:13:24,995 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-02-12 11:13:24,996 | INFO     |   Months: Jan-2026 to Feb-2026
+2026-02-12 11:13:24,996 | INFO     |   Output: D:\Rouhin\Exchanges Data\NSE\FnO
+2026-02-12 11:13:24,996 | INFO     |   ======================================================================
+2026-02-12 11:13:24,996 | INFO     |   
+2026-02-12 11:13:24,996 | INFO     |   Opening NSE F&O page...
+2026-02-12 11:13:24,996 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-02-12 11:13:24,996 | INFO     |   
+2026-02-12 11:13:24,996 | INFO     |   Jan-2026... [OK] 20 days
+2026-02-12 11:13:24,996 | INFO     |   Feb-2026... [OK] 9 days
+2026-02-12 11:13:24,997 | INFO     |   
+2026-02-12 11:13:24,997 | INFO     |   ======================================================================
+2026-02-12 11:13:24,997 | INFO     |   [OK] Download Complete! Total days downloaded: 29
+2026-02-12 11:13:24,997 | INFO     |   ======================================================================
+2026-02-12 11:13:24,997 | INFO     | [OK] Completed: NSE F&O Daily Data
+2026-02-12 11:13:24,998 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-12 11:13:27,936 | INFO     |   Processing 2026-01...
+2026-02-12 11:13:27,937 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\nse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 11:13:27,937 | INFO     |   Processing 2026-02...
+2026-02-12 11:13:27,937 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\nse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 11:13:27,937 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-02-12 11:13:27,937 | INFO     | 
+>> Starting BSE downloads...
+2026-02-12 11:13:27,938 | INFO     | Starting: BSE F&O Data (All Derivatives)
+2026-02-12 11:15:24,967 | INFO     |   ======================================================================
+2026-02-12 11:15:24,967 | INFO     |   BSE F&O Daily Data Downloader
+2026-02-12 11:15:24,967 | INFO     |   Date Range: 01/01/2026 to 12/02/2026
+2026-02-12 11:15:24,967 | INFO     |   ======================================================================
+2026-02-12 11:15:24,968 | INFO     |   
+2026-02-12 11:15:24,968 | INFO     |   
+2026-02-12 11:15:24,968 | INFO     |   » Downloading Index Futures:
+2026-02-12 11:15:24,968 | INFO     |     [OK] Selected: Index Derivative
+2026-02-12 11:15:24,968 | INFO     |     [OK] Selected: Futures (IF)
+2026-02-12 11:15:24,968 | INFO     |     [OK] Entered from date: 01/01/2026
+2026-02-12 11:15:24,968 | INFO     |     [OK] Entered to date: 12/02/2026
+2026-02-12 11:15:24,968 | INFO     |     [OK] Clicked Go button - waiting for data...
+2026-02-12 11:15:24,968 | INFO     |     [OK] Found 29 records
+2026-02-12 11:15:24,969 | INFO     |       Sheet 2026-01 already exists, updating...
+2026-02-12 11:15:24,969 | INFO     |       [OK] Added/Updated sheet 2026-01 in bse_index_futures_FY2025_2026.xlsx
+2026-02-12 11:15:24,969 | INFO     |       Sheet 2026-02 already exists, updating...
+2026-02-12 11:15:24,969 | INFO     |       [OK] Added/Updated sheet 2026-02 in bse_index_futures_FY2025_2026.xlsx
+2026-02-12 11:15:24,969 | INFO     |   
+2026-02-12 11:15:24,969 | INFO     |   » Downloading Index Options:
+2026-02-12 11:15:24,969 | INFO     |     [OK] Selected: Index Derivative
+2026-02-12 11:15:24,969 | INFO     |     [OK] Selected: Options (IO)
+2026-02-12 11:15:24,969 | INFO     |     [OK] Entered from date: 01/01/2026
+2026-02-12 11:15:24,970 | INFO     |     [OK] Entered to date: 12/02/2026
+2026-02-12 11:15:24,970 | INFO     |     [OK] Clicked Go button - waiting for data...
+2026-02-12 11:15:24,970 | INFO     |     [OK] Found 29 records
+2026-02-12 11:15:24,970 | INFO     |       Sheet 2026-01 already exists, updating...
+2026-02-12 11:15:24,970 | INFO     |       [OK] Added/Updated sheet 2026-01 in bse_index_options_FY2025_2026.xlsx
+2026-02-12 11:15:24,970 | INFO     |       Sheet 2026-02 already exists, updating...
+2026-02-12 11:15:24,970 | INFO     |       [OK] Added/Updated sheet 2026-02 in bse_index_options_FY2025_2026.xlsx
+2026-02-12 11:15:24,970 | INFO     |   
+2026-02-12 11:15:24,971 | INFO     |   » Downloading Equity Futures:
+2026-02-12 11:15:24,971 | ERROR    | [X] Failed: BSE F&O Data (All Derivatives)
+2026-02-12 11:15:24,971 | ERROR    |   Traceback (most recent call last):
+2026-02-12 11:15:24,971 | ERROR    |     File "D:\Rouhin\Exchanges Data\BSE\FnO\bse_fno_download.py", line 404, in <module>
+2026-02-12 11:15:24,971 | ERROR    |       main()
+2026-02-12 11:15:24,971 | ERROR    |       ~~~~^^
+2026-02-12 11:15:24,971 | ERROR    |     File "D:\Rouhin\Exchanges Data\BSE\FnO\bse_fno_download.py", line 371, in main
+2026-02-12 11:15:24,971 | ERROR    |       success = download_fno_batch(segment_code, segment_name, instrument_code, product_type, chunk_from, chunk_to)
+2026-02-12 11:15:24,971 | ERROR    |     File "D:\Rouhin\Exchanges Data\BSE\FnO\bse_fno_download.py", line 201, in download_fno_batch
+2026-02-12 11:15:24,972 | ERROR    |       driver = webdriver.Edge(options=options)
+2026-02-12 11:15:24,972 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\edge\webdriver.py", line 45, in __init__
+2026-02-12 11:15:24,972 | ERROR    |       super().__init__(
+2026-02-12 11:15:24,972 | ERROR    |       ~~~~~~~~~~~~~~~~^
+2026-02-12 11:15:24,972 | ERROR    |           browser_name=DesiredCapabilities.EDGE["browserName"],
+2026-02-12 11:15:24,972 | ERROR    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-12 11:15:24,972 | ERROR    |       ...<3 lines>...
+2026-02-12 11:15:24,972 | ERROR    |           keep_alive=keep_alive,
+2026-02-12 11:15:24,972 | ERROR    |           ^^^^^^^^^^^^^^^^^^^^^^
+2026-02-12 11:15:24,973 | ERROR    |       )
+2026-02-12 11:15:24,973 | ERROR    |       ^
+2026-02-12 11:15:24,973 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 66, in __init__
+2026-02-12 11:15:24,973 | ERROR    |       super().__init__(command_executor=executor, options=self.options)
+2026-02-12 11:15:24,973 | ERROR    |       ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-12 11:15:24,973 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\common\webdriver.py", line 25, in __init__
+2026-02-12 11:15:24,973 | ERROR    |       super().__init__(*args, **kwargs)
+2026-02-12 11:15:24,974 | ERROR    |       ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+2026-02-12 11:15:24,974 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 257, in __init__
+2026-02-12 11:15:24,974 | ERROR    |       self.start_session(capabilities)
+2026-02-12 11:15:24,974 | ERROR    |       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+2026-02-12 11:15:24,974 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 352, in start_session
+2026-02-12 11:15:24,974 | ERROR    |       response = self.execute(Command.NEW_SESSION, caps)["value"]
+2026-02-12 11:15:24,975 | ERROR    |                  ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-12 11:15:24,975 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 432, in execute
+2026-02-12 11:15:24,975 | ERROR    |       self.error_handler.check_response(response)
+2026-02-12 11:15:24,975 | ERROR    |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2026-02-12 11:15:24,975 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2026-02-12 11:15:24,975 | ERROR    |       raise exception_class(message, screen, stacktrace)
+2026-02-12 11:15:24,975 | ERROR    |   selenium.common.exceptions.SessionNotCreatedException: Message: session not created: DevToolsActivePort file doesn't exist; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+2026-02-12 11:15:24,975 | ERROR    |   Stacktrace:
+2026-02-12 11:15:24,976 | ERROR    |   Symbols not available. Dumping unresolved backtrace:
+2026-02-12 11:15:24,976 | ERROR    |   	0x7ff699775045
+2026-02-12 11:15:24,976 | ERROR    |   	0x7ff6997750a4
+2026-02-12 11:15:24,976 | ERROR    |   	0x7ff699ac28c4
+2026-02-12 11:15:24,976 | ERROR    |   	0x7ff699508313
+2026-02-12 11:15:24,976 | ERROR    |   	0x7ff69950425b
+2026-02-12 11:15:24,976 | ERROR    |   	0x7ff699500d00
+2026-02-12 11:15:24,976 | ERROR    |   	0x7ff6995425e6
+2026-02-12 11:15:24,976 | ERROR    |   	0x7ff69950cbcc
+2026-02-12 11:15:24,977 | ERROR    |   	0x7ff69950be26
+2026-02-12 11:15:24,977 | ERROR    |   	0x7ff69950c9f3
+2026-02-12 11:15:24,977 | ERROR    |   	0x7ff6995d0214
+2026-02-12 11:15:24,977 | ERROR    |   	0x7ff6995cc685
+2026-02-12 11:15:24,977 | ERROR    |   	0x7ff6995dce73
+2026-02-12 11:15:24,977 | ERROR    |   	0x7ff699790378
+2026-02-12 11:15:24,977 | ERROR    |   	0x7ff699798c46
+2026-02-12 11:15:24,977 | ERROR    |   	0x7ff69977c724
+2026-02-12 11:15:24,978 | ERROR    |   	0x7ff69977c869
+2026-02-12 11:15:24,978 | ERROR    |   	0x7ff69976a702
+2026-02-12 11:15:24,978 | ERROR    |   	0x7ffbc23de8d7
+2026-02-12 11:15:24,978 | ERROR    |   	0x7ffbc3f8c40c
+2026-02-12 11:15:24,978 | INFO     | Starting: BSE Historical Equity Data
+2026-02-12 11:15:48,193 | INFO     |   Processing 2026-01...
+2026-02-12 11:15:48,193 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 11:15:48,193 | INFO     |   Processing 2026-02...
+2026-02-12 11:15:48,194 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 11:15:48,194 | INFO     | [OK] Completed: BSE Historical Equity Data
+2026-02-12 11:15:48,194 | INFO     | 
+======================================================================
+2026-02-12 11:15:48,194 | INFO     | SUMMARY
+2026-02-12 11:15:48,194 | INFO     | ======================================================================
+2026-02-12 11:15:48,194 | INFO     |   NSE F&O: [OK]
+2026-02-12 11:15:48,195 | INFO     |   NSE CM: [OK]
+2026-02-12 11:15:48,195 | INFO     |   BSE F&O: [FAILED]
+2026-02-12 11:15:48,195 | INFO     |   BSE Equity: [OK]
+2026-02-12 11:15:48,195 | INFO     | 
+Total: 3/4 successful
+2026-02-12 11:15:48,195 | INFO     | Duration: 177 seconds
+2026-02-12 11:15:48,195 | INFO     | ======================================================================
+
+2026-02-12 11:19:22,182 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-12 11:19:22,182 | INFO     | ======================================================================
+2026-02-12 11:19:22,182 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-12 11:19:22,182 | INFO     | Time: 2026-02-12 11:19:22
+2026-02-12 11:19:22,183 | INFO     | ======================================================================
+2026-02-12 11:19:22,183 | INFO     | 
+>> Starting NSE downloads...
+2026-02-12 11:19:22,183 | INFO     | Starting: NSE F&O Daily Data
+2026-02-12 11:19:55,262 | INFO     |   ======================================================================
+2026-02-12 11:19:55,263 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-02-12 11:19:55,263 | INFO     |   Months: Jan-2026 to Feb-2026
+2026-02-12 11:19:55,264 | INFO     |   Output: D:\Rouhin\Exchanges Data\NSE\FnO
+2026-02-12 11:19:55,264 | INFO     |   ======================================================================
+2026-02-12 11:19:55,264 | INFO     |   
+2026-02-12 11:19:55,265 | INFO     |   Opening NSE F&O page...
+2026-02-12 11:19:55,265 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-02-12 11:19:55,265 | INFO     |   
+2026-02-12 11:19:55,265 | INFO     |   Jan-2026... [OK] 20 days
+2026-02-12 11:19:55,265 | INFO     |   Feb-2026... [OK] 9 days
+2026-02-12 11:19:55,266 | INFO     |   
+2026-02-12 11:19:55,266 | INFO     |   ======================================================================
+2026-02-12 11:19:55,266 | INFO     |   [OK] Download Complete! Total days downloaded: 29
+2026-02-12 11:19:55,266 | INFO     |   ======================================================================
+2026-02-12 11:19:55,266 | INFO     | [OK] Completed: NSE F&O Daily Data
+2026-02-12 11:19:55,266 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-12 11:19:58,140 | INFO     |   Processing 2026-01...
+2026-02-12 11:19:58,140 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\nse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 11:19:58,140 | INFO     |   Processing 2026-02...
+2026-02-12 11:19:58,141 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\nse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 11:19:58,141 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-02-12 11:19:58,141 | INFO     | 
+>> Starting BSE downloads...
+2026-02-12 11:19:58,141 | INFO     | Starting: BSE F&O Data (All Derivatives)
+2026-02-12 11:21:43,841 | INFO     |   ======================================================================
+2026-02-12 11:21:43,841 | INFO     |   BSE F&O Daily Data Downloader
+2026-02-12 11:21:43,841 | INFO     |   Date Range: 01/01/2026 to 12/02/2026
+2026-02-12 11:21:43,842 | INFO     |   ======================================================================
+2026-02-12 11:21:43,842 | INFO     |   
+2026-02-12 11:21:43,842 | INFO     |   
+2026-02-12 11:21:43,842 | INFO     |   » Downloading Index Futures:
+2026-02-12 11:21:43,843 | INFO     |     [OK] Selected: Index Derivative
+2026-02-12 11:21:43,843 | INFO     |     [OK] Selected: Futures (IF)
+2026-02-12 11:21:43,843 | INFO     |     [OK] Entered from date: 01/01/2026
+2026-02-12 11:21:43,843 | INFO     |     [OK] Entered to date: 12/02/2026
+2026-02-12 11:21:43,843 | INFO     |     [OK] Clicked Go button - waiting for data...
+2026-02-12 11:21:43,843 | INFO     |     [OK] Found 29 records
+2026-02-12 11:21:43,844 | INFO     |       Sheet 2026-01 already exists, updating...
+2026-02-12 11:21:43,844 | INFO     |       [OK] Added/Updated sheet 2026-01 in bse_index_futures_FY2025_2026.xlsx
+2026-02-12 11:21:43,844 | INFO     |       Sheet 2026-02 already exists, updating...
+2026-02-12 11:21:43,844 | INFO     |       [OK] Added/Updated sheet 2026-02 in bse_index_futures_FY2025_2026.xlsx
+2026-02-12 11:21:43,844 | INFO     |   
+2026-02-12 11:21:43,844 | INFO     |   » Downloading Index Options:
+2026-02-12 11:21:43,844 | INFO     |     [OK] Selected: Index Derivative
+2026-02-12 11:21:43,845 | INFO     |     [OK] Selected: Options (IO)
+2026-02-12 11:21:43,845 | INFO     |     [OK] Entered from date: 01/01/2026
+2026-02-12 11:21:43,845 | INFO     |     [OK] Entered to date: 12/02/2026
+2026-02-12 11:21:43,845 | INFO     |     [OK] Clicked Go button - waiting for data...
+2026-02-12 11:21:43,845 | INFO     |     [OK] Found 29 records
+2026-02-12 11:21:43,845 | INFO     |       Sheet 2026-01 already exists, updating...
+2026-02-12 11:21:43,846 | INFO     |       [OK] Added/Updated sheet 2026-01 in bse_index_options_FY2025_2026.xlsx
+2026-02-12 11:21:43,846 | INFO     |       Sheet 2026-02 already exists, updating...
+2026-02-12 11:21:43,846 | INFO     |       [OK] Added/Updated sheet 2026-02 in bse_index_options_FY2025_2026.xlsx
+2026-02-12 11:21:43,846 | INFO     |   
+2026-02-12 11:21:43,846 | INFO     |   » Downloading Equity Futures:
+2026-02-12 11:21:43,846 | INFO     |     [OK] Selected: Equity Derivative
+2026-02-12 11:21:43,846 | INFO     |     [OK] Selected: Futures (SF)
+2026-02-12 11:21:43,847 | INFO     |     [OK] Entered from date: 01/01/2026
+2026-02-12 11:21:43,847 | INFO     |     [OK] Entered to date: 12/02/2026
+2026-02-12 11:21:43,847 | INFO     |     [OK] Clicked Go button - waiting for data...
+2026-02-12 11:21:43,847 | INFO     |     [OK] Found 29 records
+2026-02-12 11:21:43,847 | INFO     |       Sheet 2026-01 already exists, updating...
+2026-02-12 11:21:43,847 | INFO     |       [OK] Added/Updated sheet 2026-01 in bse_equity_futures_FY2025_2026.xlsx
+2026-02-12 11:21:43,847 | INFO     |       Sheet 2026-02 already exists, updating...
+2026-02-12 11:21:43,847 | INFO     |       [OK] Added/Updated sheet 2026-02 in bse_equity_futures_FY2025_2026.xlsx
+2026-02-12 11:21:43,847 | INFO     |   
+2026-02-12 11:21:43,847 | INFO     |   » Downloading Equity Options:
+2026-02-12 11:21:43,848 | INFO     |     [OK] Selected: Equity Derivative
+2026-02-12 11:21:43,848 | INFO     |     [OK] Selected: Options (SO)
+2026-02-12 11:21:43,848 | INFO     |     [OK] Entered from date: 01/01/2026
+2026-02-12 11:21:43,848 | INFO     |     [OK] Entered to date: 12/02/2026
+2026-02-12 11:21:43,848 | INFO     |     [OK] Clicked Go button - waiting for data...
+2026-02-12 11:21:43,848 | INFO     |     [OK] Found 29 records
+2026-02-12 11:21:43,849 | INFO     |       Sheet 2026-01 already exists, updating...
+2026-02-12 11:21:43,849 | INFO     |       [OK] Added/Updated sheet 2026-01 in bse_equity_options_FY2025_2026.xlsx
+2026-02-12 11:21:43,849 | INFO     |       Sheet 2026-02 already exists, updating...
+2026-02-12 11:21:43,849 | INFO     |       [OK] Added/Updated sheet 2026-02 in bse_equity_options_FY2025_2026.xlsx
+2026-02-12 11:21:43,849 | INFO     |   
+2026-02-12 11:21:43,849 | INFO     |   ======================================================================
+2026-02-12 11:21:43,849 | INFO     |   BATCH 1 SUMMARY:
+2026-02-12 11:21:43,849 | INFO     |   ======================================================================
+2026-02-12 11:21:43,849 | INFO     |     Index Futures: [OK] SUCCESS
+2026-02-12 11:21:43,849 | INFO     |     Index Options: [OK] SUCCESS
+2026-02-12 11:21:43,850 | INFO     |     Equity Futures: [OK] SUCCESS
+2026-02-12 11:21:43,850 | INFO     |     Equity Options: [OK] SUCCESS
+2026-02-12 11:21:43,850 | INFO     |   ======================================================================
+2026-02-12 11:21:43,850 | INFO     | [OK] Completed: BSE F&O Data (All Derivatives)
+2026-02-12 11:21:43,850 | INFO     | Starting: BSE Historical Equity Data
+2026-02-12 11:22:09,276 | INFO     |   Processing 2026-01...
+2026-02-12 11:22:09,277 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 11:22:09,277 | INFO     |   Processing 2026-02...
+2026-02-12 11:22:09,277 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 11:22:09,277 | INFO     | [OK] Completed: BSE Historical Equity Data
+2026-02-12 11:22:09,278 | INFO     | 
+======================================================================
+2026-02-12 11:22:09,278 | INFO     | SUMMARY
+2026-02-12 11:22:09,278 | INFO     | ======================================================================
+2026-02-12 11:22:09,279 | INFO     |   NSE F&O: [OK]
+2026-02-12 11:22:09,279 | INFO     |   NSE CM: [OK]
+2026-02-12 11:22:09,279 | INFO     |   BSE F&O: [OK]
+2026-02-12 11:22:09,279 | INFO     |   BSE Equity: [OK]
+2026-02-12 11:22:09,279 | INFO     | 
+Total: 4/4 successful
+2026-02-12 11:22:09,280 | INFO     | Duration: 167 seconds
+2026-02-12 11:22:09,280 | INFO     | ======================================================================
+
+2026-02-12 12:01:54,444 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-12 12:01:54,444 | INFO     | ======================================================================
+2026-02-12 12:01:54,444 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-12 12:01:54,444 | INFO     | Time: 2026-02-12 12:01:54
+2026-02-12 12:01:54,444 | INFO     | ======================================================================
+2026-02-12 12:01:54,444 | INFO     | 
+>> Starting NSE downloads...
+2026-02-12 12:01:54,444 | INFO     | Starting: NSE F&O Daily Data
+2026-02-12 12:02:21,107 | INFO     |   ======================================================================
+2026-02-12 12:02:21,107 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-02-12 12:02:21,107 | INFO     |   Months: Jan-2026 to Feb-2026
+2026-02-12 12:02:21,107 | INFO     |   Output: D:\Rouhin\Exchanges Data\NSE\FnO
+2026-02-12 12:02:21,107 | INFO     |   ======================================================================
+2026-02-12 12:02:21,107 | INFO     |   
+2026-02-12 12:02:21,107 | INFO     |   Opening NSE F&O page...
+2026-02-12 12:02:21,107 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-02-12 12:02:21,107 | INFO     |   
+2026-02-12 12:02:21,107 | INFO     |   Jan-2026... [OK] 20 days
+2026-02-12 12:02:21,108 | INFO     |   Feb-2026... [OK] 9 days
+2026-02-12 12:02:21,108 | INFO     |   
+2026-02-12 12:02:21,108 | INFO     |   ======================================================================
+2026-02-12 12:02:21,108 | INFO     |   [OK] Download Complete! Total days downloaded: 29
+2026-02-12 12:02:21,108 | INFO     |   ======================================================================
+2026-02-12 12:02:21,108 | INFO     | [OK] Completed: NSE F&O Daily Data
+2026-02-12 12:02:21,108 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-12 12:02:24,024 | INFO     |   Processing 2026-01...
+2026-02-12 12:02:24,024 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\nse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 12:02:24,024 | INFO     |   Processing 2026-02...
+2026-02-12 12:02:24,024 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\nse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 12:02:24,024 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-02-12 12:02:24,024 | INFO     | 
+>> Starting BSE downloads...
+2026-02-12 12:02:24,024 | INFO     | Starting: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-12 12:03:53,956 | INFO     | [OK] Completed: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-12 12:03:53,957 | INFO     | Starting: BSE Historical Equity Data
+2026-02-12 12:04:14,784 | INFO     |   Processing 2026-01...
+2026-02-12 12:04:14,784 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 12:04:14,784 | INFO     |   Processing 2026-02...
+2026-02-12 12:04:14,784 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 12:04:14,784 | INFO     | [OK] Completed: BSE Historical Equity Data
+2026-02-12 12:04:14,785 | INFO     | 
+======================================================================
+2026-02-12 12:04:14,785 | INFO     | SUMMARY
+2026-02-12 12:04:14,785 | INFO     | ======================================================================
+2026-02-12 12:04:14,785 | INFO     |   NSE F&O: [OK]
+2026-02-12 12:04:14,785 | INFO     |   NSE CM: [OK]
+2026-02-12 12:04:14,785 | INFO     |   BSE F&O: [OK]
+2026-02-12 12:04:14,785 | INFO     |   BSE Equity: [OK]
+2026-02-12 12:04:14,785 | INFO     | 
+Total: 4/4 successful
+2026-02-12 12:04:14,785 | INFO     | Duration: 140 seconds
+2026-02-12 12:04:14,785 | INFO     | ======================================================================
+
+2026-02-12 15:36:09,922 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-12 15:36:09,922 | INFO     | ======================================================================
+2026-02-12 15:36:09,922 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-12 15:36:09,922 | INFO     | Time: 2026-02-12 15:36:09
+2026-02-12 15:36:09,923 | INFO     | ======================================================================
+2026-02-12 15:36:09,923 | INFO     | 
+>> Starting NSE downloads...
+2026-02-12 15:36:09,923 | INFO     | Starting: NSE F&O Daily Data
+2026-02-12 15:36:50,148 | INFO     |   ======================================================================
+2026-02-12 15:36:50,149 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-02-12 15:36:50,149 | INFO     |   Months: Jan-2026 to Feb-2026
+2026-02-12 15:36:50,149 | INFO     |   Output: D:\Rouhin\Exchanges Data\NSE\FnO
+2026-02-12 15:36:50,151 | INFO     |   ======================================================================
+2026-02-12 15:36:50,152 | INFO     |   
+2026-02-12 15:36:50,152 | INFO     |   Opening NSE F&O page...
+2026-02-12 15:36:50,152 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-02-12 15:36:50,152 | INFO     |   
+2026-02-12 15:36:50,152 | INFO     |   Jan-2026... [OK] 20 days
+2026-02-12 15:36:50,152 | INFO     |   Feb-2026... [OK] 9 days
+2026-02-12 15:36:50,154 | INFO     |   
+2026-02-12 15:36:50,154 | INFO     |   ======================================================================
+2026-02-12 15:36:50,154 | INFO     |   [OK] Download Complete! Total days downloaded: 29
+2026-02-12 15:36:50,154 | INFO     |   ======================================================================
+2026-02-12 15:36:50,155 | INFO     | [OK] Completed: NSE F&O Daily Data
+2026-02-12 15:36:50,155 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-12 15:36:53,192 | INFO     |   Processing 2026-01...
+2026-02-12 15:36:53,192 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\nse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 15:36:53,192 | INFO     |   Processing 2026-02...
+2026-02-12 15:36:53,193 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\nse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 15:36:53,193 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-02-12 15:36:53,193 | INFO     | 
+>> Starting BSE downloads...
+2026-02-12 15:36:53,193 | INFO     | Starting: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-12 15:36:54,359 | ERROR    | [X] Failed: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-12 15:36:54,359 | ERROR    |   Traceback (most recent call last):
+2026-02-12 15:36:54,359 | ERROR    |     File "D:\Rouhin\Exchanges Data\BSE\FnO\bse_fno_consolidated_download.py", line 622, in <module>
+2026-02-12 15:36:54,360 | ERROR    |       main()
+2026-02-12 15:36:54,360 | ERROR    |       ~~~~^^
+2026-02-12 15:36:54,360 | ERROR    |     File "D:\Rouhin\Exchanges Data\BSE\FnO\bse_fno_consolidated_download.py", line 424, in main
+2026-02-12 15:36:54,360 | ERROR    |       logging.FileHandler(log_file),
+2026-02-12 15:36:54,360 | ERROR    |       ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2026-02-12 15:36:54,360 | ERROR    |     File "C:\Users\0201085\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1219, in __init__
+2026-02-12 15:36:54,360 | ERROR    |       StreamHandler.__init__(self, self._open())
+2026-02-12 15:36:54,361 | ERROR    |                                    ~~~~~~~~~~^^
+2026-02-12 15:36:54,361 | ERROR    |     File "C:\Users\0201085\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1248, in _open
+2026-02-12 15:36:54,361 | ERROR    |       return open_func(self.baseFilename, self.mode,
+2026-02-12 15:36:54,361 | ERROR    |                        encoding=self.encoding, errors=self.errors)
+2026-02-12 15:36:54,361 | ERROR    |   PermissionError: [Errno 13] Permission denied: 'C:\\Windows\\System32\\logs\\bse_fno_download_2026-02-12_153654.log'
+2026-02-12 15:36:54,361 | INFO     | Starting: BSE Historical Equity Data
+2026-02-12 15:37:16,541 | INFO     |   Processing 2026-01...
+2026-02-12 15:37:16,541 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 15:37:16,541 | INFO     |   Processing 2026-02...
+2026-02-12 15:37:16,541 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 15:37:16,541 | INFO     | [OK] Completed: BSE Historical Equity Data
+2026-02-12 15:37:16,542 | INFO     | 
+======================================================================
+2026-02-12 15:37:16,542 | INFO     | SUMMARY
+2026-02-12 15:37:16,542 | INFO     | ======================================================================
+2026-02-12 15:37:16,542 | INFO     |   NSE F&O: [OK]
+2026-02-12 15:37:16,542 | INFO     |   NSE CM: [OK]
+2026-02-12 15:37:16,542 | INFO     |   BSE F&O: [FAILED]
+2026-02-12 15:37:16,543 | INFO     |   BSE Equity: [OK]
+2026-02-12 15:37:16,543 | INFO     | 
+Total: 3/4 successful
+2026-02-12 15:37:16,543 | INFO     | Duration: 66 seconds
+2026-02-12 15:37:16,543 | INFO     | ======================================================================
+
+2026-02-12 15:40:06,626 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-12 15:40:06,626 | INFO     | ======================================================================
+2026-02-12 15:40:06,626 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-12 15:40:06,626 | INFO     | Time: 2026-02-12 15:40:06
+2026-02-12 15:40:06,626 | INFO     | ======================================================================
+2026-02-12 15:40:06,627 | INFO     | 
+>> Starting NSE downloads...
+2026-02-12 15:40:06,627 | INFO     | Starting: NSE F&O Daily Data
+2026-02-12 15:40:43,408 | INFO     |   ======================================================================
+2026-02-12 15:40:43,408 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-02-12 15:40:43,408 | INFO     |   Months: Jan-2026 to Feb-2026
+2026-02-12 15:40:43,408 | INFO     |   Output: d:\Rouhin\Exchanges Data\NSE\FnO
+2026-02-12 15:40:43,409 | INFO     |   ======================================================================
+2026-02-12 15:40:43,409 | INFO     |   
+2026-02-12 15:40:43,409 | INFO     |   Opening NSE F&O page...
+2026-02-12 15:40:43,409 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-02-12 15:40:43,410 | INFO     |   
+2026-02-12 15:40:43,410 | INFO     |   Jan-2026... [OK] 20 days
+2026-02-12 15:40:43,410 | INFO     |   Feb-2026... [OK] 9 days
+2026-02-12 15:40:43,410 | INFO     |   
+2026-02-12 15:40:43,410 | INFO     |   ======================================================================
+2026-02-12 15:40:43,410 | INFO     |   [OK] Download Complete! Total days downloaded: 29
+2026-02-12 15:40:43,410 | INFO     |   ======================================================================
+2026-02-12 15:40:43,411 | INFO     | [OK] Completed: NSE F&O Daily Data
+2026-02-12 15:40:43,411 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-12 15:40:46,349 | INFO     |   Processing 2026-01...
+2026-02-12 15:40:46,349 | INFO     |   Saved: d:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 15:40:46,350 | INFO     |   Processing 2026-02...
+2026-02-12 15:40:46,350 | INFO     |   Saved: d:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 15:40:46,350 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-02-12 15:40:46,350 | INFO     | 
+>> Starting BSE downloads...
+2026-02-12 15:40:46,350 | INFO     | Starting: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-12 15:42:14,431 | INFO     | [OK] Completed: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-12 15:42:14,432 | INFO     | Starting: BSE Historical Equity Data
+2026-02-12 15:42:37,012 | INFO     |   Processing 2026-01...
+2026-02-12 15:42:37,013 | INFO     |   Saved: d:\Rouhin\Exchanges Data\BSE\bse_daily_FY2025_2026.xlsx (2026-01)
+2026-02-12 15:42:37,013 | INFO     |   Processing 2026-02...
+2026-02-12 15:42:37,013 | INFO     |   Saved: d:\Rouhin\Exchanges Data\BSE\bse_daily_FY2025_2026.xlsx (2026-02)
+2026-02-12 15:42:37,014 | INFO     | [OK] Completed: BSE Historical Equity Data
+2026-02-12 15:42:37,014 | INFO     | 
+======================================================================
+2026-02-12 15:42:37,015 | INFO     | SUMMARY
+2026-02-12 15:42:37,015 | INFO     | ======================================================================
+2026-02-12 15:42:37,015 | INFO     |   NSE F&O: [OK]
+2026-02-12 15:42:37,015 | INFO     |   NSE CM: [OK]
+2026-02-12 15:42:37,016 | INFO     |   BSE F&O: [OK]
+2026-02-12 15:42:37,016 | INFO     |   BSE Equity: [OK]
+2026-02-12 15:42:37,016 | INFO     | 
+Total: 4/4 successful
+2026-02-12 15:42:37,016 | INFO     | Duration: 150 seconds
+2026-02-12 15:42:37,016 | INFO     | ======================================================================
+
