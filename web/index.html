@@ -469,6 +469,51 @@
       document.getElementById("toDate").valueAsDate = toDate;
     }
 
+    function presetYesterday() {
+      const today = new Date();
+      const yesterday = new Date(today);
+      yesterday.setDate(yesterday.getDate() - 1);
+      setRange(yesterday, yesterday);
+    }
+
+    async function presetLastMarketDay() {
+      // Fetch last 4 weeks to find last day with data
+      const today = new Date();
+      const fourWeeksAgo = new Date(today);
+      fourWeeksAgo.setDate(fourWeeksAgo.getDate() - 28);
+      
+      const fromStr = fourWeeksAgo.toISOString().split('T')[0];
+      const toStr = today.toISOString().split('T')[0];
+      
+      try {
+        const params = new URLSearchParams({ 
+          agg: "daily", 
+          from: fromStr, 
+          to: toStr, 
+          exchange: "all", 
+          segment: "both" 
+        });
+        const response = await fetch(`/api/summary?${params.toString()}`);
+        const data = await response.json();
+        
+        if (data.rows && data.rows.length > 0) {
+          // Find the last date
+          const lastDate = data.rows[data.rows.length - 1].period_sort;
+          const dateObj = new Date(lastDate);
+          setRange(dateObj, dateObj);
+          fetchData();
+        } else {
+          // Fallback to last 4 weeks if no daily data
+          presetLast4Weeks();
+          fetchData();
+        }
+      } catch (e) {
+        console.error("Error finding last market day:", e);
+        presetLast4Weeks();
+        fetchData();
+      }
+    }
+
     function presetLast4Weeks() {
       const today = new Date();
       const from = new Date(today);
@@ -953,10 +998,6 @@
       presetLastFy();
       fetchData();
     });
-    document.getElementById("segmentSummary").addEventListener("change", () => {
-      document.getElementById("segment").value = document.getElementById("segmentSummary").value;
-      fetchData();
-    });
 
     // Add listener for chart segment dropdown
     document.getElementById("chartSegment").addEventListener("change", () => {
@@ -965,8 +1006,7 @@
       }
     });
 
-    presetLast4Weeks();
-    fetchData();
+    presetLastMarketDay();
   </script>
 </body>
 </html>
