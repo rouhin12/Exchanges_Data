@@ -19,6 +19,7 @@ NSE_CASH_FILE = BASE_DIR / "NSE" / "nse_daily.xlsx"
 BSE_CASH_FILE = BASE_DIR / "BSE" / "bse_daily.xlsx"
 NSE_FNO_FILE = BASE_DIR / "NSE" / "FnO" / "nse_fno_consolidated.xlsx"
 BSE_FNO_FILE = BASE_DIR / "BSE" / "FnO" / "bse_fno_consolidated.xlsx"
+FII_DII_FILE = BASE_DIR / "FII_DII" / "fii_dii_data.xlsx"
 
 # In-memory cache for Excel data
 _data_cache = {
@@ -26,6 +27,7 @@ _data_cache = {
     "bse_cash": None,
     "nse_fno": None,
     "bse_fno": None,
+    "fii_dii": None,
 }
 
 
@@ -360,6 +362,44 @@ def build_summary(
     return {"rows": rows}
 
 
+def get_fii_dii_data(start: str | None, end: str | None) -> dict[str, object]:
+    """Get FII/DII data from Excel file."""
+    global _data_cache
+    
+    if _data_cache["fii_dii"] is None:
+        if not FII_DII_FILE.exists():
+            return {"rows": []}
+        
+        df = pd.read_excel(FII_DII_FILE)
+        df["Date"] = pd.to_datetime(df["Date"])
+        _data_cache["fii_dii"] = df
+    else:
+        df = _data_cache["fii_dii"]
+    
+    # Filter by date range
+    if start:
+        df = df[df["Date"] >= pd.to_datetime(start)]
+    if end:
+        df = df[df["Date"] <= pd.to_datetime(end)]
+    
+    # Convert to JSON-serializable format
+    rows = []
+    for _, row in df.iterrows():
+        rows.append({
+            "date": row["Date"].strftime("%d-%b-%Y"),
+            "date_sort": row["Date"].strftime("%Y-%m-%d"),
+            "fii_gross_purchase": round(float(row["FII_Gross_Purchase"]), 2),
+            "fii_gross_sales": round(float(row["FII_Gross_Sales"]), 2),
+            "fii_net": round(float(row["FII_Net"]), 2),
+            "dii_gross_purchase": round(float(row["DII_Gross_Purchase"]), 2),
+            "dii_gross_sales": round(float(row["DII_Gross_Sales"]), 2),
+            "dii_net": round(float(row["DII_Net"]), 2),
+        })
+    
+    rows = sorted(rows, key=lambda r: r["date_sort"], reverse=True)
+    return {"rows": rows}
+
+
 class Handler(SimpleHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
         parsed = urlparse(self.path)
@@ -373,6 +413,28 @@ class Handler(SimpleHTTPRequestHandler):
 
             try:
                 payload = build_summary(agg, start, end, exchange, segment)
+                body = json.dumps(payload).encode("utf-8")
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+            except Exception as exc:
+                body = json.dumps({"error": str(exc)}).encode("utf-8")
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+            return
+
+        if parsed.path == "/api/fii_dii":
+            query = parse_qs(parsed.query)
+            start = query.get("from", [None])[0]
+            end = query.get("to", [None])[0]
+
+            try:
+                payload = get_fii_dii_data(start, end)
                 body = json.dumps(payload).encode("utf-8")
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json")

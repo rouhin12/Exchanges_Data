@@ -385,6 +385,7 @@
       <div class="view-toggle">
         <button class="active" id="viewSummary">Summary</button>
         <button id="viewTable">Detailed Table</button>
+        <button id="viewFiiDii">FII/DII</button>
       </div>
 
       <!-- Summary View -->
@@ -436,6 +437,31 @@
           </table>
         </div>
       </div>
+
+      <!-- FII/DII View -->
+      <div class="summary-section" id="fiiDiiView">
+        <div class="scroll">
+          <table id="fiiDiiTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th colspan="3" style="text-align: center; border-left: 2px solid #ccc;">FII (Rs Crores)</th>
+                <th colspan="3" style="text-align: center; border-left: 2px solid #ccc;">DII (Rs Crores)</th>
+              </tr>
+              <tr>
+                <th>Date</th>
+                <th>Gross Purchase</th>
+                <th>Gross Sales</th>
+                <th>Net</th>
+                <th>Gross Purchase</th>
+                <th>Gross Sales</th>
+                <th>Net</th>
+              </tr>
+            </thead>
+            <tbody id="fiiDiiBody"></tbody>
+          </table>
+        </div>
+      </div>
     </section>
   </div>
 
@@ -444,25 +470,40 @@
     const statusEl = document.getElementById("status");
     const viewSummaryBtn = document.getElementById("viewSummary");
     const viewTableBtn = document.getElementById("viewTable");
+    const viewFiiDiiBtn = document.getElementById("viewFiiDii");
     const summaryView = document.getElementById("summaryView");
     const tableView = document.getElementById("tableView");
+    const fiiDiiView = document.getElementById("fiiDiiView");
 
     function toggleView(view) {
       if (view === "summary") {
         summaryView.classList.add("active");
         tableView.classList.remove("active");
+        fiiDiiView.classList.remove("active");
         viewSummaryBtn.classList.add("active");
         viewTableBtn.classList.remove("active");
-      } else {
+        viewFiiDiiBtn.classList.remove("active");
+      } else if (view === "table") {
         tableView.classList.add("active");
         summaryView.classList.remove("active");
+        fiiDiiView.classList.remove("active");
         viewTableBtn.classList.add("active");
         viewSummaryBtn.classList.remove("active");
+        viewFiiDiiBtn.classList.remove("active");
+      } else if (view === "fii-dii") {
+        fiiDiiView.classList.add("active");
+        summaryView.classList.remove("active");
+        tableView.classList.remove("active");
+        viewFiiDiiBtn.classList.add("active");
+        viewSummaryBtn.classList.remove("active");
+        viewTableBtn.classList.remove("active");
+        fetchFiiDiiData();
       }
     }
 
     viewSummaryBtn.addEventListener("click", () => toggleView("summary"));
     viewTableBtn.addEventListener("click", () => toggleView("table"));
+    viewFiiDiiBtn.addEventListener("click", () => toggleView("fii-dii"));
 
     function setRange(fromDate, toDate) {
       document.getElementById("fromDate").valueAsDate = fromDate;
@@ -966,6 +1007,62 @@
           <td>${formatNumber(item.avg_contracts)}</td>
         `;
         tableBody.appendChild(row);
+      });
+    }
+
+    function formatCurrency(value) {
+      if (value === null || value === undefined) return "-";
+      const num = Number(value);
+      if (Number.isNaN(num)) return "-";
+      const sign = num < 0 ? "-" : "";
+      const absNum = Math.abs(num).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      return sign + absNum;
+    }
+
+    async function fetchFiiDiiData() {
+      const fromDate = document.getElementById("fromDate").value;
+      const toDate = document.getElementById("toDate").value;
+
+      const params = new URLSearchParams({ from: fromDate, to: toDate });
+      const url = `/api/fii_dii?${params.toString()}`;
+
+      statusEl.textContent = "Loading FII/DII data...";
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          statusEl.textContent = "Failed to load FII/DII data";
+          return;
+        }
+        const data = await response.json();
+        renderFiiDiiTable(data.rows || []);
+        statusEl.textContent = `FII/DII Data: ${data.rows ? data.rows.length : 0} trading days`;
+      } catch (e) {
+        console.error("Error fetching FII/DII data:", e);
+        statusEl.textContent = "Error loading FII/DII data";
+      }
+    }
+
+    function renderFiiDiiTable(rows) {
+      const fiiDiiBody = document.getElementById("fiiDiiBody");
+      fiiDiiBody.innerHTML = "";
+      if (!rows.length) {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td colspan="7">No FII/DII data found for the selected range.</td>`;
+        fiiDiiBody.appendChild(row);
+        return;
+      }
+      rows.forEach((item) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.date}</td>
+          <td style="text-align: right;">${formatCurrency(item.fii_gross_purchase)}</td>
+          <td style="text-align: right;">${formatCurrency(item.fii_gross_sales)}</td>
+          <td style="text-align: right; ${item.fii_net >= 0 ? 'color: #2ecc71;' : 'color: #e74c3c;'} font-weight: 600;">${formatCurrency(item.fii_net)}</td>
+          <td style="text-align: right;">${formatCurrency(item.dii_gross_purchase)}</td>
+          <td style="text-align: right;">${formatCurrency(item.dii_gross_sales)}</td>
+          <td style="text-align: right; ${item.dii_net >= 0 ? 'color: #2ecc71;' : 'color: #e74c3c;'} font-weight: 600;">${formatCurrency(item.dii_net)}</td>
+        `;
+        fiiDiiBody.appendChild(row);
       });
     }
 

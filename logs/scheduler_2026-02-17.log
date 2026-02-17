@@ -110,3 +110,202 @@ Total: 4/5 successful
 2026-02-17 13:23:51,998 | INFO     | Duration: 223 seconds
 2026-02-17 13:23:51,998 | INFO     | ======================================================================
 
+2026-02-17 14:02:05,852 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-17 14:02:05,852 | INFO     | ======================================================================
+2026-02-17 14:02:05,853 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-17 14:02:05,853 | INFO     | Time: 2026-02-17 14:02:05
+2026-02-17 14:02:05,853 | INFO     | ======================================================================
+2026-02-17 14:02:05,853 | INFO     | 
+>> Starting NSE downloads...
+2026-02-17 14:02:05,854 | INFO     | Starting: NSE F&O Daily Data
+2026-02-17 14:03:02,313 | INFO     |   ======================================================================
+2026-02-17 14:03:02,314 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-02-17 14:03:02,314 | INFO     |   Months: Jan-2026 to Feb-2026
+2026-02-17 14:03:02,314 | INFO     |   Output: D:\Rouhin\Exchanges Data\NSE\FnO
+2026-02-17 14:03:02,315 | INFO     |   ======================================================================
+2026-02-17 14:03:02,315 | INFO     |   
+2026-02-17 14:03:02,315 | INFO     |   Opening NSE F&O page...
+2026-02-17 14:03:02,316 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-02-17 14:03:02,316 | INFO     |   
+2026-02-17 14:03:02,316 | INFO     |   Jan-2026... [OK] 20 days
+2026-02-17 14:03:02,316 | INFO     |   Feb-2026... [OK] 12 days
+2026-02-17 14:03:02,317 | INFO     |   
+2026-02-17 14:03:02,317 | INFO     |   ======================================================================
+2026-02-17 14:03:02,317 | INFO     |   [OK] Download Complete! Total days downloaded: 32
+2026-02-17 14:03:02,317 | INFO     |   ======================================================================
+2026-02-17 14:03:02,317 | INFO     | [OK] Completed: NSE F&O Daily Data
+2026-02-17 14:03:02,318 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-17 14:03:06,234 | INFO     |   Processing 2026-01...
+2026-02-17 14:03:06,234 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-01)
+2026-02-17 14:03:06,235 | INFO     |   Processing 2026-02...
+2026-02-17 14:03:06,235 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-02)
+2026-02-17 14:03:06,235 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-02-17 14:03:06,235 | INFO     | 
+>> Starting BSE downloads...
+2026-02-17 14:03:06,236 | INFO     | Starting: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-17 14:05:09,891 | INFO     | [OK] Completed: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-17 14:05:09,892 | INFO     | Starting: BSE Historical Equity Data
+2026-02-17 14:05:37,165 | INFO     |   Processing 2026-01...
+2026-02-17 14:05:37,165 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily.xlsx (2026-01)
+2026-02-17 14:05:37,166 | INFO     |   Processing 2026-02...
+2026-02-17 14:05:37,166 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily.xlsx (2026-02)
+2026-02-17 14:05:37,167 | INFO     | [OK] Completed: BSE Historical Equity Data
+2026-02-17 14:05:37,167 | INFO     | 
+>> Downloading FII/DII data...
+2026-02-17 14:05:37,167 | INFO     | Starting: FII/DII Data from Moneycontrol
+2026-02-17 14:05:37,525 | ERROR    | [X] Failed: FII/DII Data from Moneycontrol
+2026-02-17 14:05:37,526 | ERROR    |   Traceback (most recent call last):
+2026-02-17 14:05:37,526 | ERROR    |     File "D:\Rouhin\Exchanges Data\FII_DII\fii_dii_download.py", line 4, in <module>
+2026-02-17 14:05:37,526 | ERROR    |       import requests
+2026-02-17 14:05:37,527 | ERROR    |   ModuleNotFoundError: No module named 'requests'
+2026-02-17 14:05:37,527 | ERROR    | File not found: D:\Rouhin\Exchanges Data\automation\build_exchange_database.py
+2026-02-17 14:05:37,528 | INFO     | 
+======================================================================
+2026-02-17 14:05:37,528 | INFO     | SUMMARY
+2026-02-17 14:05:37,528 | INFO     | ======================================================================
+2026-02-17 14:05:37,529 | INFO     |   NSE F&O: [OK]
+2026-02-17 14:05:37,529 | INFO     |   NSE CM: [OK]
+2026-02-17 14:05:37,530 | INFO     |   BSE F&O: [OK]
+2026-02-17 14:05:37,530 | INFO     |   BSE Equity: [OK]
+2026-02-17 14:05:37,531 | INFO     |   FII/DII Data: [FAILED]
+2026-02-17 14:05:37,531 | INFO     |   Excel Workbook: [FAILED]
+2026-02-17 14:05:37,532 | INFO     | 
+Total: 4/6 successful
+2026-02-17 14:05:37,532 | INFO     | Duration: 211 seconds
+2026-02-17 14:05:37,533 | INFO     | ======================================================================
+
+2026-02-17 14:10:13,701 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-17 14:10:13,702 | INFO     | ======================================================================
+2026-02-17 14:10:13,702 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-17 14:10:13,702 | INFO     | Time: 2026-02-17 14:10:13
+2026-02-17 14:10:13,703 | INFO     | ======================================================================
+2026-02-17 14:10:13,703 | INFO     | 
+>> Starting NSE downloads...
+2026-02-17 14:10:13,704 | INFO     | Starting: NSE F&O Daily Data
+2026-02-17 14:10:13,897 | ERROR    | [X] Failed: NSE F&O Daily Data
+2026-02-17 14:10:13,897 | ERROR    |   Traceback (most recent call last):
+2026-02-17 14:10:13,897 | ERROR    |     File "D:\Rouhin\Exchanges Data\NSE\nse_fno_download.py", line 27, in <module>
+2026-02-17 14:10:13,897 | ERROR    |       from selenium import webdriver
+2026-02-17 14:10:13,898 | ERROR    |   ModuleNotFoundError: No module named 'selenium'
+2026-02-17 14:10:13,898 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-17 14:10:17,524 | INFO     |   Processing 2026-01...
+2026-02-17 14:10:17,524 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-01)
+2026-02-17 14:10:17,525 | INFO     |   Processing 2026-02...
+2026-02-17 14:10:17,525 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-02)
+2026-02-17 14:10:17,525 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-02-17 14:10:17,525 | INFO     | 
+>> Starting BSE downloads...
+2026-02-17 14:10:17,525 | INFO     | Starting: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-17 14:10:17,699 | ERROR    | [X] Failed: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-17 14:10:17,699 | ERROR    |   Traceback (most recent call last):
+2026-02-17 14:10:17,699 | ERROR    |     File "D:\Rouhin\Exchanges Data\BSE\bse_fno_consolidated_download.py", line 32, in <module>
+2026-02-17 14:10:17,700 | ERROR    |       from selenium import webdriver
+2026-02-17 14:10:17,700 | ERROR    |   ModuleNotFoundError: No module named 'selenium'
+2026-02-17 14:10:17,700 | INFO     | Starting: BSE Historical Equity Data
+2026-02-17 14:10:18,374 | ERROR    | [X] Failed: BSE Historical Equity Data
+2026-02-17 14:10:18,374 | ERROR    |   Traceback (most recent call last):
+2026-02-17 14:10:18,375 | ERROR    |     File "D:\Rouhin\Exchanges Data\BSE\bse_historical_equity_download.py", line 7, in <module>
+2026-02-17 14:10:18,375 | ERROR    |       from selenium import webdriver
+2026-02-17 14:10:18,375 | ERROR    |   ModuleNotFoundError: No module named 'selenium'
+2026-02-17 14:10:18,375 | INFO     | 
+>> Downloading FII/DII data...
+2026-02-17 14:10:18,376 | INFO     | Starting: FII/DII Data from Moneycontrol
+2026-02-17 14:10:21,818 | INFO     |   Downloading FII/DII data from Moneycontrol...
+2026-02-17 14:10:21,819 | ERROR    | [X] Failed: FII/DII Data from Moneycontrol
+2026-02-17 14:10:21,819 | ERROR    |   Traceback (most recent call last):
+2026-02-17 14:10:21,820 | ERROR    |     File "D:\Rouhin\Exchanges Data\FII_DII\fii_dii_download.py", line 90, in scrape_fii_dii
+2026-02-17 14:10:21,820 | ERROR    |       print(f"\u2705 Downloaded {len(df)} rows of FII/DII data")
+2026-02-17 14:10:21,820 | ERROR    |       ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17 14:10:21,821 | ERROR    |     File "C:\Users\0201085\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+2026-02-17 14:10:21,821 | ERROR    |       return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+2026-02-17 14:10:21,821 | ERROR    |              ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17 14:10:21,821 | ERROR    |   UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 0: character maps to <undefined>
+2026-02-17 14:10:21,822 | ERROR    |   
+2026-02-17 14:10:21,822 | ERROR    |   During handling of the above exception, another exception occurred:
+2026-02-17 14:10:21,822 | ERROR    |   
+2026-02-17 14:10:21,823 | ERROR    |   Traceback (most recent call last):
+2026-02-17 14:10:21,823 | ERROR    |     File "D:\Rouhin\Exchanges Data\FII_DII\fii_dii_download.py", line 128, in <module>
+2026-02-17 14:10:21,823 | ERROR    |       df = scrape_fii_dii()
+2026-02-17 14:10:21,823 | ERROR    |     File "D:\Rouhin\Exchanges Data\FII_DII\fii_dii_download.py", line 94, in scrape_fii_dii
+2026-02-17 14:10:21,823 | ERROR    |       print(f"\u274c Error scraping: {e}")
+2026-02-17 14:10:21,824 | ERROR    |       ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17 14:10:21,824 | ERROR    |     File "C:\Users\0201085\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+2026-02-17 14:10:21,824 | ERROR    |       return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+2026-02-17 14:10:21,824 | ERROR    |              ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17 14:10:21,825 | ERROR    |   UnicodeEncodeError: 'charmap' codec can't encode character '\u274c' in position 0: character maps to <undefined>
+2026-02-17 14:10:21,825 | ERROR    | File not found: D:\Rouhin\Exchanges Data\automation\build_exchange_database.py
+2026-02-17 14:10:21,825 | INFO     | 
+======================================================================
+2026-02-17 14:10:21,826 | INFO     | SUMMARY
+2026-02-17 14:10:21,826 | INFO     | ======================================================================
+2026-02-17 14:10:21,826 | INFO     |   NSE F&O: [FAILED]
+2026-02-17 14:10:21,826 | INFO     |   NSE CM: [OK]
+2026-02-17 14:10:21,827 | INFO     |   BSE F&O: [FAILED]
+2026-02-17 14:10:21,827 | INFO     |   BSE Equity: [FAILED]
+2026-02-17 14:10:21,827 | INFO     |   FII/DII Data: [FAILED]
+2026-02-17 14:10:21,827 | INFO     |   Excel Workbook: [FAILED]
+2026-02-17 14:10:21,827 | INFO     | 
+Total: 1/6 successful
+2026-02-17 14:10:21,827 | INFO     | Duration: 8 seconds
+2026-02-17 14:10:21,828 | INFO     | ======================================================================
+
+2026-02-17 14:11:23,135 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-17 14:11:23,136 | INFO     | ======================================================================
+2026-02-17 14:11:23,136 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-17 14:11:23,136 | INFO     | Time: 2026-02-17 14:11:23
+2026-02-17 14:11:23,136 | INFO     | ======================================================================
+2026-02-17 14:11:23,136 | INFO     | 
+>> Starting NSE downloads...
+2026-02-17 14:11:23,136 | INFO     | Starting: NSE F&O Daily Data
+2026-02-17 14:11:23,363 | ERROR    | [X] Failed: NSE F&O Daily Data
+2026-02-17 14:11:23,364 | ERROR    |   Traceback (most recent call last):
+2026-02-17 14:11:23,364 | ERROR    |     File "D:\Rouhin\Exchanges Data\NSE\nse_fno_download.py", line 27, in <module>
+2026-02-17 14:11:23,364 | ERROR    |       from selenium import webdriver
+2026-02-17 14:11:23,364 | ERROR    |   ModuleNotFoundError: No module named 'selenium'
+2026-02-17 14:11:23,364 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-17 14:11:27,099 | INFO     |   Processing 2026-01...
+2026-02-17 14:11:27,100 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-01)
+2026-02-17 14:11:27,100 | INFO     |   Processing 2026-02...
+2026-02-17 14:11:27,100 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-02)
+2026-02-17 14:11:27,100 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-02-17 14:11:27,100 | INFO     | 
+>> Starting BSE downloads...
+2026-02-17 14:11:27,100 | INFO     | Starting: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-17 14:11:27,341 | ERROR    | [X] Failed: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-17 14:11:27,342 | ERROR    |   Traceback (most recent call last):
+2026-02-17 14:11:27,342 | ERROR    |     File "D:\Rouhin\Exchanges Data\BSE\bse_fno_consolidated_download.py", line 32, in <module>
+2026-02-17 14:11:27,342 | ERROR    |       from selenium import webdriver
+2026-02-17 14:11:27,342 | ERROR    |   ModuleNotFoundError: No module named 'selenium'
+2026-02-17 14:11:27,343 | INFO     | Starting: BSE Historical Equity Data
+2026-02-17 14:11:28,381 | ERROR    | [X] Failed: BSE Historical Equity Data
+2026-02-17 14:11:28,381 | ERROR    |   Traceback (most recent call last):
+2026-02-17 14:11:28,382 | ERROR    |     File "D:\Rouhin\Exchanges Data\BSE\bse_historical_equity_download.py", line 7, in <module>
+2026-02-17 14:11:28,382 | ERROR    |       from selenium import webdriver
+2026-02-17 14:11:28,382 | ERROR    |   ModuleNotFoundError: No module named 'selenium'
+2026-02-17 14:11:28,382 | INFO     | 
+>> Downloading FII/DII data...
+2026-02-17 14:11:28,382 | INFO     | Starting: FII/DII Data from Moneycontrol
+2026-02-17 14:11:31,913 | INFO     |   Downloading FII/DII data from Moneycontrol...
+2026-02-17 14:11:31,914 | INFO     |   OK: Downloaded 12 rows of FII/DII data
+2026-02-17 14:11:31,914 | INFO     |   OK: Saved to D:\Rouhin\Exchanges Data\FII_DII\fii_dii_data.xlsx
+2026-02-17 14:11:31,914 | INFO     |      Total records: 12
+2026-02-17 14:11:31,914 | INFO     |      Date range: 2026-02-01 to 2026-02-16
+2026-02-17 14:11:31,914 | INFO     | [OK] Completed: FII/DII Data from Moneycontrol
+2026-02-17 14:11:31,914 | INFO     | Skipping Excel Workbook (script not found)
+2026-02-17 14:11:31,914 | INFO     | 
+======================================================================
+2026-02-17 14:11:31,914 | INFO     | SUMMARY
+2026-02-17 14:11:31,914 | INFO     | ======================================================================
+2026-02-17 14:11:31,915 | INFO     |   NSE F&O: [FAILED]
+2026-02-17 14:11:31,915 | INFO     |   NSE CM: [OK]
+2026-02-17 14:11:31,915 | INFO     |   BSE F&O: [FAILED]
+2026-02-17 14:11:31,915 | INFO     |   BSE Equity: [FAILED]
+2026-02-17 14:11:31,915 | INFO     |   FII/DII Data: [OK]
+2026-02-17 14:11:31,915 | INFO     | 
+Total: 2/5 successful
+2026-02-17 14:11:31,915 | INFO     | Duration: 8 seconds
+2026-02-17 14:11:31,915 | INFO     | ======================================================================
+

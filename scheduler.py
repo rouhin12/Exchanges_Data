@@ -67,6 +67,7 @@ NSE_FNO = BASE_DIR / "NSE" / "nse_fno_download.py"
 NSE_CM = BASE_DIR / "NSE" / "nse_business_growth_cm_download.py"
 BSE_FNO = BASE_DIR / "BSE" / "bse_fno_consolidated_download.py"
 BSE_EQUITY = BASE_DIR / "BSE" / "bse_historical_equity_download.py"
+FII_DII_SCRAPER = BASE_DIR / "FII_DII" / "fii_dii_download.py"
 EXCEL_BUILDER = BASE_DIR / "automation" / "build_exchange_database.py"
 
 # Output directories
@@ -205,6 +206,16 @@ def download_bse_equity():
     return run_command(cmd, "BSE Historical Equity Data")
 
 
+def download_fii_dii():
+    """Download FII/DII data from Moneycontrol."""
+    if not FII_DII_SCRAPER.exists():
+        logger.error(f"File not found: {FII_DII_SCRAPER}")
+        return False
+
+    cmd = [PYTHON_EXE, str(FII_DII_SCRAPER)]
+    return run_command(cmd, "FII/DII Data from Moneycontrol")
+
+
 def build_exchange_database():
     """Build the automated Exchanges Database workbook."""
     if not EXCEL_BUILDER.exists():
@@ -241,8 +252,16 @@ def run_all_downloads(nse_only=False):
             results["BSE F&O"] = download_bse_fno()
             results["BSE Equity"] = download_bse_equity()
 
+        # FII/DII Data
+        logger.info("\n>> Downloading FII/DII data...")
+        results["FII/DII Data"] = download_fii_dii()
+
         # Build Excel workbook after data downloads
-        results["Excel Workbook"] = build_exchange_database()
+        # Note: Requires automation/build_exchange_database.py to exist
+        if EXCEL_BUILDER.exists():
+            results["Excel Workbook"] = build_exchange_database()
+        else:
+            logger.info("Skipping Excel Workbook (script not found)")
         
     except Exception as e:
         logger.error(f"Scheduler error: {e}")

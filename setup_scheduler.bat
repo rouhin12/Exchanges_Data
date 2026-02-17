@@ -1,6 +1,14 @@
 @echo off
 REM Daily Exchange Data Download Scheduler - Windows Setup
 REM This batch file helps you set up the scheduler in Windows Task Scheduler
+REM
+REM Daily downloads include:
+REM   1. NSE F&O (Futures & Options)
+REM   2. NSE CM (Cash/Equity Segment)
+REM   3. BSE F&O (Futures & Options)
+REM   4. BSE Equity Historical Data
+REM   5. FII/DII Data (Foreign & Domestic Investor Flows)
+REM   6. Excel Workbook Build
 
 echo ===================================================================
 echo Exchange Data Download Scheduler - Windows Setup
