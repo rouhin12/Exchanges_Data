@@ -605,10 +605,17 @@
       }
 
       // Separate by segment type
-      const byIndexFutures = {}, byIndexOptions = {}, byStockFutures = {}, byStockOptions = {};
+      const byCash = {}, byIndexFutures = {}, byIndexOptions = {}, byStockFutures = {}, byStockOptions = {};
       
       rows.forEach((row) => {
         const key = row.exchange;
+        
+        // Cash Segment
+        if ((row.cash_turnover_bn || 0) > 0) {
+          if (!byCash[key]) byCash[key] = { trading_days: row.trading_days, total_turnover: 0, total_volume: 0 };
+          byCash[key].total_turnover += row.cash_turnover_bn || 0;
+          byCash[key].total_volume += row.cash_volume || 0;
+        }
         
         // Index Futures
         if ((row.index_futures_volume || 0) > 0) {
@@ -637,6 +644,16 @@
           byStockOptions[key].total_contracts += row.equity_options_volume || 0;
         }
       });
+
+      // Render Cash Segment table
+      if (Object.keys(byCash).length > 0) {
+        const title = document.createElement("div");
+        title.className = "segment-title";
+        title.textContent = "Cash Segment";
+        container.appendChild(title);
+        const table = renderCashTable(byCash);
+        container.appendChild(table);
+      }
 
       // Render Index Futures table
       if (Object.keys(byIndexFutures).length > 0) {
@@ -680,6 +697,65 @@
 
       // Fetch quarterly data for charts
       fetchQuarterlyData();
+    }
+
+    function renderCashTable(byExchange) {
+      const table = document.createElement("table");
+      table.className = "summary-table";
+      
+      let totalTO = 0;
+      Object.values(byExchange).forEach(d => totalTO += d.total_turnover);
+
+      const nseTO = byExchange["NSE"]?.total_turnover || 0;
+      const bseTO = byExchange["BSE"]?.total_turnover || 0;
+      const nseVolume = byExchange["NSE"]?.total_volume || 0;
+      const bseVolume = byExchange["BSE"]?.total_volume || 0;
+      const nseDays = byExchange["NSE"]?.trading_days || 1;
+      const bseDays = byExchange["BSE"]?.trading_days || 1;
+      
+      // Calculate market share
+      const nseMarketShare = totalTO > 0 ? (nseTO / totalTO * 100) : 0;
+      const bseMarketShare = totalTO > 0 ? (bseTO / totalTO * 100) : 0;
+
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>NSE</th>
+            <th>BSE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Trading Days</td>
+            <td>${formatInt(nseDays)}</td>
+            <td>${formatInt(bseDays)}</td>
+          </tr>
+          <tr>
+            <td>Total Turnover (Rs bn)</td>
+            <td>${formatNumber(nseTO)}</td>
+            <td>${formatNumber(bseTO)}</td>
+          </tr>
+          <tr>
+            <td>Market Share (%)</td>
+            <td style="font-weight: 600; color: #2563eb;">${formatNumber(nseMarketShare)}%</td>
+            <td style="font-weight: 600; color: #2563eb;">${formatNumber(bseMarketShare)}%</td>
+          </tr>
+          <tr>
+            <td>Avg Daily Turnover (Rs bn)</td>
+            <td>${formatNumber(nseTO / nseDays)}</td>
+            <td>${formatNumber(bseTO / bseDays)}</td>
+          </tr>
+          ${nseVolume > 0 || bseVolume > 0 ? `
+          <tr>
+            <td>Total Volume</td>
+            <td>${formatInt(nseVolume)}</td>
+            <td>${formatInt(bseVolume)}</td>
+          </tr>
+          ` : ''}
+        </tbody>
+      `;
+      return table;
     }
 
     function renderDerivativesTable(byExchange) {

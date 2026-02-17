@@ -15,7 +15,7 @@ import pandas as pd
 BASE_DIR = Path(__file__).resolve().parents[1]
 WEB_DIR = BASE_DIR / "web"
 
-NSE_CASH_FILE = BASE_DIR / "NSE" / "nse_daily.xlsx"
+NSE_CASH_FILE = BASE_DIR / "NSE" / "Cash segment" / "nse_daily.xlsx"
 BSE_CASH_FILE = BASE_DIR / "BSE" / "bse_daily.xlsx"
 NSE_FNO_FILE = BASE_DIR / "NSE" / "FnO" / "nse_fno_consolidated.xlsx"
 BSE_FNO_FILE = BASE_DIR / "BSE" / "FnO" / "bse_fno_consolidated.xlsx"
