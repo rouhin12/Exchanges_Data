@@ -183,8 +183,10 @@ def aggregate_exchange(
         io_notional_cols = ["Index Options - Notional Turnover (₹ Crores)"]
         io_premium_cols = ["Index Options - Premium Turnover (₹ Crores)"]
         eo_notional_cols = ["Stock Options - Notional Turnover (₹ Crores)"]
+        eo_premium_cols = ["Stock Options - Premium Turnover (₹ Crores)"]
         idx_fut_volume_col = "Index Futures - No. Of Contracts"
         eq_fut_volume_col = "Stock Futures - No. Of Contracts"
+        idx_opt_volume_col = "Index Options - No. Of Contracts"
         eq_opt_volume_col = "Stock Options - No. Of Contracts"
     else:
         cash_df = bse_cash
@@ -199,8 +201,10 @@ def aggregate_exchange(
         io_notional_cols = ["Index Options - Notional Turnover (₹ Cr)"]
         io_premium_cols = ["Index Options - Premium Turnover (₹ Cr)"]
         eo_notional_cols = ["Stock Options - Notional Turnover (₹ Cr)"]
+        eo_premium_cols = ["Stock Options - Premium Turnover (₹ Cr)"]
         idx_fut_volume_col = "Index Futures - Volume (Shares/Contracts)"
         eq_fut_volume_col = "Stock Futures - Volume (Shares/Contracts)"
+        idx_opt_volume_col = "Index Options - Volume (Shares/Contracts)"
         eq_opt_volume_col = "Stock Options - Volume (Shares/Contracts)"
 
     cash_grouped = pd.Series(dtype=float)
@@ -224,7 +228,7 @@ def aggregate_exchange(
         fno_df = filter_dates(fno_df, fno_date_col, start, end)
         if not fno_df.empty:
             fno_df["Date"] = pd.to_datetime(fno_df[fno_date_col], errors="coerce")
-            for col in fut_turnover_cols + io_notional_cols + io_premium_cols + eo_notional_cols:
+            for col in fut_turnover_cols + io_notional_cols + io_premium_cols + eo_notional_cols + eo_premium_cols:
                 if col in fno_df.columns:
                     fno_df[col] = to_numeric(fno_df[col])
             fno_df["Period"] = period_label(agg, fno_df["Date"])
@@ -233,16 +237,19 @@ def aggregate_exchange(
             io_notional_cols_existing = [c for c in io_notional_cols if c in fno_df.columns]
             io_premium_cols_existing = [c for c in io_premium_cols if c in fno_df.columns]
             eo_notional_cols_existing = [c for c in eo_notional_cols if c in fno_df.columns]
+            eo_premium_cols_existing = [c for c in eo_premium_cols if c in fno_df.columns]
 
             futures_turnover = fno_df[fut_turnover_cols_existing].sum(axis=1) if fut_turnover_cols_existing else pd.Series(0, index=fno_df.index)
             io_notional = fno_df[io_notional_cols_existing].sum(axis=1) if io_notional_cols_existing else pd.Series(0, index=fno_df.index)
             io_premium = fno_df[io_premium_cols_existing].sum(axis=1) if io_premium_cols_existing else pd.Series(0, index=fno_df.index)
             eo_notional = fno_df[eo_notional_cols_existing].sum(axis=1) if eo_notional_cols_existing else pd.Series(0, index=fno_df.index)
+            eo_premium = fno_df[eo_premium_cols_existing].sum(axis=1) if eo_premium_cols_existing else pd.Series(0, index=fno_df.index)
 
-            idx_fut_volume = get_numeric_series(fno_df, idx_fut_volume_col)
-            eq_fut_volume = get_numeric_series(fno_df, eq_fut_volume_col)
-            eq_opt_volume = get_numeric_series(fno_df, eq_opt_volume_col)
-            total_contracts = idx_fut_volume + eq_fut_volume + eq_opt_volume
+            idx_fut_volume = get_numeric_series(fno_df, idx_fut_volume_col).fillna(0)
+            eq_fut_volume = get_numeric_series(fno_df, eq_fut_volume_col).fillna(0)
+            idx_opt_volume = get_numeric_series(fno_df, idx_opt_volume_col).fillna(0)
+            eq_opt_volume = get_numeric_series(fno_df, eq_opt_volume_col).fillna(0)
+            total_contracts = idx_fut_volume + eq_fut_volume + idx_opt_volume + eq_opt_volume
 
             metrics_df = pd.DataFrame({
                 "Period": fno_df["Period"],
@@ -250,8 +257,10 @@ def aggregate_exchange(
                 "index_options_notional": io_notional,
                 "index_options_premium": io_premium,
                 "equity_options_notional": eo_notional,
+                "equity_options_premium": eo_premium,
                 "index_futures_volume": idx_fut_volume,
                 "equity_futures_volume": eq_fut_volume,
+                "index_options_volume": idx_opt_volume,
                 "equity_options_volume": eq_opt_volume,
                 "total_contracts": total_contracts,
             })
@@ -282,8 +291,10 @@ def aggregate_exchange(
             io_notional_val = float(row.get("index_options_notional", 0)) / 100.0
             io_premium_val = float(row.get("index_options_premium", 0)) / 100.0
             eo_notional_val = float(row.get("equity_options_notional", 0)) / 100.0
+            eo_premium_val = float(row.get("equity_options_premium", 0)) / 100.0
             idx_fut_vol_val = float(row.get("index_futures_volume", 0))
             eq_fut_vol_val = float(row.get("equity_futures_volume", 0))
+            idx_opt_vol_val = float(row.get("index_options_volume", 0))
             eq_opt_vol_val = float(row.get("equity_options_volume", 0))
             total_contracts_val = float(row.get("total_contracts", 0))
         else:
@@ -291,8 +302,10 @@ def aggregate_exchange(
             io_notional_val = 0.0
             io_premium_val = 0.0
             eo_notional_val = 0.0
+            eo_premium_val = 0.0
             idx_fut_vol_val = 0.0
             eq_fut_vol_val = 0.0
+            idx_opt_vol_val = 0.0
             eq_opt_vol_val = 0.0
             total_contracts_val = 0.0
 
@@ -301,6 +314,7 @@ def aggregate_exchange(
         avg_io_notional = io_notional_val / days if days else 0.0
         avg_io_premium = io_premium_val / days if days else 0.0
         avg_eo_notional = eo_notional_val / days if days else 0.0
+        avg_eo_premium = eo_premium_val / days if days else 0.0
         avg_cash_volume = cash_vol_val / days if days else 0.0
         avg_contracts = total_contracts_val / days if days else 0.0
 
@@ -315,8 +329,10 @@ def aggregate_exchange(
             "index_options_notional_bn": round(io_notional_val, 2),
             "index_options_premium_bn": round(io_premium_val, 2),
             "equity_options_notional_bn": round(eo_notional_val, 2),
+            "equity_options_premium_bn": round(eo_premium_val, 2),
             "index_futures_volume": round(idx_fut_vol_val, 2),
             "equity_futures_volume": round(eq_fut_vol_val, 2),
+            "index_options_volume": round(idx_opt_vol_val, 2),
             "equity_options_volume": round(eq_opt_vol_val, 2),
             "total_contracts": round(total_contracts_val, 2),
             "avg_cash_turnover_bn": round(avg_cash_turnover, 2),
@@ -324,6 +340,7 @@ def aggregate_exchange(
             "avg_index_options_notional_bn": round(avg_io_notional, 2),
             "avg_index_options_premium_bn": round(avg_io_premium, 2),
             "avg_equity_options_notional_bn": round(avg_eo_notional, 2),
+            "avg_equity_options_premium_bn": round(avg_eo_premium, 2),
             "avg_cash_volume": round(avg_cash_volume, 2),
             "avg_contracts": round(avg_contracts, 2),
         })

@@ -420,17 +420,25 @@
           <table id="dataTable">
             <thead>
               <tr>
-                <th>Period</th>
-                <th>Exchange</th>
-                <th>Trading Days</th>
-                <th>Cash Turnover (Rs bn)</th>
-                <th>Cash Volume</th>
-                <th>Futures Turnover (Rs bn)</th>
-                <th>Index Options Notional (Rs bn)</th>
-                <th>Equity Options Notional (Rs bn)</th>
-                <th>Total Contracts</th>
-                <th>Avg Daily Turnover (Rs bn)</th>
-                <th>Avg Contracts/Day</th>
+                <th>Dates</th>
+                <th>Trading days</th>
+                <th>Cash Turnover TO</th>
+                <th>Cash Avg Daily TO</th>
+                <th>Index Options Premium TO</th>
+                <th>Index Options Premium Avg Daily TO</th>
+                <th>Stock Options Premium TO</th>
+                <th>Stock Options Premium Avg Daily TO</th>
+                <th>Index Options Notional TO</th>
+                <th>Index Options Notional Avg Daily TO</th>
+                <th>Stock Options Notional TO</th>
+                <th>Stock Options Notional Avg Daily TO</th>
+                <th>Futures TO (Stock + Index)</th>
+                <th>Futures Average Daily TO (Stock + Index)</th>
+                <th>Index options total contracts</th>
+                <th>Stock options total contracts</th>
+                <th>Index Futures total contracts</th>
+                <th>Stock Futures total contracts</th>
+                <th>Total contracts (F&O)</th>
               </tr>
             </thead>
             <tbody id="tableBody"></tbody>
@@ -1062,25 +1070,32 @@
       tableBody.innerHTML = "";
       if (!rows.length) {
         const row = document.createElement("tr");
-        row.innerHTML = `<td colspan="11">No data found for the selected range.</td>`;
+        row.innerHTML = `<td colspan="19">No data found for the selected range.</td>`;
         tableBody.appendChild(row);
         return;
       }
       rows.forEach((item) => {
         const row = document.createElement("tr");
-        const totalTO = (item.cash_turnover_bn || 0) + (item.futures_turnover_bn || 0);
         row.innerHTML = `
           <td>${item.period}</td>
-          <td>${item.exchange}</td>
           <td>${formatInt(item.trading_days)}</td>
           <td>${formatNumber(item.cash_turnover_bn)}</td>
-          <td>${formatNumber(item.cash_volume)}</td>
-          <td>${formatNumber(item.futures_turnover_bn)}</td>
-          <td>${formatNumber(item.index_options_notional_bn)}</td>
-          <td>${formatNumber(item.equity_options_notional_bn)}</td>
-          <td>${formatNumber(item.total_contracts)}</td>
           <td>${formatNumber(item.avg_cash_turnover_bn)}</td>
-          <td>${formatNumber(item.avg_contracts)}</td>
+          <td>${formatNumber(item.index_options_premium_bn)}</td>
+          <td>${formatNumber(item.avg_index_options_premium_bn)}</td>
+          <td>${formatNumber(item.equity_options_premium_bn)}</td>
+          <td>${formatNumber(item.avg_equity_options_premium_bn)}</td>
+          <td>${formatNumber(item.index_options_notional_bn)}</td>
+          <td>${formatNumber(item.avg_index_options_notional_bn)}</td>
+          <td>${formatNumber(item.equity_options_notional_bn)}</td>
+          <td>${formatNumber(item.avg_equity_options_notional_bn)}</td>
+          <td>${formatNumber(item.futures_turnover_bn)}</td>
+          <td>${formatNumber(item.avg_futures_turnover_bn)}</td>
+          <td>${formatNumber(item.index_options_volume)}</td>
+          <td>${formatNumber(item.equity_options_volume)}</td>
+          <td>${formatNumber(item.index_futures_volume)}</td>
+          <td>${formatNumber(item.equity_futures_volume)}</td>
+          <td>${formatNumber(item.total_contracts)}</td>
         `;
         tableBody.appendChild(row);
       });

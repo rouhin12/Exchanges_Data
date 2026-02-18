@@ -1,0 +1,122 @@
+2026-02-18 09:04:08,702 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-18 09:04:08,703 | INFO     | ======================================================================
+2026-02-18 09:04:08,703 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-18 09:04:08,703 | INFO     | Time: 2026-02-18 09:04:08
+2026-02-18 09:04:08,703 | INFO     | ======================================================================
+2026-02-18 09:04:08,703 | INFO     | 
+>> Starting NSE downloads...
+2026-02-18 09:04:08,704 | INFO     | Starting: NSE F&O Daily Data
+2026-02-18 09:05:14,418 | INFO     |   ======================================================================
+2026-02-18 09:05:14,418 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-02-18 09:05:14,420 | INFO     |   Months: Jan-2026 to Feb-2026
+2026-02-18 09:05:14,420 | INFO     |   Output: D:\Rouhin\Exchanges Data\NSE\FnO
+2026-02-18 09:05:14,420 | INFO     |   ======================================================================
+2026-02-18 09:05:14,420 | INFO     |   
+2026-02-18 09:05:14,420 | INFO     |   Opening NSE F&O page...
+2026-02-18 09:05:14,420 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-02-18 09:05:14,421 | INFO     |   
+2026-02-18 09:05:14,421 | INFO     |   Jan-2026... [OK] 20 days
+2026-02-18 09:05:14,421 | INFO     |   Feb-2026... [OK] 13 days
+2026-02-18 09:05:14,421 | INFO     |   
+2026-02-18 09:05:14,421 | INFO     |   ======================================================================
+2026-02-18 09:05:14,421 | INFO     |   [OK] Download Complete! Total days downloaded: 33
+2026-02-18 09:05:14,421 | INFO     |   ======================================================================
+2026-02-18 09:05:14,422 | INFO     | [OK] Completed: NSE F&O Daily Data
+2026-02-18 09:05:14,422 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-18 09:05:17,288 | INFO     |   Processing 2026-01...
+2026-02-18 09:05:17,288 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-01)
+2026-02-18 09:05:17,288 | INFO     |   Processing 2026-02...
+2026-02-18 09:05:17,288 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-02)
+2026-02-18 09:05:17,289 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-02-18 09:05:17,289 | INFO     | 
+>> Starting BSE downloads...
+2026-02-18 09:05:17,289 | INFO     | Starting: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-18 09:06:45,130 | INFO     | [OK] Completed: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-18 09:06:45,130 | INFO     | Starting: BSE Historical Equity Data
+2026-02-18 09:07:06,471 | INFO     |   Processing 2026-01...
+2026-02-18 09:07:06,472 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily.xlsx (2026-01)
+2026-02-18 09:07:06,472 | INFO     |   Processing 2026-02...
+2026-02-18 09:07:06,472 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily.xlsx (2026-02)
+2026-02-18 09:07:06,472 | INFO     | [OK] Completed: BSE Historical Equity Data
+2026-02-18 09:07:06,472 | INFO     | 
+>> Downloading FII/DII data...
+2026-02-18 09:07:06,472 | INFO     | Starting: FII/DII Data from Moneycontrol
+2026-02-18 09:07:06,639 | ERROR    | [X] Failed: FII/DII Data from Moneycontrol
+2026-02-18 09:07:06,639 | ERROR    |   Traceback (most recent call last):
+2026-02-18 09:07:06,639 | ERROR    |     File "D:\Rouhin\Exchanges Data\FII_DII\fii_dii_download.py", line 4, in <module>
+2026-02-18 09:07:06,639 | ERROR    |       import requests
+2026-02-18 09:07:06,640 | ERROR    |   ModuleNotFoundError: No module named 'requests'
+2026-02-18 09:07:06,640 | INFO     | Skipping Excel Workbook (script not found)
+2026-02-18 09:07:06,640 | INFO     | 
+======================================================================
+2026-02-18 09:07:06,640 | INFO     | SUMMARY
+2026-02-18 09:07:06,640 | INFO     | ======================================================================
+2026-02-18 09:07:06,640 | INFO     |   NSE F&O: [OK]
+2026-02-18 09:07:06,640 | INFO     |   NSE CM: [OK]
+2026-02-18 09:07:06,641 | INFO     |   BSE F&O: [OK]
+2026-02-18 09:07:06,641 | INFO     |   BSE Equity: [OK]
+2026-02-18 09:07:06,641 | INFO     |   FII/DII Data: [FAILED]
+2026-02-18 09:07:06,641 | INFO     | 
+Total: 4/5 successful
+2026-02-18 09:07:06,641 | INFO     | Duration: 177 seconds
+2026-02-18 09:07:06,642 | INFO     | ======================================================================
+
+2026-02-18 09:08:13,889 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-02-18 09:08:13,889 | INFO     | ======================================================================
+2026-02-18 09:08:13,889 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-02-18 09:08:13,889 | INFO     | Time: 2026-02-18 09:08:13
+2026-02-18 09:08:13,889 | INFO     | ======================================================================
+2026-02-18 09:08:13,889 | INFO     | 
+>> Starting NSE downloads...
+2026-02-18 09:08:13,889 | INFO     | Starting: NSE F&O Daily Data
+2026-02-18 09:08:14,025 | ERROR    | [X] Failed: NSE F&O Daily Data
+2026-02-18 09:08:14,025 | ERROR    |   Traceback (most recent call last):
+2026-02-18 09:08:14,025 | ERROR    |     File "D:\Rouhin\Exchanges Data\NSE\nse_fno_download.py", line 27, in <module>
+2026-02-18 09:08:14,025 | ERROR    |       from selenium import webdriver
+2026-02-18 09:08:14,025 | ERROR    |   ModuleNotFoundError: No module named 'selenium'
+2026-02-18 09:08:14,025 | INFO     | Starting: NSE CM Segment Daily Data
+2026-02-18 09:08:17,264 | INFO     |   Processing 2026-01...
+2026-02-18 09:08:17,265 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-01)
+2026-02-18 09:08:17,265 | INFO     |   Processing 2026-02...
+2026-02-18 09:08:17,265 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-02)
+2026-02-18 09:08:17,265 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-02-18 09:08:17,265 | INFO     | 
+>> Starting BSE downloads...
+2026-02-18 09:08:17,265 | INFO     | Starting: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-18 09:08:17,400 | ERROR    | [X] Failed: BSE F&O Data (Consolidated - All Derivatives)
+2026-02-18 09:08:17,400 | ERROR    |   Traceback (most recent call last):
+2026-02-18 09:08:17,400 | ERROR    |     File "D:\Rouhin\Exchanges Data\BSE\bse_fno_consolidated_download.py", line 32, in <module>
+2026-02-18 09:08:17,400 | ERROR    |       from selenium import webdriver
+2026-02-18 09:08:17,400 | ERROR    |   ModuleNotFoundError: No module named 'selenium'
+2026-02-18 09:08:17,400 | INFO     | Starting: BSE Historical Equity Data
+2026-02-18 09:08:17,936 | ERROR    | [X] Failed: BSE Historical Equity Data
+2026-02-18 09:08:17,936 | ERROR    |   Traceback (most recent call last):
+2026-02-18 09:08:17,936 | ERROR    |     File "D:\Rouhin\Exchanges Data\BSE\bse_historical_equity_download.py", line 7, in <module>
+2026-02-18 09:08:17,936 | ERROR    |       from selenium import webdriver
+2026-02-18 09:08:17,936 | ERROR    |   ModuleNotFoundError: No module named 'selenium'
+2026-02-18 09:08:17,936 | INFO     | 
+>> Downloading FII/DII data...
+2026-02-18 09:08:17,936 | INFO     | Starting: FII/DII Data from Moneycontrol
+2026-02-18 09:08:19,882 | INFO     |   Downloading FII/DII data from Moneycontrol...
+2026-02-18 09:08:19,882 | INFO     |   OK: Downloaded 13 rows of FII/DII data
+2026-02-18 09:08:19,882 | INFO     |   OK: Saved to D:\Rouhin\Exchanges Data\FII_DII\fii_dii_data.xlsx
+2026-02-18 09:08:19,882 | INFO     |      Total records: 13
+2026-02-18 09:08:19,882 | INFO     |      Date range: 2026-02-01 to 2026-02-17
+2026-02-18 09:08:19,882 | INFO     | [OK] Completed: FII/DII Data from Moneycontrol
+2026-02-18 09:08:19,882 | INFO     | Skipping Excel Workbook (script not found)
+2026-02-18 09:08:19,882 | INFO     | 
+======================================================================
+2026-02-18 09:08:19,882 | INFO     | SUMMARY
+2026-02-18 09:08:19,882 | INFO     | ======================================================================
+2026-02-18 09:08:19,882 | INFO     |   NSE F&O: [FAILED]
+2026-02-18 09:08:19,882 | INFO     |   NSE CM: [OK]
+2026-02-18 09:08:19,882 | INFO     |   BSE F&O: [FAILED]
+2026-02-18 09:08:19,883 | INFO     |   BSE Equity: [FAILED]
+2026-02-18 09:08:19,883 | INFO     |   FII/DII Data: [OK]
+2026-02-18 09:08:19,883 | INFO     | 
+Total: 2/5 successful
+2026-02-18 09:08:19,883 | INFO     | Duration: 5 seconds
+2026-02-18 09:08:19,883 | INFO     | ======================================================================
+
