@@ -429,7 +429,19 @@
         <button class="active" id="viewSummary">Summary</button>
         <button id="viewTable">Detailed Table</button>
         <button id="viewFiiDii">FII/DII</button>
+        <button id="viewComparison">Comparison</button>
       </div>
+      <!-- Comparison View -->
+      <div class="summary-section" id="comparisonView">
+        <div class="actions" id="comparisonActions" style="margin-bottom: 16px;">
+          <button class="btn secondary" id="btnMonthVsLastYear">Current Month vs Last Year</button>
+          <button class="btn secondary" id="btnYtdYoy">YTD vs YTD Last Year</button>
+        </div>
+        <div class="scroll">
+          <div id="comparisonTableContainer"></div>
+        </div>
+      </div>
+  
 
       <!-- Summary View -->
       <div class="summary-section active" id="summaryView">
@@ -518,6 +530,236 @@
   </div>
 
   <script>
+    function getTodayISO() {
+      const today = new Date();
+      return today.toISOString().slice(0, 10);
+    }
+    function getCurrentMonthRange() {
+      const today = new Date();
+      const from = new Date(today.getFullYear(), today.getMonth(), 1);
+      return { from, to: today };
+    }
+    function getYtdRange() {
+      const today = new Date();
+      const from = new Date(today.getFullYear(), 0, 1);
+      return { from, to: today };
+    }
+    function setComparisonRange(from, to) {
+      document.getElementById("fromDate").value = from.toISOString().slice(0, 10);
+      document.getElementById("toDate").value = to.toISOString().slice(0, 10);
+    }
+    function getPrevYearRange(from, to) {
+      const prevFrom = new Date(from);
+      const prevTo = new Date(to);
+      prevFrom.setFullYear(prevFrom.getFullYear() - 1);
+      prevTo.setFullYear(prevTo.getFullYear() - 1);
+      return { prevFrom, prevTo };
+    }
+
+    // Patch fetchComparisonData to cap dates for yearly aggregation
+    async function fetchComparisonData() {
+      const agg = document.getElementById("agg").value;
+      let fromDate = document.getElementById("fromDate").value;
+      let toDate = document.getElementById("toDate").value;
+      const exchange = document.getElementById("exchange").value;
+      const segment = document.getElementById("segment").value;
+
+      let from = new Date(fromDate);
+      let to = new Date(toDate);
+      let { prevFrom, prevTo } = getPrevYearRange(from, to);
+
+      const today = new Date();
+      if (agg === "yearly") {
+        if (to.getFullYear() === today.getFullYear()) {
+          to = today;
+        }
+        const prevToday = new Date(today);
+        prevToday.setFullYear(today.getFullYear() - 1);
+        if (prevTo.getFullYear() === prevToday.getFullYear()) {
+          prevTo = prevToday;
+        }
+      }
+
+      fromDate = from.toISOString().slice(0, 10);
+      toDate = to.toISOString().slice(0, 10);
+      const prevFromStr = prevFrom.toISOString().slice(0, 10);
+      const prevToStr = prevTo.toISOString().slice(0, 10);
+
+      const paramsCurrent = new URLSearchParams({ agg, from: fromDate, to: toDate, exchange, segment });
+      const paramsPrev = new URLSearchParams({ agg, from: prevFromStr, to: prevToStr, exchange, segment });
+      const urlCurrent = `/api/summary?${paramsCurrent.toString()}`;
+      const urlPrev = `/api/summary?${paramsPrev.toString()}`;
+
+      document.getElementById("comparisonTableContainer").innerHTML = "<div>Loading comparison data...</div>";
+      try {
+        const [respCurrent, respPrev] = await Promise.all([
+          fetch(urlCurrent),
+          fetch(urlPrev)
+        ]);
+        if (!respCurrent.ok || !respPrev.ok) throw new Error("Failed to fetch data");
+        const [dataCurrent, dataPrev] = await Promise.all([
+          respCurrent.json(),
+          respPrev.json()
+        ]);
+        renderComparisonTable(dataCurrent.rows || [], dataPrev.rows || [], from, to, prevFrom, prevTo);
+      } catch (e) {
+        document.getElementById("comparisonTableContainer").innerHTML = `<div>Error loading comparison data: ${e.message}</div>`;
+      }
+    }
+
+    // Patch renderComparisonTable to accept date ranges
+    function renderComparisonTable(currentRows, prevRows, from, to, prevFrom, prevTo) {
+      // Aggregate by exchange
+      function sumByExchange(rows, keys) {
+        const result = { BSE: {}, NSE: {} };
+        ["BSE", "NSE"].forEach(ex => {
+          keys.forEach(k => result[ex][k] = 0);
+        });
+        rows.forEach(r => {
+          const ex = r.exchange;
+          if (!result[ex]) return;
+          keys.forEach(k => {
+            result[ex][k] += parseFloat(r[k]) || 0;
+          });
+        });
+        return result;
+      }
+      const keys = [
+        "cash_turnover_bn",
+        "avg_cash_turnover_bn",
+        "index_options_premium_bn",
+        "avg_index_options_premium_bn",
+        "equity_options_premium_bn",
+        "avg_equity_options_premium_bn",
+        "index_options_notional_bn",
+        "avg_index_options_notional_bn",
+        "equity_options_notional_bn",
+        "avg_equity_options_notional_bn",
+        "futures_turnover_bn",
+        "avg_futures_turnover_bn",
+        "index_options_volume",
+        "equity_options_volume",
+        "index_futures_volume",
+        "equity_futures_volume",
+        "total_contracts"
+      ];
+      const labels = {
+        cash_turnover_bn: "Cash Turnover (Rs bn)",
+        avg_cash_turnover_bn: "Cash Avg Daily TO",
+        index_options_premium_bn: "Index Options Premium TO",
+        avg_index_options_premium_bn: "Index Options Premium Avg Daily TO",
+        equity_options_premium_bn: "Stock Options Premium TO",
+        avg_equity_options_premium_bn: "Stock Options Premium Avg Daily TO",
+        index_options_notional_bn: "Index Options Notional TO",
+        avg_index_options_notional_bn: "Index Options Notional Avg Daily TO",
+        equity_options_notional_bn: "Stock Options Notional TO",
+        avg_equity_options_notional_bn: "Stock Options Notional Avg Daily TO",
+        futures_turnover_bn: "Futures TO (Stock + Index)",
+        avg_futures_turnover_bn: "Futures Avg Daily TO (Stock + Index)",
+        index_options_volume: "Index Options Total Contracts",
+        equity_options_volume: "Stock Options Total Contracts",
+        index_futures_volume: "Index Futures Total Contracts",
+        equity_futures_volume: "Stock Futures Total Contracts",
+        total_contracts: "Total Contracts (F&O)"
+      };
+      if ((!currentRows || currentRows.length === 0) && (!prevRows || prevRows.length === 0)) {
+        document.getElementById("comparisonTableContainer").innerHTML = '<div style="padding:32px;text-align:center;color:#888;">No data available for the selected and previous year range.</div>';
+        return;
+      }
+      if (!currentRows || currentRows.length === 0) {
+        document.getElementById("comparisonTableContainer").innerHTML = '<div style="padding:32px;text-align:center;color:#888;">No data available for the selected date range.</div>';
+        return;
+      }
+      if (!prevRows || prevRows.length === 0) {
+        document.getElementById("comparisonTableContainer").innerHTML = '<div style="padding:32px;text-align:center;color:#888;">No data available for the previous year range.</div>';
+        return;
+      }
+      const thisRange = `${from.toISOString().slice(0,10)} to ${to.toISOString().slice(0,10)}`;
+      const prevRange = `${prevFrom.toISOString().slice(0,10)} to ${prevTo.toISOString().slice(0,10)}`;
+      const prev = sumByExchange(prevRows, keys);
+      const curr = sumByExchange(currentRows, keys);
+      let html = `<table class=\"summary-table\">
+        <thead>
+          <tr>
+            <th rowspan=2>Metric</th>
+            <th colspan=3>BSE</th>
+            <th colspan=3>NSE</th>
+          </tr>
+          <tr>
+            <th>${prevRange}</th>
+            <th>${thisRange}</th>
+            <th>% Change</th>
+            <th>${prevRange}</th>
+            <th>${thisRange}</th>
+            <th>% Change</th>
+          </tr>
+        </thead>
+        <tbody>`;
+      keys.forEach(k => {
+        // BSE
+        const prevBSE = prev.BSE[k];
+        const currBSE = curr.BSE[k];
+        let pctBSE = "-";
+        if (Math.abs(prevBSE) > 1e-8) {
+          pctBSE = ((currBSE - prevBSE) / Math.abs(prevBSE) * 100).toFixed(2) + "%";
+        } else if (Math.abs(currBSE) > 1e-8) {
+          pctBSE = "∞";
+        }
+        // NSE
+        const prevNSE = prev.NSE[k];
+        const currNSE = curr.NSE[k];
+        let pctNSE = "-";
+        if (Math.abs(prevNSE) > 1e-8) {
+          pctNSE = ((currNSE - prevNSE) / Math.abs(prevNSE) * 100).toFixed(2) + "%";
+        } else if (Math.abs(currNSE) > 1e-8) {
+          pctNSE = "∞";
+        }
+        html += `<tr>
+          <td>${labels[k]}</td>
+          <td style=\"text-align:right;\">${formatNumber(prevBSE)}</td>
+          <td style=\"text-align:right;\">${formatNumber(currBSE)}</td>
+          <td style=\"text-align:right; font-weight:600; color:${pctBSE.startsWith('-') ? '#e74c3c' : '#2ecc71'};\">${pctBSE}</td>
+          <td style=\"text-align:right;\">${formatNumber(prevNSE)}</td>
+          <td style=\"text-align:right;\">${formatNumber(currNSE)}</td>
+          <td style=\"text-align:right; font-weight:600; color:${pctNSE.startsWith('-') ? '#e74c3c' : '#2ecc71'};\">${pctNSE}</td>
+        </tr>`;
+      });
+      html += `</tbody></table>`;
+      document.getElementById("comparisonTableContainer").innerHTML = html;
+    }
+
+    // Add Comparison tab toggle
+    const viewComparisonBtn = document.createElement("button");
+    viewComparisonBtn.id = "viewComparison";
+    viewComparisonBtn.textContent = "Comparison";
+    viewComparisonBtn.className = "";
+    document.querySelector(".view-toggle").appendChild(viewComparisonBtn);
+    const comparisonView = document.getElementById("comparisonView");
+    viewComparisonBtn.addEventListener("click", () => {
+      summaryView.classList.remove("active");
+      tableView.classList.remove("active");
+      fiiDiiView.classList.remove("active");
+      comparisonView.classList.add("active");
+      viewSummaryBtn.classList.remove("active");
+      viewTableBtn.classList.remove("active");
+      viewFiiDiiBtn.classList.remove("active");
+      viewComparisonBtn.classList.add("active");
+      fetchComparisonData();
+    });
+
+    // Add event listeners for comparison buttons
+    document.getElementById("btnMonthVsLastYear").addEventListener("click", () => {
+      const { from, to } = getCurrentMonthRange();
+      setComparisonRange(from, to);
+      document.getElementById("agg").value = "daily";
+      fetchComparisonData();
+    });
+    document.getElementById("btnYtdYoy").addEventListener("click", () => {
+      const { from, to } = getYtdRange();
+      setComparisonRange(from, to);
+      document.getElementById("agg").value = "daily";
+      fetchComparisonData();
+    });
     const tableBody = document.getElementById("tableBody");
     const statusEl = document.getElementById("status");
     const viewSummaryBtn = document.getElementById("viewSummary");
