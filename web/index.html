@@ -678,19 +678,28 @@
       const prevRange = `${prevFrom.toISOString().slice(0,10)} to ${prevTo.toISOString().slice(0,10)}`;
       const prev = sumByExchange(prevRows, keys);
       const curr = sumByExchange(currentRows, keys);
-      let html = `<table class=\"summary-table\">
+      let html = `<table class="summary-table" style="table-layout:fixed;">
+        <colgroup>
+          <col style="width:30%;word-break:break-word;white-space:normal;" />
+          <col style="width:13%;word-break:break-word;white-space:normal;" />
+          <col style="width:13%;word-break:break-word;white-space:normal;" />
+          <col style="width:11.66%;" />
+          <col style="width:13%;word-break:break-word;white-space:normal;" />
+          <col style="width:13%;word-break:break-word;white-space:normal;" />
+          <col style="width:11.66%;" />
+        </colgroup>
         <thead>
           <tr>
-            <th rowspan=2>Metric</th>
+            <th rowspan=2 style="width:30%;word-break:break-word;white-space:normal;">Metric</th>
             <th colspan=3>BSE</th>
             <th colspan=3>NSE</th>
           </tr>
           <tr>
-            <th>${prevRange}</th>
-            <th>${thisRange}</th>
+            <th style="word-break:break-word;white-space:normal;">${prevRange}</th>
+            <th style="word-break:break-word;white-space:normal;">${thisRange}</th>
             <th>% Change</th>
-            <th>${prevRange}</th>
-            <th>${thisRange}</th>
+            <th style="word-break:break-word;white-space:normal;">${prevRange}</th>
+            <th style="word-break:break-word;white-space:normal;">${thisRange}</th>
             <th>% Change</th>
           </tr>
         </thead>
@@ -715,7 +724,7 @@
           pctNSE = "∞";
         }
         html += `<tr>
-          <td>${labels[k]}</td>
+          <td style="word-break:break-word;white-space:normal;">${labels[k]}</td>
           <td style=\"text-align:right;\">${formatNumber(prevBSE)}</td>
           <td style=\"text-align:right;\">${formatNumber(currBSE)}</td>
           <td style=\"text-align:right; font-weight:600; color:${pctBSE.startsWith('-') ? '#e74c3c' : '#2ecc71'};\">${pctBSE}</td>
@@ -728,12 +737,8 @@
       document.getElementById("comparisonTableContainer").innerHTML = html;
     }
 
-    // Add Comparison tab toggle
-    const viewComparisonBtn = document.createElement("button");
-    viewComparisonBtn.id = "viewComparison";
-    viewComparisonBtn.textContent = "Comparison";
-    viewComparisonBtn.className = "";
-    document.querySelector(".view-toggle").appendChild(viewComparisonBtn);
+    // Comparison tab toggle (use existing button)
+    const viewComparisonBtn = document.getElementById("viewComparison");
     const comparisonView = document.getElementById("comparisonView");
     viewComparisonBtn.addEventListener("click", () => {
       summaryView.classList.remove("active");
