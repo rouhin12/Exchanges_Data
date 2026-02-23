@@ -615,16 +615,33 @@
         ["BSE", "NSE"].forEach(ex => {
           keys.forEach(k => result[ex][k] = 0);
         });
+        ["BSE", "NSE"].forEach(ex => {
+          // Trading days: sum for all rows in the period
+          const exRows = rows.filter(r => r.exchange === ex);
+          result[ex]["trading_days"] = exRows.reduce((acc, r) => acc + (parseInt(r.trading_days) || 0), 0);
+        });
         rows.forEach(r => {
           const ex = r.exchange;
           if (!result[ex]) return;
           keys.forEach(k => {
+            if (k === "trading_days") return; // already handled
             result[ex][k] += parseFloat(r[k]) || 0;
           });
+        });
+        // Fix average calculations
+        ["BSE", "NSE"].forEach(ex => {
+          const days = result[ex]["trading_days"] || 1;
+          result[ex]["avg_cash_turnover_bn"] = days > 0 ? result[ex]["cash_turnover_bn"] / days : 0;
+          result[ex]["avg_index_options_premium_bn"] = days > 0 ? result[ex]["index_options_premium_bn"] / days : 0;
+          result[ex]["avg_equity_options_premium_bn"] = days > 0 ? result[ex]["equity_options_premium_bn"] / days : 0;
+          result[ex]["avg_index_options_notional_bn"] = days > 0 ? result[ex]["index_options_notional_bn"] / days : 0;
+          result[ex]["avg_equity_options_notional_bn"] = days > 0 ? result[ex]["equity_options_notional_bn"] / days : 0;
+          result[ex]["avg_futures_turnover_bn"] = days > 0 ? result[ex]["futures_turnover_bn"] / days : 0;
         });
         return result;
       }
       const keys = [
+        "trading_days",
         "cash_turnover_bn",
         "avg_cash_turnover_bn",
         "index_options_premium_bn",
@@ -644,6 +661,7 @@
         "total_contracts"
       ];
       const labels = {
+        trading_days: "Trading Days",
         cash_turnover_bn: "Cash Turnover (Rs bn)",
         avg_cash_turnover_bn: "Cash Avg Daily TO",
         index_options_premium_bn: "Index Options Premium TO",
