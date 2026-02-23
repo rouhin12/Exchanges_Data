@@ -757,19 +757,7 @@
     const comparisonView = document.getElementById("comparisonView");
     viewComparisonBtn.addEventListener("click", () => toggleView("comparison"));
 
-    // Add event listeners for comparison buttons
-    document.getElementById("btnMonthVsLastYear").addEventListener("click", () => {
-      const { from, to } = getCurrentMonthRange();
-      setComparisonRange(from, to);
-      document.getElementById("agg").value = "daily";
-      fetchComparisonData();
-    });
-    document.getElementById("btnYtdYoy").addEventListener("click", () => {
-      const { from, to } = getYtdRange();
-      setComparisonRange(from, to);
-      document.getElementById("agg").value = "daily";
-      fetchComparisonData();
-    });
+    // Comparison quick range buttons removed
     const tableBody = document.getElementById("tableBody");
     const statusEl = document.getElementById("status");
     const viewSummaryBtn = document.getElementById("viewSummary");
