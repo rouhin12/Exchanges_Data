@@ -433,10 +433,7 @@
       </div>
       <!-- Comparison View -->
       <div class="summary-section" id="comparisonView">
-        <div class="actions" id="comparisonActions" style="margin-bottom: 16px;">
-          <button class="btn secondary" id="btnMonthVsLastYear">Current Month vs Last Year</button>
-          <button class="btn secondary" id="btnYtdYoy">YTD vs YTD Last Year</button>
-        </div>
+        <!-- Comparison actions removed -->
         <div class="scroll">
           <div id="comparisonTableContainer"></div>
         </div>
@@ -758,17 +755,7 @@
     // Comparison tab toggle (use existing button)
     const viewComparisonBtn = document.getElementById("viewComparison");
     const comparisonView = document.getElementById("comparisonView");
-    viewComparisonBtn.addEventListener("click", () => {
-      summaryView.classList.remove("active");
-      tableView.classList.remove("active");
-      fiiDiiView.classList.remove("active");
-      comparisonView.classList.add("active");
-      viewSummaryBtn.classList.remove("active");
-      viewTableBtn.classList.remove("active");
-      viewFiiDiiBtn.classList.remove("active");
-      viewComparisonBtn.classList.add("active");
-      fetchComparisonData();
-    });
+    viewComparisonBtn.addEventListener("click", () => toggleView("comparison"));
 
     // Add event listeners for comparison buttons
     document.getElementById("btnMonthVsLastYear").addEventListener("click", () => {
@@ -793,28 +780,29 @@
     const fiiDiiView = document.getElementById("fiiDiiView");
 
     function toggleView(view) {
+      // Hide all views
+      summaryView.classList.remove("active");
+      tableView.classList.remove("active");
+      fiiDiiView.classList.remove("active");
+      comparisonView.classList.remove("active");
+      viewSummaryBtn.classList.remove("active");
+      viewTableBtn.classList.remove("active");
+      viewFiiDiiBtn.classList.remove("active");
+      viewComparisonBtn.classList.remove("active");
       if (view === "summary") {
         summaryView.classList.add("active");
-        tableView.classList.remove("active");
-        fiiDiiView.classList.remove("active");
         viewSummaryBtn.classList.add("active");
-        viewTableBtn.classList.remove("active");
-        viewFiiDiiBtn.classList.remove("active");
       } else if (view === "table") {
         tableView.classList.add("active");
-        summaryView.classList.remove("active");
-        fiiDiiView.classList.remove("active");
         viewTableBtn.classList.add("active");
-        viewSummaryBtn.classList.remove("active");
-        viewFiiDiiBtn.classList.remove("active");
       } else if (view === "fii-dii") {
         fiiDiiView.classList.add("active");
-        summaryView.classList.remove("active");
-        tableView.classList.remove("active");
         viewFiiDiiBtn.classList.add("active");
-        viewSummaryBtn.classList.remove("active");
-        viewTableBtn.classList.remove("active");
         fetchFiiDiiData();
+      } else if (view === "comparison") {
+        comparisonView.classList.add("active");
+        viewComparisonBtn.classList.add("active");
+        fetchComparisonData();
       }
     }
 
