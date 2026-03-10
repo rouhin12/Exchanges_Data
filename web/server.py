@@ -4,9 +4,12 @@
 from __future__ import annotations
 
 import json
+import math
 from datetime import datetime, timedelta
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+import subprocess
+import sys
 from urllib.parse import parse_qs, urlparse
 
 import pandas as pd
@@ -32,16 +35,37 @@ _data_cache = {
 
 
 def to_numeric(series: pd.Series) -> pd.Series:
-    return pd.to_numeric(
+    """Safely convert series to numeric, handling invalid values."""
+    numeric = pd.to_numeric(
         series.astype(str).str.replace(",", "", regex=False).str.replace(" ", "", regex=False),
         errors="coerce",
     )
+    # Replace NaN with 0 for safety, then clip negative values (data should be non-negative)
+    numeric = numeric.fillna(0).clip(lower=0)
+    return numeric
 
 
 def get_numeric_series(df: pd.DataFrame, column: str) -> pd.Series:
+    """Get numeric column from dataframe with sanitization."""
     if column in df.columns:
         return to_numeric(df[column])
     return pd.Series(0, index=df.index, dtype=float)
+
+
+def sanitize_row(row: dict) -> dict:
+    """Sanitize a single row dict: ensure all numeric values are valid floats."""
+    sanitized = {}
+    for key, value in row.items():
+        if isinstance(value, (int, float)):
+            # Ensure no NaN, inf, or negative values
+            val = float(value)
+            if pd.isna(val) or math.isinf(val) or val < 0:
+                sanitized[key] = 0.0
+            else:
+                sanitized[key] = round(val, 2) if isinstance(value, float) else val
+        else:
+            sanitized[key] = value
+    return sanitized
 
 
 def load_excel_file(path: Path) -> pd.DataFrame:
@@ -275,28 +299,36 @@ def aggregate_exchange(
         period_start = pd.Timestamp(period)
         period_label_text = format_period_label(agg, period_start)
 
+        # Determine trading days based on segment requested
         if segment == "cash":
-            days = int(cash_days.get(period, 0))
+            days = int(cash_days.get(period, 0)) or 1
         elif segment == "fno":
-            days = int(fno_days.get(period, 0))
+            days = int(fno_days.get(period, 0)) or 1
         else:
-            days = int(max(cash_days.get(period, 0), fno_days.get(period, 0)))
+            # For "both": use max of available days (they should be same for trading days)
+            cash_day_count = int(cash_days.get(period, 0)) or 0
+            fno_day_count = int(fno_days.get(period, 0)) or 0
+            days = max(cash_day_count, fno_day_count) or 1
 
-        cash_val = float(cash_grouped.get(period, 0)) / 100.0
-        cash_vol_val = float(cash_volume_grouped.get(period, 0))
+        # Get turnover values and ensure they're valid
+        cash_val = float(cash_grouped.get(period, 0) or 0) / 100.0
+        cash_val = max(0, cash_val)  # Ensure non-negative
+        cash_vol_val = float(cash_volume_grouped.get(period, 0) or 0)
+        cash_vol_val = max(0, cash_vol_val)
 
+        # Get F&O values
         if period in fno_grouped.index:
             row = fno_grouped.loc[period]
-            futures_val = float(row.get("futures_turnover", 0)) / 100.0
-            io_notional_val = float(row.get("index_options_notional", 0)) / 100.0
-            io_premium_val = float(row.get("index_options_premium", 0)) / 100.0
-            eo_notional_val = float(row.get("equity_options_notional", 0)) / 100.0
-            eo_premium_val = float(row.get("equity_options_premium", 0)) / 100.0
-            idx_fut_vol_val = float(row.get("index_futures_volume", 0))
-            eq_fut_vol_val = float(row.get("equity_futures_volume", 0))
-            idx_opt_vol_val = float(row.get("index_options_volume", 0))
-            eq_opt_vol_val = float(row.get("equity_options_volume", 0))
-            total_contracts_val = float(row.get("total_contracts", 0))
+            futures_val = float(row.get("futures_turnover", 0) or 0) / 100.0
+            io_notional_val = float(row.get("index_options_notional", 0) or 0) / 100.0
+            io_premium_val = float(row.get("index_options_premium", 0) or 0) / 100.0
+            eo_notional_val = float(row.get("equity_options_notional", 0) or 0) / 100.0
+            eo_premium_val = float(row.get("equity_options_premium", 0) or 0) / 100.0
+            idx_fut_vol_val = float(row.get("index_futures_volume", 0) or 0)
+            eq_fut_vol_val = float(row.get("equity_futures_volume", 0) or 0)
+            idx_opt_vol_val = float(row.get("index_options_volume", 0) or 0)
+            eq_opt_vol_val = float(row.get("equity_options_volume", 0) or 0)
+            total_contracts_val = float(row.get("total_contracts", 0) or 0)
         else:
             futures_val = 0.0
             io_notional_val = 0.0
@@ -309,16 +341,27 @@ def aggregate_exchange(
             eq_opt_vol_val = 0.0
             total_contracts_val = 0.0
 
-        avg_cash_turnover = cash_val / days if days else 0.0
-        avg_futures_turnover = futures_val / days if days else 0.0
-        avg_io_notional = io_notional_val / days if days else 0.0
-        avg_io_premium = io_premium_val / days if days else 0.0
-        avg_eo_notional = eo_notional_val / days if days else 0.0
-        avg_eo_premium = eo_premium_val / days if days else 0.0
-        avg_cash_volume = cash_vol_val / days if days else 0.0
-        avg_contracts = total_contracts_val / days if days else 0.0
+        # Ensure all values are non-negative
+        future_vals = [futures_val, io_notional_val, io_premium_val, eo_notional_val, 
+                       eo_premium_val, idx_fut_vol_val, eq_fut_vol_val, idx_opt_vol_val, 
+                       eq_opt_vol_val, total_contracts_val]
+        for i in range(len(future_vals)):
+            future_vals[i] = max(0, future_vals[i])
+        (futures_val, io_notional_val, io_premium_val, eo_notional_val, 
+         eo_premium_val, idx_fut_vol_val, eq_fut_vol_val, idx_opt_vol_val, 
+         eq_opt_vol_val, total_contracts_val) = future_vals
 
-        rows.append({
+        # Calculate averages with proper division handling
+        avg_cash_turnover = cash_val / days if days > 0 else 0.0
+        avg_futures_turnover = futures_val / days if days > 0 else 0.0
+        avg_io_notional = io_notional_val / days if days > 0 else 0.0
+        avg_io_premium = io_premium_val / days if days > 0 else 0.0
+        avg_eo_notional = eo_notional_val / days if days > 0 else 0.0
+        avg_eo_premium = eo_premium_val / days if days > 0 else 0.0
+        avg_cash_volume = cash_vol_val / days if days > 0 else 0.0
+        avg_contracts = total_contracts_val / days if days > 0 else 0.0
+
+        row_dict = {
             "period": period_label_text,
             "period_sort": period_start.strftime("%Y-%m-%d"),
             "exchange": exchange,
@@ -343,7 +386,11 @@ def aggregate_exchange(
             "avg_equity_options_premium_bn": round(avg_eo_premium, 2),
             "avg_cash_volume": round(avg_cash_volume, 2),
             "avg_contracts": round(avg_contracts, 2),
-        })
+        }
+        
+        # Sanitize before adding
+        row_dict = sanitize_row(row_dict)
+        rows.append(row_dict)
 
     return rows
 
@@ -471,6 +518,10 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 def main() -> None:
+    if "--streamlit" in sys.argv:
+        app_path = WEB_DIR / "app.py"
+        raise SystemExit(subprocess.call([sys.executable, "-m", "streamlit", "run", str(app_path)]))
+
     server = ThreadingHTTPServer(("", 8000), Handler)
     server.RequestHandlerClass.directory = str(WEB_DIR)
     print("Server running at http://localhost:8000")

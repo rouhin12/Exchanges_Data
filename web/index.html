@@ -388,6 +388,7 @@
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
             <option value="yearly">Yearly</option>
+            <option value="entire">Entire Period</option>
           </select>
         </div>
         <div class="field" style="grid-column: span 3;">
@@ -553,7 +554,7 @@
       return { prevFrom, prevTo };
     }
 
-    // Patch fetchComparisonData to cap dates for yearly aggregation
+    // Patch fetchComparisonData to cap dates for comparison
     async function fetchComparisonData() {
       const agg = document.getElementById("agg").value;
       let fromDate = document.getElementById("fromDate").value;
@@ -565,16 +566,16 @@
       let to = new Date(toDate);
       let { prevFrom, prevTo } = getPrevYearRange(from, to);
 
+      // Cap to today's date if the selected range extends into the future
       const today = new Date();
-      if (agg === "yearly") {
-        if (to.getFullYear() === today.getFullYear()) {
-          to = today;
-        }
-        const prevToday = new Date(today);
-        prevToday.setFullYear(today.getFullYear() - 1);
-        if (prevTo.getFullYear() === prevToday.getFullYear()) {
-          prevTo = prevToday;
-        }
+      if (to > today) {
+        to = new Date(today);
+      }
+      // Cap previous year range to the equivalent date last year
+      const todayLastYear = new Date(today);
+      todayLastYear.setFullYear(today.getFullYear() - 1);
+      if (prevTo > todayLastYear) {
+        prevTo = new Date(todayLastYear);
       }
 
       fromDate = from.toISOString().slice(0, 10);
@@ -582,8 +583,9 @@
       const prevFromStr = prevFrom.toISOString().slice(0, 10);
       const prevToStr = prevTo.toISOString().slice(0, 10);
 
-      const paramsCurrent = new URLSearchParams({ agg, from: fromDate, to: toDate, exchange, segment });
-      const paramsPrev = new URLSearchParams({ agg, from: prevFromStr, to: prevToStr, exchange, segment });
+      // Always use daily aggregation for accurate comparison totals and trading day counts
+      const paramsCurrent = new URLSearchParams({ agg: "daily", from: fromDate, to: toDate, exchange, segment });
+      const paramsPrev = new URLSearchParams({ agg: "daily", from: prevFromStr, to: prevToStr, exchange, segment });
       const urlCurrent = `/api/summary?${paramsCurrent.toString()}`;
       const urlPrev = `/api/summary?${paramsPrev.toString()}`;
 
@@ -609,23 +611,24 @@
       // Aggregate by exchange
       function sumByExchange(rows, keys) {
         const result = { BSE: {}, NSE: {} };
+        // Initialize all keys to 0
         ["BSE", "NSE"].forEach(ex => {
           keys.forEach(k => result[ex][k] = 0);
         });
-        ["BSE", "NSE"].forEach(ex => {
-          // Trading days: sum for all rows in the period
-          const exRows = rows.filter(r => r.exchange === ex);
-          result[ex]["trading_days"] = exRows.reduce((acc, r) => acc + (parseInt(r.trading_days) || 0), 0);
-        });
+        
+        // Sum values for each exchange
         rows.forEach(r => {
           const ex = r.exchange;
           if (!result[ex]) return;
+          
           keys.forEach(k => {
-            if (k === "trading_days") return; // already handled
+            // Skip average fields - we'll calculate them fresh
+            if (k.startsWith("avg_")) return;
             result[ex][k] += parseFloat(r[k]) || 0;
           });
         });
-        // Fix average calculations
+        
+        // Calculate averages from the totals
         ["BSE", "NSE"].forEach(ex => {
           const days = result[ex]["trading_days"] || 1;
           result[ex]["avg_cash_turnover_bn"] = days > 0 ? result[ex]["cash_turnover_bn"] / days : 0;
