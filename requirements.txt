@@ -1,5 +1,5 @@
 pandas
 openpyxl
-streamlit==1.19.0
+streamlit
 altair==4.2.2
 standard-imghdr
