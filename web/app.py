@@ -280,29 +280,32 @@ def main() -> None:
         with c2:
             st.date_input("To", key="to_date")
 
-        b1, b2, b3, b4 = st.columns(4)
-        with b1:
+        # Quick range buttons: two per row
+        row1_col1, row1_col2 = st.columns(2)
+        with row1_col1:
             st.button(
                 "Last 4w",
                 use_container_width=True,
                 on_click=_set_preset_range,
                 kwargs={"kind": "last4w", "anchor": latest_info_date},
             )
-        with b2:
+        with row1_col2:
             st.button(
                 "YTD",
                 use_container_width=True,
                 on_click=_set_preset_range,
                 kwargs={"kind": "ytd", "anchor": latest_info_date},
             )
-        with b3:
+
+        row2_col1, row2_col2 = st.columns(2)
+        with row2_col1:
             st.button(
                 "Last FY",
                 use_container_width=True,
                 on_click=_set_preset_range,
                 kwargs={"kind": "lastfy", "anchor": latest_info_date},
             )
-        with b4:
+        with row2_col2:
             st.button(
                 "FY YTD",
                 use_container_width=True,
