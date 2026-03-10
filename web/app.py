@@ -196,7 +196,7 @@ def _segment_tables(df: pd.DataFrame) -> dict[str, pd.DataFrame]:
 
     tables: dict[str, pd.DataFrame] = {}
 
-    cash = by_exchange("cash_turnover_bn", extra={"Total Volume": "cash_volume"})
+    cash = by_exchange("cash_turnover_bn", extra={"Total Volume (bn shares)": "cash_volume"})
     if not cash.empty:
         tables["Cash Segment"] = cash
 
@@ -319,9 +319,6 @@ def main() -> None:
                 kwargs={"kind": "fyytd", "anchor": latest_info_date},
             )
 
-        st.divider()
-        chart_segment = st.selectbox("Chart segment", ["cash", "futures", "options", "futures-options"], index=3)
-
     from_d: date = st.session_state["from_date"]
     to_d: date = st.session_state["to_date"]
 
@@ -346,6 +343,12 @@ def main() -> None:
                     st.dataframe(tdf, width="stretch", hide_index=True)
 
             st.subheader("Trend (last 8 quarters)")
+            chart_segment = st.selectbox(
+                "Chart segment",
+                ["cash", "futures", "options", "futures-options"],
+                index=3,
+                key="chart_segment",
+            )
             qdf = _summary_df("quarterly", None, None, exchange, segment)
             if qdf.empty:
                 st.info("No quarterly data available.")
@@ -509,7 +512,22 @@ def main() -> None:
                 "dii_net",
             ]
             cols = [c for c in cols if c in fdf.columns]
-            st.dataframe(fdf[cols], width="stretch", hide_index=True)
+
+            display_names = {
+                "date": "Date",
+                "fii_gross_purchase": "FII Gross Purchase (Rs bn)",
+                "fii_gross_sales": "FII Gross Sales (Rs bn)",
+                "fii_net": "FII Net (Rs bn)",
+                "dii_gross_purchase": "DII Gross Purchase (Rs bn)",
+                "dii_gross_sales": "DII Gross Sales (Rs bn)",
+                "dii_net": "DII Net (Rs bn)",
+            }
+
+            st.dataframe(
+                fdf[cols].rename(columns=display_names),
+                width="stretch",
+                hide_index=True,
+            )
 
     with tab_comparison:
         st.subheader("Selected range vs previous year (daily totals)")

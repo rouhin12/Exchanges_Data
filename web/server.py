@@ -243,6 +243,14 @@ def aggregate_exchange(
             cash_df["Period"] = period_label(agg, cash_df["Date"])
             cash_grouped = cash_df.groupby("Period")["__cash_value"].sum().rename("cash_turnover")
             cash_volume_grouped = cash_df.groupby("Period")["__cash_volume"].sum().rename("cash_volume")
+
+            # Normalise traded volume to billions of shares:
+            # - NSE source is in lakhs (1e5)  -> divide by 1e4 to get billions.
+            # - BSE source is in crores (1e7) -> divide by 1e2 to get billions.
+            if exchange == "NSE":
+                cash_volume_grouped = cash_volume_grouped / 1e4
+            else:  # BSE
+                cash_volume_grouped = cash_volume_grouped / 1e2
             cash_days = cash_df.groupby("Period")["Date"].nunique().rename("cash_days")
 
     fno_grouped = pd.DataFrame()
@@ -452,12 +460,13 @@ def get_fii_dii_data(start: str | None, end: str | None) -> dict[str, object]:
         rows.append({
             "date": row["Date"].strftime("%d/%m/%Y"),
             "date_sort": row["Date"].strftime("%Y-%m-%d"),
-            "fii_gross_purchase": round(float(row["FII_Gross_Purchase"]), 2),
-            "fii_gross_sales": round(float(row["FII_Gross_Sales"]), 2),
-            "fii_net": round(float(row["FII_Net"]), 2),
-            "dii_gross_purchase": round(float(row["DII_Gross_Purchase"]), 2),
-            "dii_gross_sales": round(float(row["DII_Gross_Sales"]), 2),
-            "dii_net": round(float(row["DII_Net"]), 2),
+            # Convert from Rs crores to Rs billion
+            "fii_gross_purchase": round(float(row["FII_Gross_Purchase"]) / 100.0, 2),
+            "fii_gross_sales": round(float(row["FII_Gross_Sales"]) / 100.0, 2),
+            "fii_net": round(float(row["FII_Net"]) / 100.0, 2),
+            "dii_gross_purchase": round(float(row["DII_Gross_Purchase"]) / 100.0, 2),
+            "dii_gross_sales": round(float(row["DII_Gross_Sales"]) / 100.0, 2),
+            "dii_net": round(float(row["DII_Net"]) / 100.0, 2),
         })
     
     rows = sorted(rows, key=lambda r: r["date_sort"], reverse=True)
