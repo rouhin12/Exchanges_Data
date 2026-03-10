@@ -149,6 +149,12 @@ def format_period_label(agg: str, period_start: pd.Timestamp) -> str:
     else:
         period_end = period_start + pd.DateOffset(years=1) - pd.Timedelta(days=1)
 
+    # Never show dates beyond "today" in labels.
+    today = datetime.today().date()
+    today_ts = pd.Timestamp(today)
+    if period_end > today_ts:
+        period_end = today_ts
+
     start_text = period_start.strftime("%d/%m/%Y")
     end_text = period_end.strftime("%d/%m/%Y")
     return f"{start_text} to {end_text}"
