@@ -337,7 +337,7 @@ def main() -> None:
             else:
                 for title, tdf in tables.items():
                     st.markdown(f"**{title}**")
-                    st.dataframe(tdf, width="stretch")
+                    st.dataframe(tdf)
 
             st.subheader("Trend (last 8 quarters)")
             qdf = _summary_df("quarterly", None, None, exchange, segment)
@@ -419,7 +419,7 @@ def main() -> None:
                             )
                             .properties(height=320, title=f"{ex} - Avg Daily Turnover (Last 8 Quarters)")
                         )
-                        st.altair_chart(chart, width="stretch")
+                        st.altair_chart(chart)
 
     with tab_table:
         if df.empty:
@@ -480,8 +480,7 @@ def main() -> None:
             st.dataframe(
                 df.sort_values(sort_cols, na_position="last")[cols].rename(
                     columns={c: display_names.get(c, c.replace("_", " ").title()) for c in cols}
-                ),
-                width="stretch",
+                )
             )
 
     with tab_fii_dii:
@@ -504,7 +503,7 @@ def main() -> None:
                 "dii_net",
             ]
             cols = [c for c in cols if c in fdf.columns]
-            st.dataframe(fdf[cols], width="stretch")
+            st.dataframe(fdf[cols])
 
     with tab_comparison:
         st.subheader("Selected range vs previous year (daily totals)")
@@ -564,10 +563,10 @@ def main() -> None:
                     return out
 
                 st.markdown("**BSE**")
-                st.dataframe(build_table("BSE"), width="stretch")
+                st.dataframe(build_table("BSE"))
                 st.markdown("---")
                 st.markdown("**NSE**")
-                st.dataframe(build_table("NSE"), width="stretch")
+                st.dataframe(build_table("NSE"))
 
 
 if __name__ == "__main__":
