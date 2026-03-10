@@ -196,15 +196,16 @@ def _segment_tables(df: pd.DataFrame) -> dict[str, pd.DataFrame]:
 
     tables: dict[str, pd.DataFrame] = {}
 
-    cash = by_exchange("cash_turnover_bn", extra={"Total Volume (bn shares)": "cash_volume"})
+    # Cash segment: show only turnover metrics, omit raw volume columns.
+    cash = by_exchange("cash_turnover_bn")
     if not cash.empty:
         tables["Cash Segment"] = cash
 
-    idx_fut = by_exchange("futures_turnover_bn", extra={"Index Futures Contracts": "index_futures_volume"})
+    idx_fut = by_exchange("index_futures_turnover_bn", extra={"Index Futures Contracts": "index_futures_volume"})
     if not idx_fut.empty:
         tables["Index Futures"] = idx_fut
 
-    stk_fut = by_exchange("futures_turnover_bn", extra={"Stock Futures Contracts": "equity_futures_volume"})
+    stk_fut = by_exchange("equity_futures_turnover_bn", extra={"Stock Futures Contracts": "equity_futures_volume"})
     if not stk_fut.empty:
         tables["Stock Futures"] = stk_fut
 
