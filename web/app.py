@@ -106,6 +106,55 @@ def _format_int(x: object) -> str:
     return f"{int(round(v)):,}"
 
 
+def _format_indian_number(x: object, digits: int = 2) -> str:
+    """Format number with Indian-style grouping (e.g. 12,34,56,789.00)."""
+    if x is None:
+        return "-"
+    try:
+        v = float(x)
+    except Exception:
+        return "-"
+    if pd.isna(v):
+        return "-"
+    neg = v < 0
+    v = abs(v)
+    int_part = int(v)
+    frac_part = round(v - int_part, digits) if digits > 0 else 0.0
+    s_int = str(int_part)
+    if len(s_int) > 3:
+        # Last 3 digits
+        last3 = s_int[-3:]
+        rest = s_int[:-3]
+        groups = []
+        while len(rest) > 2:
+            groups.append(rest[-2:])
+            rest = rest[:-2]
+        if rest:
+            groups.append(rest)
+        s_int = ",".join(reversed(groups)) + "," + last3
+    if digits > 0:
+        frac_str = f"{frac_part:.{digits}f}".split(".")[1]
+        out = f"{s_int}.{frac_str}"
+    else:
+        out = s_int
+    return "-" + out if neg else out
+
+
+def _format_df_indian(df: pd.DataFrame) -> pd.DataFrame:
+    """Return a copy of df with numeric columns formatted using Indian commas."""
+    if df.empty:
+        return df
+    out = df.copy()
+    for col in out.columns:
+        if pd.api.types.is_numeric_dtype(out[col]):
+            # Decide digits based on whether column is effectively integer
+            series = out[col]
+            if (series.dropna() == series.dropna().round()).all():
+                out[col] = series.apply(lambda v: _format_indian_number(v, digits=0))
+            else:
+                out[col] = series.apply(lambda v: _format_indian_number(v, digits=2))
+    return out
+
 def _fmt_date(d: date | None) -> str:
     if d is None:
         return ""
@@ -341,7 +390,7 @@ def main() -> None:
             else:
                 for title, tdf in tables.items():
                     st.markdown(f"**{title}**")
-                    st.dataframe(tdf, width="stretch", hide_index=True)
+                    st.dataframe(_format_df_indian(tdf), width="stretch", hide_index=True)
 
             st.subheader("Trend (last 8 quarters)")
             chart_segment = st.selectbox(
@@ -487,14 +536,13 @@ def main() -> None:
             elif "period" in df.columns:
                 sort_cols = ["period", "exchange"]
 
-            st.dataframe(
-                df.sort_values(sort_cols, na_position="last")[cols].rename(columns={c: display_names.get(c, c.replace("_", " ").title()) for c in cols}),
-                width="stretch",
-                hide_index=True,
+            table_df = df.sort_values(sort_cols, na_position="last")[cols].rename(
+                columns={c: display_names.get(c, c.replace("_", " ").title()) for c in cols}
             )
+            st.dataframe(_format_df_indian(table_df), width="stretch", hide_index=True)
 
     with tab_fii_dii:
-        payload = get_fii_dii_data(_to_iso(from_d), _to_iso(to_d))
+        payload = get_fii_dii_data(_to_iso(from_d), _to_iso(to_d), agg)
         rows = payload.get("rows", [])
         if not rows:
             st.info("No FII/DII data for the selected range.")
@@ -524,11 +572,8 @@ def main() -> None:
                 "dii_net": "DII Net (Rs bn)",
             }
 
-            st.dataframe(
-                fdf[cols].rename(columns=display_names),
-                width="stretch",
-                hide_index=True,
-            )
+            fii_df = fdf[cols].rename(columns=display_names)
+            st.dataframe(_format_df_indian(fii_df), width="stretch", hide_index=True)
 
     with tab_comparison:
         st.subheader("Selected range vs previous year (daily totals)")
@@ -588,10 +633,10 @@ def main() -> None:
                     return out
 
                 st.markdown("**BSE**")
-                st.dataframe(build_table("BSE"), width="stretch", hide_index=True)
+                st.dataframe(_format_df_indian(build_table("BSE")), width="stretch", hide_index=True)
                 st.divider()
                 st.markdown("**NSE**")
-                st.dataframe(build_table("NSE"), width="stretch", hide_index=True)
+                st.dataframe(_format_df_indian(build_table("NSE")), width="stretch", hide_index=True)
 
 
 if __name__ == "__main__":

@@ -472,8 +472,12 @@ def build_summary(
     return {"rows": rows}
 
 
-def get_fii_dii_data(start: str | None, end: str | None) -> dict[str, object]:
-    """Get FII/DII data from Excel file, returned in Rs bn."""
+def get_fii_dii_data(start: str | None, end: str | None, agg: str = "daily") -> dict[str, object]:
+    """Get FII/DII data from Excel file, aggregated like the main summary.
+
+    Returns values in Rs bn. `agg` can be "daily", "weekly", "monthly",
+    "quarterly", "yearly", or "entire" (entire period).
+    """
     global _data_cache
 
     if _data_cache["fii_dii"] is None:
@@ -491,12 +495,44 @@ def get_fii_dii_data(start: str | None, end: str | None) -> dict[str, object]:
     if end:
         df = df[df["Date"] <= pd.to_datetime(end)]
 
+    if df.empty:
+        return {"rows": []}
+
+    df = df.copy()
+    df["Date"] = pd.to_datetime(df["Date"])
+
+    if agg == "entire":
+        # Single bucket for the entire period
+        period_start = df["Date"].min().normalize()
+        df["Period"] = period_start
+    elif agg == "daily":
+        df["Period"] = df["Date"].dt.normalize()
+    else:
+        df["Period"] = period_label(agg, df["Date"])
+
+    grouped = df.groupby("Period").agg(
+        {
+            "FII_Gross_Purchase": "sum",
+            "FII_Gross_Sales": "sum",
+            "FII_Net": "sum",
+            "DII_Gross_Purchase": "sum",
+            "DII_Gross_Sales": "sum",
+            "DII_Net": "sum",
+        }
+    )
+
     rows: list[dict[str, object]] = []
-    for _, row in df.iterrows():
+    for period, row in grouped.iterrows():
+        period_start = pd.Timestamp(period)
+        if agg == "daily":
+            label = period_start.strftime("%d/%m/%Y")
+        else:
+            label = format_period_label(agg if agg != "entire" else "yearly", period_start)
+
         rows.append(
             {
-                "date": row["Date"].strftime("%d/%m/%Y"),
-                "date_sort": row["Date"].strftime("%Y-%m-%d"),
+                "date": label,
+                "date_sort": period_start.strftime("%Y-%m-%d"),
                 # Crores -> Rs bn
                 "fii_gross_purchase": round(float(row["FII_Gross_Purchase"]) / 100.0, 2),
                 "fii_gross_sales": round(float(row["FII_Gross_Sales"]) / 100.0, 2),
