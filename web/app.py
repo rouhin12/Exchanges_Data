@@ -313,7 +313,7 @@ def main() -> None:
                 kwargs={"kind": "fyytd", "anchor": latest_info_date},
             )
 
-        st.markdown("---")
+        st.divider()
         chart_segment = st.selectbox("Chart segment", ["cash", "futures", "options", "futures-options"], index=3)
 
     from_d: date = st.session_state["from_date"]
@@ -337,7 +337,7 @@ def main() -> None:
             else:
                 for title, tdf in tables.items():
                     st.markdown(f"**{title}**")
-                    st.dataframe(tdf)
+                    st.dataframe(tdf, width="stretch", hide_index=True)
 
             st.subheader("Trend (last 8 quarters)")
             qdf = _summary_df("quarterly", None, None, exchange, segment)
@@ -419,7 +419,7 @@ def main() -> None:
                             )
                             .properties(height=320, title=f"{ex} - Avg Daily Turnover (Last 8 Quarters)")
                         )
-                        st.altair_chart(chart)
+                        st.altair_chart(chart, width="stretch")
 
     with tab_table:
         if df.empty:
@@ -478,9 +478,9 @@ def main() -> None:
                 sort_cols = ["period", "exchange"]
 
             st.dataframe(
-                df.sort_values(sort_cols, na_position="last")[cols].rename(
-                    columns={c: display_names.get(c, c.replace("_", " ").title()) for c in cols}
-                )
+                df.sort_values(sort_cols, na_position="last")[cols].rename(columns={c: display_names.get(c, c.replace("_", " ").title()) for c in cols}),
+                width="stretch",
+                hide_index=True,
             )
 
     with tab_fii_dii:
@@ -503,7 +503,7 @@ def main() -> None:
                 "dii_net",
             ]
             cols = [c for c in cols if c in fdf.columns]
-            st.dataframe(fdf[cols])
+            st.dataframe(fdf[cols], width="stretch", hide_index=True)
 
     with tab_comparison:
         st.subheader("Selected range vs previous year (daily totals)")
@@ -563,10 +563,10 @@ def main() -> None:
                     return out
 
                 st.markdown("**BSE**")
-                st.dataframe(build_table("BSE"))
-                st.markdown("---")
+                st.dataframe(build_table("BSE"), width="stretch", hide_index=True)
+                st.divider()
                 st.markdown("**NSE**")
-                st.dataframe(build_table("NSE"))
+                st.dataframe(build_table("NSE"), width="stretch", hide_index=True)
 
 
 if __name__ == "__main__":
