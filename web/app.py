@@ -313,9 +313,9 @@ def _pct_change(prev: float, curr: float) -> str:
 
 
 def main() -> None:
-    st.set_page_config(page_title="Exchange Data Viewer", layout="wide")
-    st.title("Exchange Data Viewer")
-    st.caption("Excel-backed dashboard for NSE/BSE cash + derivatives and FII/DII flows.")
+    st.set_page_config(page_title="NSE/BSE Market Dashboard", layout="wide")
+    st.title("NSE/BSE Market Dashboard")
+    st.caption("Interactive view of cash, derivatives, and FII/DII flows.")
 
     today = date.today()
     latest_info_date = _last_market_day(today)
@@ -377,7 +377,9 @@ def main() -> None:
     else:
         df = _summary_df(agg, from_d, to_d, exchange, segment)
 
-    tab_summary, tab_table, tab_fii_dii, tab_comparison = st.tabs(["Summary", "Detailed Table", "FII/DII", "Comparison"])
+    tab_summary, tab_table, tab_fii_dii, tab_comparison = st.tabs(
+        ["Summary", "Detailed Table", "FII/DII Flows", "Exchange Comparison"]
+    )
 
     with tab_summary:
         if df.empty:
@@ -563,13 +565,13 @@ def main() -> None:
             cols = [c for c in cols if c in fdf.columns]
 
             display_names = {
-                "date": "Date",
-                "fii_gross_purchase": "FII Gross Purchase (Rs bn)",
-                "fii_gross_sales": "FII Gross Sales (Rs bn)",
-                "fii_net": "FII Net (Rs bn)",
-                "dii_gross_purchase": "DII Gross Purchase (Rs bn)",
-                "dii_gross_sales": "DII Gross Sales (Rs bn)",
-                "dii_net": "DII Net (Rs bn)",
+                "date": "Period",
+                "fii_gross_purchase": "FII – Gross Buy (Rs bn)",
+                "fii_gross_sales": "FII – Gross Sell (Rs bn)",
+                "fii_net": "FII – Net (Rs bn)",
+                "dii_gross_purchase": "DII – Gross Buy (Rs bn)",
+                "dii_gross_sales": "DII – Gross Sell (Rs bn)",
+                "dii_net": "DII – Net (Rs bn)",
             }
 
             fii_df = fdf[cols].rename(columns=display_names)
