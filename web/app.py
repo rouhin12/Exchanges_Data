@@ -313,7 +313,7 @@ def main() -> None:
                 kwargs={"kind": "fyytd", "anchor": latest_info_date},
             )
 
-        st.divider()
+        st.markdown("---")
         chart_segment = st.selectbox("Chart segment", ["cash", "futures", "options", "futures-options"], index=3)
 
     from_d: date = st.session_state["from_date"]
@@ -564,7 +564,7 @@ def main() -> None:
 
                 st.markdown("**BSE**")
                 st.dataframe(build_table("BSE"), width="stretch", hide_index=True)
-                st.divider()
+                st.markdown("---")
                 st.markdown("**NSE**")
                 st.dataframe(build_table("NSE"), width="stretch", hide_index=True)
 
