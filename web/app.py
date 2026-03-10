@@ -106,6 +106,12 @@ def _format_int(x: object) -> str:
     return f"{int(round(v)):,}"
 
 
+def _fmt_date(d: date | None) -> str:
+    if d is None:
+        return ""
+    return d.strftime("%d/%m/%Y")
+
+
 def _preset_last_4_weeks(anchor: date) -> Range:
     return Range(start=anchor - timedelta(days=28), end=anchor)
 
@@ -554,8 +560,8 @@ def main() -> None:
                         rows_out.append(
                             {
                                 "Metric": metric_labels.get(k, k.replace("_", " ").title()),
-                                f"{previous.start} → {previous.end}": pv,
-                                f"{selected.start} → {selected.end}": cv,
+                                f"{_fmt_date(previous.start)} → {_fmt_date(previous.end)}": pv,
+                                f"{_fmt_date(selected.start)} → {_fmt_date(selected.end)}": cv,
                                 "% Change": _pct_change(pv, cv),
                             }
                         )

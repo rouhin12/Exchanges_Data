@@ -450,7 +450,7 @@ def get_fii_dii_data(start: str | None, end: str | None) -> dict[str, object]:
     rows = []
     for _, row in df.iterrows():
         rows.append({
-            "date": row["Date"].strftime("%d-%b-%Y"),
+            "date": row["Date"].strftime("%d/%m/%Y"),
             "date_sort": row["Date"].strftime("%Y-%m-%d"),
             "fii_gross_purchase": round(float(row["FII_Gross_Purchase"]), 2),
             "fii_gross_sales": round(float(row["FII_Gross_Sales"]), 2),
