@@ -1,0 +1,130 @@
+2026-03-10 13:47:58,098 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-03-10 13:47:58,099 | INFO     | ======================================================================
+2026-03-10 13:47:58,099 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-03-10 13:47:58,099 | INFO     | Time: 2026-03-10 13:47:58
+2026-03-10 13:47:58,100 | INFO     | ======================================================================
+2026-03-10 13:47:58,100 | INFO     | 
+>> Starting NSE downloads...
+2026-03-10 13:47:58,100 | INFO     | Starting: NSE F&O Daily Data
+2026-03-10 13:49:04,540 | INFO     |   ======================================================================
+2026-03-10 13:49:04,540 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-03-10 13:49:04,540 | INFO     |   Months: Feb-2026 to Mar-2026
+2026-03-10 13:49:04,540 | INFO     |   Output: D:\Rouhin\Exchanges Data\NSE\FnO
+2026-03-10 13:49:04,540 | INFO     |   ======================================================================
+2026-03-10 13:49:04,541 | INFO     |   
+2026-03-10 13:49:04,541 | INFO     |   Opening NSE F&O page...
+2026-03-10 13:49:04,541 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-03-10 13:49:04,541 | INFO     |   
+2026-03-10 13:49:04,541 | INFO     |   Feb-2026... [OK] 21 days
+2026-03-10 13:49:04,542 | INFO     |   Mar-2026... [OK] 5 days
+2026-03-10 13:49:04,542 | INFO     |   
+2026-03-10 13:49:04,542 | INFO     |   ======================================================================
+2026-03-10 13:49:04,542 | INFO     |   [OK] Download Complete! Total days downloaded: 26
+2026-03-10 13:49:04,542 | INFO     |   ======================================================================
+2026-03-10 13:49:04,542 | INFO     | [OK] Completed: NSE F&O Daily Data
+2026-03-10 13:49:04,543 | INFO     | Starting: NSE CM Segment Daily Data
+2026-03-10 13:49:08,082 | INFO     |   Processing 2026-02...
+2026-03-10 13:49:08,082 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-02)
+2026-03-10 13:49:08,083 | INFO     |   Processing 2026-03...
+2026-03-10 13:49:08,083 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-03)
+2026-03-10 13:49:08,083 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-03-10 13:49:08,083 | INFO     | 
+>> Starting BSE downloads...
+2026-03-10 13:49:08,083 | INFO     | Starting: BSE F&O Data (Consolidated - All Derivatives)
+2026-03-10 13:50:50,954 | INFO     | [OK] Completed: BSE F&O Data (Consolidated - All Derivatives)
+2026-03-10 13:50:50,954 | INFO     | Starting: BSE Historical Equity Data
+2026-03-10 13:51:16,146 | INFO     |   Processing 2026-02...
+2026-03-10 13:51:16,146 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily.xlsx (2026-02)
+2026-03-10 13:51:16,146 | INFO     |   Processing 2026-03...
+2026-03-10 13:51:16,147 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily.xlsx (2026-03)
+2026-03-10 13:51:16,147 | INFO     | [OK] Completed: BSE Historical Equity Data
+2026-03-10 13:51:16,147 | INFO     | 
+>> Downloading FII/DII data...
+2026-03-10 13:51:16,147 | INFO     | Starting: FII/DII Data from Moneycontrol
+2026-03-10 13:51:20,317 | INFO     |   Downloading FII/DII data from Moneycontrol...
+2026-03-10 13:51:20,317 | INFO     |   OK: Downloaded 5 rows of FII/DII data
+2026-03-10 13:51:20,317 | INFO     |   OK: Saved to D:\Rouhin\Exchanges Data\FII_DII\fii_dii_data.xlsx
+2026-03-10 13:51:20,317 | INFO     |      Total records: 21
+2026-03-10 13:51:20,317 | INFO     |      Date range: 2026-02-01 to 2026-03-09
+2026-03-10 13:51:20,317 | INFO     | [OK] Completed: FII/DII Data from Moneycontrol
+2026-03-10 13:51:20,318 | INFO     | Skipping Excel Workbook (script not found)
+2026-03-10 13:51:20,318 | INFO     | 
+======================================================================
+2026-03-10 13:51:20,318 | INFO     | SUMMARY
+2026-03-10 13:51:20,318 | INFO     | ======================================================================
+2026-03-10 13:51:20,318 | INFO     |   NSE F&O: [OK]
+2026-03-10 13:51:20,319 | INFO     |   NSE CM: [OK]
+2026-03-10 13:51:20,319 | INFO     |   BSE F&O: [OK]
+2026-03-10 13:51:20,319 | INFO     |   BSE Equity: [OK]
+2026-03-10 13:51:20,319 | INFO     |   FII/DII Data: [OK]
+2026-03-10 13:51:20,319 | INFO     | 
+Total: 5/5 successful
+2026-03-10 13:51:20,319 | INFO     | Duration: 202 seconds
+2026-03-10 13:51:20,319 | INFO     | ======================================================================
+
+2026-03-10 13:51:34,987 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-03-10 13:51:34,988 | INFO     | ======================================================================
+2026-03-10 13:51:34,988 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-03-10 13:51:34,988 | INFO     | Time: 2026-03-10 13:51:34
+2026-03-10 13:51:34,988 | INFO     | ======================================================================
+2026-03-10 13:51:34,988 | INFO     | 
+>> Starting NSE downloads...
+2026-03-10 13:51:34,989 | INFO     | Starting: NSE F&O Daily Data
+2026-03-10 13:52:33,015 | INFO     |   ======================================================================
+2026-03-10 13:52:33,016 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-03-10 13:52:33,016 | INFO     |   Months: Feb-2026 to Mar-2026
+2026-03-10 13:52:33,016 | INFO     |   Output: D:\Rouhin\Exchanges Data\NSE\FnO
+2026-03-10 13:52:33,016 | INFO     |   ======================================================================
+2026-03-10 13:52:33,016 | INFO     |   
+2026-03-10 13:52:33,016 | INFO     |   Opening NSE F&O page...
+2026-03-10 13:52:33,017 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-03-10 13:52:33,017 | INFO     |   
+2026-03-10 13:52:33,017 | INFO     |   Feb-2026... [OK] 21 days
+2026-03-10 13:52:33,017 | INFO     |   Mar-2026... [OK] 5 days
+2026-03-10 13:52:33,017 | INFO     |   
+2026-03-10 13:52:33,017 | INFO     |   ======================================================================
+2026-03-10 13:52:33,017 | INFO     |   [OK] Download Complete! Total days downloaded: 26
+2026-03-10 13:52:33,017 | INFO     |   ======================================================================
+2026-03-10 13:52:33,018 | INFO     | [OK] Completed: NSE F&O Daily Data
+2026-03-10 13:52:33,018 | INFO     | Starting: NSE CM Segment Daily Data
+2026-03-10 13:52:35,941 | INFO     |   Processing 2026-02...
+2026-03-10 13:52:35,942 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-02)
+2026-03-10 13:52:35,942 | INFO     |   Processing 2026-03...
+2026-03-10 13:52:35,942 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-03)
+2026-03-10 13:52:35,942 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-03-10 13:52:35,943 | INFO     | 
+>> Starting BSE downloads...
+2026-03-10 13:52:35,943 | INFO     | Starting: BSE F&O Data (Consolidated - All Derivatives)
+2026-03-10 13:53:58,228 | INFO     | [OK] Completed: BSE F&O Data (Consolidated - All Derivatives)
+2026-03-10 13:53:58,228 | INFO     | Starting: BSE Historical Equity Data
+2026-03-10 13:54:25,846 | INFO     |   Processing 2026-02...
+2026-03-10 13:54:25,846 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily.xlsx (2026-02)
+2026-03-10 13:54:25,847 | INFO     |   Processing 2026-03...
+2026-03-10 13:54:25,847 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily.xlsx (2026-03)
+2026-03-10 13:54:25,847 | INFO     | [OK] Completed: BSE Historical Equity Data
+2026-03-10 13:54:25,847 | INFO     | 
+>> Downloading FII/DII data...
+2026-03-10 13:54:25,848 | INFO     | Starting: FII/DII Data from Moneycontrol
+2026-03-10 13:54:28,461 | INFO     |   Downloading FII/DII data from Moneycontrol...
+2026-03-10 13:54:28,461 | INFO     |   OK: Downloaded 5 rows of FII/DII data
+2026-03-10 13:54:28,461 | INFO     |   OK: Saved to D:\Rouhin\Exchanges Data\FII_DII\fii_dii_data.xlsx
+2026-03-10 13:54:28,461 | INFO     |      Total records: 21
+2026-03-10 13:54:28,462 | INFO     |      Date range: 2026-02-01 to 2026-03-09
+2026-03-10 13:54:28,462 | INFO     | [OK] Completed: FII/DII Data from Moneycontrol
+2026-03-10 13:54:28,462 | INFO     | Skipping Excel Workbook (script not found)
+2026-03-10 13:54:28,462 | INFO     | 
+======================================================================
+2026-03-10 13:54:28,462 | INFO     | SUMMARY
+2026-03-10 13:54:28,462 | INFO     | ======================================================================
+2026-03-10 13:54:28,462 | INFO     |   NSE F&O: [OK]
+2026-03-10 13:54:28,462 | INFO     |   NSE CM: [OK]
+2026-03-10 13:54:28,463 | INFO     |   BSE F&O: [OK]
+2026-03-10 13:54:28,463 | INFO     |   BSE Equity: [OK]
+2026-03-10 13:54:28,463 | INFO     |   FII/DII Data: [OK]
+2026-03-10 13:54:28,463 | INFO     | 
+Total: 5/5 successful
+2026-03-10 13:54:28,463 | INFO     | Duration: 173 seconds
+2026-03-10 13:54:28,463 | INFO     | ======================================================================
+

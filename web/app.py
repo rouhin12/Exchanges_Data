@@ -8,7 +8,7 @@ import pandas as pd
 import streamlit as st
 import altair as alt
 
-import server as server_mod
+from server import build_summary, get_fii_dii_data
 
 
 Exchange = Literal["all", "NSE", "BSE"]
@@ -37,7 +37,7 @@ def _df_from_rows(rows: list[dict]) -> pd.DataFrame:
 
 @st.cache_data(show_spinner=False)
 def _summary_df(agg: Agg, start: date | None, end: date | None, exchange: Exchange, segment: Segment) -> pd.DataFrame:
-    payload = server_mod.build_summary(agg, _to_iso(start), _to_iso(end), exchange, segment)
+    payload = build_summary(agg, _to_iso(start), _to_iso(end), exchange, segment)
     return _df_from_rows(payload.get("rows", []))
 
 
@@ -155,16 +155,6 @@ def _last_market_day(today: date) -> date:
     if pd.isna(last):
         return today - timedelta(days=1)
     return last.date()
-
-
-def _reload_data() -> None:
-    # Clear Streamlit cached data
-    st.cache_data.clear()
-    # Clear Excel in-memory cache in server module
-    if hasattr(server_mod, "_data_cache") and isinstance(server_mod._data_cache, dict):
-        for k in list(server_mod._data_cache.keys()):
-            server_mod._data_cache[k] = None
-    st.rerun()
 
 
 def _segment_tables(df: pd.DataFrame) -> dict[str, pd.DataFrame]:
@@ -286,18 +276,15 @@ def main() -> None:
 
     with st.sidebar:
         st.subheader("Filters")
-        st.caption(f"Latest info date: **{latest_info_date.strftime('%d/%m/%Y')}**")
-        st.button("Reload data", on_click=_reload_data, use_container_width=True)
-        st.divider()
         exchange: Exchange = st.selectbox("Exchange", ["all", "NSE", "BSE"], index=0)
         segment: Segment = st.selectbox("Segment", ["both", "cash", "fno"], index=0)
         agg: Agg = st.selectbox("Aggregation", ["daily", "weekly", "monthly", "quarterly", "yearly", "entire"], index=1)
 
         c1, c2 = st.columns(2)
         with c1:
-            st.date_input("From", key="from_date", format="DD/MM/YYYY")
+            st.date_input("From", key="from_date")
         with c2:
-            st.date_input("To", key="to_date", format="DD/MM/YYYY")
+            st.date_input("To", key="to_date")
 
         # Quick range buttons: two per row
         row1_col1, row1_col2 = st.columns(2)
@@ -503,7 +490,7 @@ def main() -> None:
             )
 
     with tab_fii_dii:
-        payload = server_mod.get_fii_dii_data(_to_iso(from_d), _to_iso(to_d))
+        payload = get_fii_dii_data(_to_iso(from_d), _to_iso(to_d))
         rows = payload.get("rows", [])
         if not rows:
             st.info("No FII/DII data for the selected range.")
