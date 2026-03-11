@@ -147,12 +147,28 @@ def _format_df_indian(df: pd.DataFrame) -> pd.DataFrame:
     out = df.copy()
     for col in out.columns:
         if pd.api.types.is_numeric_dtype(out[col]):
-            # Decide digits based on whether column is effectively integer
             series = out[col]
-            if (series.dropna() == series.dropna().round()).all():
-                out[col] = series.apply(lambda v: _format_indian_number(v, digits=0))
-            else:
-                out[col] = series.apply(lambda v: _format_indian_number(v, digits=2))
+
+            # Special rule for market share columns: always 1 decimal place
+            if "market share (%)" in col.lower():
+                out[col] = series.apply(lambda v: _format_indian_number(v, digits=1))
+                continue
+
+            # For all other numeric columns:
+            # - Values >= 1: no decimals
+            # - Values < 1: two decimals
+            def _fmt_value(v: object) -> str:
+                try:
+                    num = float(v)
+                except Exception:
+                    return _format_indian_number(v, digits=2)
+                if pd.isna(num):
+                    return "-"
+                if abs(num) >= 1:
+                    return _format_indian_number(num, digits=0)
+                return _format_indian_number(num, digits=2)
+
+            out[col] = series.apply(_fmt_value)
     return out
 
 def _fmt_date(d: date | None) -> str:
@@ -258,13 +274,14 @@ def _segment_tables(df: pd.DataFrame) -> dict[str, pd.DataFrame]:
     if not stk_fut.empty:
         tables["Stock Futures"] = stk_fut
 
-    idx_opt = by_exchange("index_options_notional_bn", extra={"Index Options Contracts": "index_options_volume"})
+    # Use premium, not notional, for options in the summary
+    idx_opt = by_exchange("index_options_premium_bn", extra={"Index Options Contracts": "index_options_volume"})
     if not idx_opt.empty:
-        tables["Index Options"] = idx_opt
+        tables["Index Options (Premium)"] = idx_opt
 
-    stk_opt = by_exchange("equity_options_notional_bn", extra={"Stock Options Contracts": "equity_options_volume"})
+    stk_opt = by_exchange("equity_options_premium_bn", extra={"Stock Options Contracts": "equity_options_volume"})
     if not stk_opt.empty:
-        tables["Stock Options"] = stk_opt
+        tables["Stock Options (Premium)"] = stk_opt
 
     return tables
 
@@ -492,10 +509,18 @@ def main() -> None:
                 "trading_days": "Trading Days",
                 "cash_turnover_bn": "Cash Turnover (Rs bn)",
                 "avg_cash_turnover_bn": "Cash Avg Daily Turnover (Rs bn)",
+                "cash_market_share": "Cash Market Share (%)",
+                "avg_cash_market_share": "Avg Cash Market Share (%)",
+                "futures_market_share": "Futures Market Share (%)",
+                "avg_futures_market_share": "Avg Futures Market Share (%)",
                 "index_options_premium_bn": "Index Options Premium Turnover (Rs bn)",
                 "avg_index_options_premium_bn": "Index Options Premium Avg Daily (Rs bn)",
+                "index_options_premium_market_share": "Index Options Premium Market Share (%)",
+                "avg_index_options_premium_market_share": "Avg Index Options Premium Market Share (%)",
                 "equity_options_premium_bn": "Stock Options Premium Turnover (Rs bn)",
                 "avg_equity_options_premium_bn": "Stock Options Premium Avg Daily (Rs bn)",
+                "equity_options_premium_market_share": "Stock Options Premium Market Share (%)",
+                "avg_equity_options_premium_market_share": "Avg Stock Options Premium Market Share (%)",
                 "index_options_notional_bn": "Index Options Notional Turnover (Rs bn)",
                 "avg_index_options_notional_bn": "Index Options Notional Avg Daily (Rs bn)",
                 "equity_options_notional_bn": "Stock Options Notional Turnover (Rs bn)",
@@ -509,16 +534,52 @@ def main() -> None:
                 "total_contracts": "Total Contracts (F&O)",
             }
 
+            # Compute market shares per period for each turnover metric
+            df = df.copy()
+            if "period" in df.columns:
+                def _add_market_share(base_col: str, share_col: str, avg_share_col: str) -> None:
+                    if base_col not in df.columns:
+                        return
+                    per_period_total = (
+                        df.groupby("period")[base_col].transform("sum").replace(0, pd.NA)
+                    )
+                    share = (df[base_col] / per_period_total * 100).fillna(0)
+                    df[share_col] = share
+                    df[avg_share_col] = share  # same share for averages
+
+                _add_market_share("cash_turnover_bn", "cash_market_share", "avg_cash_market_share")
+                _add_market_share("futures_turnover_bn", "futures_market_share", "avg_futures_market_share")
+                _add_market_share(
+                    "index_options_premium_bn",
+                    "index_options_premium_market_share",
+                    "avg_index_options_premium_market_share",
+                )
+                _add_market_share(
+                    "equity_options_premium_bn",
+                    "equity_options_premium_market_share",
+                    "avg_equity_options_premium_market_share",
+                )
+
             show_cols = [
                 "period",
                 "exchange",
                 "trading_days",
                 "cash_turnover_bn",
                 "avg_cash_turnover_bn",
+                "cash_market_share",
+                "avg_cash_market_share",
+                "futures_turnover_bn",
+                "avg_futures_turnover_bn",
+                "futures_market_share",
+                "avg_futures_market_share",
                 "index_options_premium_bn",
                 "avg_index_options_premium_bn",
+                "index_options_premium_market_share",
+                "avg_index_options_premium_market_share",
                 "equity_options_premium_bn",
                 "avg_equity_options_premium_bn",
+                "equity_options_premium_market_share",
+                "avg_equity_options_premium_market_share",
                 "index_options_notional_bn",
                 "avg_index_options_notional_bn",
                 "equity_options_notional_bn",
@@ -541,6 +602,8 @@ def main() -> None:
             table_df = df.sort_values(sort_cols, na_position="last")[cols].rename(
                 columns={c: display_names.get(c, c.replace("_", " ").title()) for c in cols}
             )
+            # Safety: ensure no duplicate column names before rendering/downloading
+            table_df = table_df.loc[:, ~table_df.columns.duplicated()]
             st.dataframe(_format_df_indian(table_df), width="stretch", hide_index=True)
 
     with tab_fii_dii:
