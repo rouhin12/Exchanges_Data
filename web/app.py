@@ -171,6 +171,36 @@ def _format_df_indian(df: pd.DataFrame) -> pd.DataFrame:
             out[col] = series.apply(_fmt_value)
     return out
 
+
+def _force_market_share_sum_100(
+    df: pd.DataFrame,
+    share_col: str,
+    group_cols: list[str] | None = None,
+    digits: int = 1,
+) -> pd.DataFrame:
+    """Round market shares and force each group to sum to 100.0."""
+    if df.empty or share_col not in df.columns:
+        return df
+    group_cols = group_cols or []
+    out = df.copy()
+
+    def _fix_group(g: pd.DataFrame) -> pd.DataFrame:
+        s = pd.to_numeric(g[share_col], errors="coerce").fillna(0.0)
+        s_rounded = s.round(digits)
+        diff = round(100.0 - float(s_rounded.sum()), digits)
+        if abs(diff) > 0 and len(g) > 0:
+            idx = s.idxmax()
+            s_rounded.loc[idx] = round(float(s_rounded.loc[idx]) + diff, digits)
+        g[share_col] = s_rounded
+        return g
+
+    if group_cols:
+        out = out.groupby(group_cols, dropna=False, group_keys=False).apply(_fix_group)
+    else:
+        out = _fix_group(out)
+    return out
+
+
 def _fmt_date(d: date | None) -> str:
     if d is None:
         return ""
@@ -243,6 +273,9 @@ def _segment_tables(df: pd.DataFrame) -> dict[str, pd.DataFrame]:
             g["market_share_pct"] = (g[total_col] / total * 100).round(2)
         else:
             g["market_share_pct"] = 0.0
+
+        # Force rounded market share to sum to 100.0
+        g = _force_market_share_sum_100(g, "market_share_pct", group_cols=None, digits=1)
         out = g.rename(
             columns={
                 "exchange": "Exchange",
@@ -352,6 +385,7 @@ def main() -> None:
             st.date_input("From", key="from_date")
         with c2:
             st.date_input("To", key="to_date")
+        st.caption(f"Latest day in data: {_fmt_date(latest_info_date)}")
 
         # Quick range buttons: two per row
         row1_col1, row1_col2 = st.columns(2)
@@ -542,6 +576,12 @@ def main() -> None:
                     )
                     share = (df[base_col] / per_period_total * 100).fillna(0)
                     df[share_col] = share
+                    df[share_col] = _force_market_share_sum_100(
+                        df[["period", share_col]].copy(),
+                        share_col,
+                        group_cols=["period"],
+                        digits=1,
+                    )[share_col]
 
                 _add_market_share("cash_turnover_bn", "cash_market_share")
                 _add_market_share("futures_turnover_bn", "futures_market_share")
