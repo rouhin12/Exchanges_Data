@@ -510,17 +510,14 @@ def main() -> None:
                 "cash_turnover_bn": "Cash Turnover (Rs bn)",
                 "avg_cash_turnover_bn": "Cash Avg Daily Turnover (Rs bn)",
                 "cash_market_share": "Cash Market Share (%)",
-                "avg_cash_market_share": "Avg Cash Market Share (%)",
                 "futures_market_share": "Futures Market Share (%)",
-                "avg_futures_market_share": "Avg Futures Market Share (%)",
                 "index_options_premium_bn": "Index Options Premium Turnover (Rs bn)",
                 "avg_index_options_premium_bn": "Index Options Premium Avg Daily (Rs bn)",
                 "index_options_premium_market_share": "Index Options Premium Market Share (%)",
-                "avg_index_options_premium_market_share": "Avg Index Options Premium Market Share (%)",
                 "equity_options_premium_bn": "Stock Options Premium Turnover (Rs bn)",
                 "avg_equity_options_premium_bn": "Stock Options Premium Avg Daily (Rs bn)",
                 "equity_options_premium_market_share": "Stock Options Premium Market Share (%)",
-                "avg_equity_options_premium_market_share": "Avg Stock Options Premium Market Share (%)",
+                "index_options_notional_market_share": "Index Options Notional Market Share (%)",
                 "index_options_notional_bn": "Index Options Notional Turnover (Rs bn)",
                 "avg_index_options_notional_bn": "Index Options Notional Avg Daily (Rs bn)",
                 "equity_options_notional_bn": "Stock Options Notional Turnover (Rs bn)",
@@ -537,7 +534,7 @@ def main() -> None:
             # Compute market shares per period for each turnover metric
             df = df.copy()
             if "period" in df.columns:
-                def _add_market_share(base_col: str, share_col: str, avg_share_col: str) -> None:
+                def _add_market_share(base_col: str, share_col: str) -> None:
                     if base_col not in df.columns:
                         return
                     per_period_total = (
@@ -545,20 +542,18 @@ def main() -> None:
                     )
                     share = (df[base_col] / per_period_total * 100).fillna(0)
                     df[share_col] = share
-                    df[avg_share_col] = share  # same share for averages
 
-                _add_market_share("cash_turnover_bn", "cash_market_share", "avg_cash_market_share")
-                _add_market_share("futures_turnover_bn", "futures_market_share", "avg_futures_market_share")
+                _add_market_share("cash_turnover_bn", "cash_market_share")
+                _add_market_share("futures_turnover_bn", "futures_market_share")
                 _add_market_share(
                     "index_options_premium_bn",
                     "index_options_premium_market_share",
-                    "avg_index_options_premium_market_share",
                 )
                 _add_market_share(
                     "equity_options_premium_bn",
                     "equity_options_premium_market_share",
-                    "avg_equity_options_premium_market_share",
                 )
+                _add_market_share("index_options_notional_bn", "index_options_notional_market_share")
 
             show_cols = [
                 "period",
@@ -567,25 +562,20 @@ def main() -> None:
                 "cash_turnover_bn",
                 "avg_cash_turnover_bn",
                 "cash_market_share",
-                "avg_cash_market_share",
                 "futures_turnover_bn",
                 "avg_futures_turnover_bn",
                 "futures_market_share",
-                "avg_futures_market_share",
                 "index_options_premium_bn",
                 "avg_index_options_premium_bn",
                 "index_options_premium_market_share",
-                "avg_index_options_premium_market_share",
                 "equity_options_premium_bn",
                 "avg_equity_options_premium_bn",
                 "equity_options_premium_market_share",
-                "avg_equity_options_premium_market_share",
                 "index_options_notional_bn",
                 "avg_index_options_notional_bn",
+                "index_options_notional_market_share",
                 "equity_options_notional_bn",
                 "avg_equity_options_notional_bn",
-                "futures_turnover_bn",
-                "avg_futures_turnover_bn",
                 "index_options_volume",
                 "equity_options_volume",
                 "index_futures_volume",
