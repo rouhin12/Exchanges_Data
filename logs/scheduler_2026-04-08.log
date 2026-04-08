@@ -1,0 +1,150 @@
+2026-04-08 15:54:11,657 | INFO     | TEST MODE: Running all downloads immediately...
+
+2026-04-08 15:54:11,657 | INFO     | ======================================================================
+2026-04-08 15:54:11,657 | INFO     | DAILY DOWNLOAD SCHEDULER
+2026-04-08 15:54:11,657 | INFO     | Time: 2026-04-08 15:54:11
+2026-04-08 15:54:11,657 | INFO     | ======================================================================
+2026-04-08 15:54:11,658 | INFO     | 
+>> Starting NSE downloads...
+2026-04-08 15:54:11,659 | INFO     | Starting: NSE F&O Daily Data
+2026-04-08 15:55:11,291 | INFO     |   ======================================================================
+2026-04-08 15:55:11,292 | INFO     |   NSE F&O Daily Data Downloader (Web Scraper)
+2026-04-08 15:55:11,292 | INFO     |   Months: Mar-2026 to Apr-2026
+2026-04-08 15:55:11,292 | INFO     |   Output: D:\Rouhin\Exchanges Data\NSE\FnO
+2026-04-08 15:55:11,293 | INFO     |   ======================================================================
+2026-04-08 15:55:11,293 | INFO     |   
+2026-04-08 15:55:11,293 | INFO     |   Opening NSE F&O page...
+2026-04-08 15:55:11,294 | INFO     |   Note: Notional turnover will be enabled monthly during downloads
+2026-04-08 15:55:11,294 | INFO     |   
+2026-04-08 15:55:11,294 | INFO     |   Mar-2026... [OK] 19 days
+2026-04-08 15:55:11,294 | INFO     |   Apr-2026... [X] No data
+2026-04-08 15:55:11,294 | INFO     |   
+2026-04-08 15:55:11,295 | INFO     |   ======================================================================
+2026-04-08 15:55:11,295 | INFO     |   [OK] Download Complete! Total days downloaded: 19
+2026-04-08 15:55:11,296 | INFO     |   ======================================================================
+2026-04-08 15:55:11,296 | INFO     | [OK] Completed: NSE F&O Daily Data
+2026-04-08 15:55:11,296 | INFO     | Starting: NSE CM Segment Daily Data
+2026-04-08 15:55:15,380 | INFO     |   Processing 2026-03...
+2026-04-08 15:55:15,380 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-03)
+2026-04-08 15:55:15,380 | INFO     |   Processing 2026-04...
+2026-04-08 15:55:15,381 | INFO     |   Saved: D:\Rouhin\Exchanges Data\NSE\Cash segment\nse_daily.xlsx (2026-04)
+2026-04-08 15:55:15,381 | INFO     | [OK] Completed: NSE CM Segment Daily Data
+2026-04-08 15:55:15,381 | INFO     | 
+>> Starting BSE downloads...
+2026-04-08 15:55:15,385 | INFO     | Starting: BSE F&O Data (Consolidated - All Derivatives)
+2026-04-08 15:56:19,832 | ERROR    | [X] Failed: BSE F&O Data (Consolidated - All Derivatives)
+2026-04-08 15:56:19,833 | ERROR    |   ================================================================================
+2026-04-08 15:56:19,833 | ERROR    |   BSE F&O CONSOLIDATED DOWNLOADER (18-Column NSE-Style Format)
+2026-04-08 15:56:19,834 | ERROR    |   ================================================================================
+2026-04-08 15:56:19,834 | ERROR    |   Date range: 01-Mar-2026 to 30-Apr-2026
+2026-04-08 15:56:19,834 | ERROR    |   [X] Fatal error: Message: session not created: DevToolsActivePort file doesn't exist; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+2026-04-08 15:56:19,834 | ERROR    |   Stacktrace:
+2026-04-08 15:56:19,834 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68db910d5+d8e5]
+2026-04-08 15:56:19,835 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68db91134+d944]
+2026-04-08 15:56:19,835 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68deff7bc+37bfcc]
+2026-04-08 15:56:19,835 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d8f68d9]
+2026-04-08 15:56:19,835 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d8f2a04]
+2026-04-08 15:56:19,836 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d8ef390]
+2026-04-08 15:56:19,836 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d93051e]
+2026-04-08 15:56:19,836 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d92feb6]
+2026-04-08 15:56:19,836 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d8fb1fc]
+2026-04-08 15:56:19,836 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d8fa456]
+2026-04-08 15:56:19,836 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d8fb023]
+2026-04-08 15:56:19,836 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d9c8bb9]
+2026-04-08 15:56:19,836 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d9c5153]
+2026-04-08 15:56:19,836 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d9d4d64]
+2026-04-08 15:56:19,837 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68dbabf58+28768]
+2026-04-08 15:56:19,837 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68dbb4716+30f26]
+2026-04-08 15:56:19,837 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68db98814+15024]
+2026-04-08 15:56:19,837 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68db98959+15169]
+2026-04-08 15:56:19,837 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68db85c82+2492]
+2026-04-08 15:56:19,837 | ERROR    |   	KERNEL32!BaseThreadInitThunk [0x7ff9f4bde8d7+17]
+2026-04-08 15:56:19,837 | ERROR    |   	ntdll!RtlUserThreadStart [0x7ff9f526c3fc+2c]
+2026-04-08 15:56:19,837 | ERROR    |   
+2026-04-08 15:56:19,837 | ERROR    |   Traceback (most recent call last):
+2026-04-08 15:56:19,837 | ERROR    |     File "D:\Rouhin\Exchanges Data\BSE\bse_fno_consolidated_download.py", line 594, in <module>
+2026-04-08 15:56:19,838 | ERROR    |       main()
+2026-04-08 15:56:19,838 | ERROR    |       ~~~~^^
+2026-04-08 15:56:19,838 | ERROR    |     File "D:\Rouhin\Exchanges Data\BSE\bse_fno_consolidated_download.py", line 474, in main
+2026-04-08 15:56:19,838 | ERROR    |       driver = webdriver.Edge(options=options)
+2026-04-08 15:56:19,838 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\edge\webdriver.py", line 45, in __init__
+2026-04-08 15:56:19,838 | ERROR    |       super().__init__(
+2026-04-08 15:56:19,838 | ERROR    |       ~~~~~~~~~~~~~~~~^
+2026-04-08 15:56:19,838 | ERROR    |           browser_name=DesiredCapabilities.EDGE["browserName"],
+2026-04-08 15:56:19,838 | ERROR    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-04-08 15:56:19,838 | ERROR    |       ...<3 lines>...
+2026-04-08 15:56:19,838 | ERROR    |           keep_alive=keep_alive,
+2026-04-08 15:56:19,839 | ERROR    |           ^^^^^^^^^^^^^^^^^^^^^^
+2026-04-08 15:56:19,839 | ERROR    |       )
+2026-04-08 15:56:19,839 | ERROR    |       ^
+2026-04-08 15:56:19,839 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 66, in __init__
+2026-04-08 15:56:19,839 | ERROR    |       super().__init__(command_executor=executor, options=self.options)
+2026-04-08 15:56:19,839 | ERROR    |       ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-04-08 15:56:19,839 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\common\webdriver.py", line 25, in __init__
+2026-04-08 15:56:19,839 | ERROR    |       super().__init__(*args, **kwargs)
+2026-04-08 15:56:19,839 | ERROR    |       ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+2026-04-08 15:56:19,839 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 257, in __init__
+2026-04-08 15:56:19,839 | ERROR    |       self.start_session(capabilities)
+2026-04-08 15:56:19,840 | ERROR    |       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+2026-04-08 15:56:19,840 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 352, in start_session
+2026-04-08 15:56:19,840 | ERROR    |       response = self.execute(Command.NEW_SESSION, caps)["value"]
+2026-04-08 15:56:19,840 | ERROR    |                  ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-04-08 15:56:19,840 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 432, in execute
+2026-04-08 15:56:19,840 | ERROR    |       self.error_handler.check_response(response)
+2026-04-08 15:56:19,840 | ERROR    |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2026-04-08 15:56:19,840 | ERROR    |     File "D:\Rouhin\Exchanges Data\.venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2026-04-08 15:56:19,840 | ERROR    |       raise exception_class(message, screen, stacktrace)
+2026-04-08 15:56:19,841 | ERROR    |   selenium.common.exceptions.SessionNotCreatedException: Message: session not created: DevToolsActivePort file doesn't exist; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+2026-04-08 15:56:19,841 | ERROR    |   Stacktrace:
+2026-04-08 15:56:19,841 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68db910d5+d8e5]
+2026-04-08 15:56:19,841 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68db91134+d944]
+2026-04-08 15:56:19,841 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68deff7bc+37bfcc]
+2026-04-08 15:56:19,841 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d8f68d9]
+2026-04-08 15:56:19,841 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d8f2a04]
+2026-04-08 15:56:19,841 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d8ef390]
+2026-04-08 15:56:19,841 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d93051e]
+2026-04-08 15:56:19,841 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d92feb6]
+2026-04-08 15:56:19,842 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d8fb1fc]
+2026-04-08 15:56:19,842 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d8fa456]
+2026-04-08 15:56:19,842 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d8fb023]
+2026-04-08 15:56:19,842 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d9c8bb9]
+2026-04-08 15:56:19,842 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d9c5153]
+2026-04-08 15:56:19,842 | ERROR    |   	msedgedriver!(No symbol) [0x7ff68d9d4d64]
+2026-04-08 15:56:19,842 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68dbabf58+28768]
+2026-04-08 15:56:19,842 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68dbb4716+30f26]
+2026-04-08 15:56:19,842 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68db98814+15024]
+2026-04-08 15:56:19,842 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68db98959+15169]
+2026-04-08 15:56:19,843 | ERROR    |   	msedgedriver!GetHandleVerifier [0x7ff68db85c82+2492]
+2026-04-08 15:56:19,843 | ERROR    |   	KERNEL32!BaseThreadInitThunk [0x7ff9f4bde8d7+17]
+2026-04-08 15:56:19,843 | ERROR    |   	ntdll!RtlUserThreadStart [0x7ff9f526c3fc+2c]
+2026-04-08 15:56:19,843 | INFO     | Starting: BSE Historical Equity Data
+2026-04-08 15:56:43,406 | INFO     |   Processing 2026-03...
+2026-04-08 15:56:43,407 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily.xlsx (2026-03)
+2026-04-08 15:56:43,407 | INFO     |   Processing 2026-04...
+2026-04-08 15:56:43,407 | INFO     |   Saved: D:\Rouhin\Exchanges Data\BSE\bse_daily.xlsx (2026-04)
+2026-04-08 15:56:43,407 | INFO     | [OK] Completed: BSE Historical Equity Data
+2026-04-08 15:56:43,407 | INFO     | 
+>> Downloading FII/DII data...
+2026-04-08 15:56:43,409 | INFO     | Starting: FII/DII Data (MC + NSE)
+2026-04-08 15:56:50,722 | INFO     |   OK: Moneycontrol cash segment - 30 rows
+2026-04-08 15:56:50,722 | INFO     |   OK: NSE fiidiiTradeReact - date 2026-04-07
+2026-04-08 15:56:50,722 | INFO     |   NOTE: Only 44 rows (~44 days) in the last 5 years. Moneycontrol embeds ~30 recent days; NSE JSON is latest day only. Add bulk history via fii_dii_backfill.csv (columns matching the sheet) from an NSE historical CSV export, then re-run.
+2026-04-08 15:56:50,723 | INFO     |   OK: Saved D:\Rouhin\Exchanges Data\FII_DII\fii_dii_data.xlsx
+2026-04-08 15:56:50,723 | INFO     |      Records: 44
+2026-04-08 15:56:50,723 | INFO     |      Date range: 2026-02-01 to 2026-04-07
+2026-04-08 15:56:50,723 | INFO     | [OK] Completed: FII/DII Data (MC + NSE)
+2026-04-08 15:56:50,724 | INFO     | Skipping Excel Workbook (script not found)
+2026-04-08 15:56:50,724 | INFO     | 
+======================================================================
+2026-04-08 15:56:50,724 | INFO     | SUMMARY
+2026-04-08 15:56:50,724 | INFO     | ======================================================================
+2026-04-08 15:56:50,725 | INFO     |   NSE F&O: [OK]
+2026-04-08 15:56:50,725 | INFO     |   NSE CM: [OK]
+2026-04-08 15:56:50,725 | INFO     |   BSE F&O: [FAILED]
+2026-04-08 15:56:50,725 | INFO     |   BSE Equity: [OK]
+2026-04-08 15:56:50,725 | INFO     |   FII/DII Data: [OK]
+2026-04-08 15:56:50,726 | INFO     | 
+Total: 4/5 successful
+2026-04-08 15:56:50,726 | INFO     | Duration: 159 seconds
+2026-04-08 15:56:50,726 | INFO     | ======================================================================
+

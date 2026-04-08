@@ -207,13 +207,13 @@ def download_bse_equity():
 
 
 def download_fii_dii():
-    """Download FII/DII data from Moneycontrol."""
+    """Download FII/DII cash data (Moneycontrol JSON + NSE fiidiiTradeReact)."""
     if not FII_DII_SCRAPER.exists():
         logger.error(f"File not found: {FII_DII_SCRAPER}")
         return False
 
     cmd = [PYTHON_EXE, str(FII_DII_SCRAPER)]
-    return run_command(cmd, "FII/DII Data from Moneycontrol")
+    return run_command(cmd, "FII/DII Data (MC + NSE)")
 
 
 def build_exchange_database():
